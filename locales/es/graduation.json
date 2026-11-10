@@ -1,0 +1,35 @@
+{
+  "intro": "Completa una variante propia y defiende sus decisiones. Leer o copiar no sustituye estas evidencias. Cada área crítica debe aprobarse.",
+  "criteria": [
+    [
+      "Corrección",
+      "Todos los casos de aceptación funcionan y los límites tienen reglas explícitas."
+    ],
+    [
+      "Pruebas",
+      "Pruebas unitarias e integración detectan un defecto deliberado; la suite pasa en instalación limpia."
+    ],
+    [
+      "Persistencia",
+      "Reinicio conserva registros; fallos no dejan operaciones a medias; backup y restauración están ensayados."
+    ],
+    [
+      "Calidad",
+      "Nombres y documentación técnicos en inglés; responsabilidades separadas; ningún archivo manual supera 400 líneas."
+    ],
+    [
+      "Seguridad",
+      "Entradas limitadas, SQL parametrizado y secretos fuera de código/logs. Para publicar con usuarios: identidad y permisos probados."
+    ],
+    [
+      "Entrega",
+      "Otra persona puede ejecutar el proyecto desde README; demuestras el flujo y diferencias local, CI y despliegue."
+    ],
+    [
+      "Autonomía",
+      "Resuelves un requisito nuevo, explicas una función elegida al azar y corriges un defecto sin copiar la solución."
+    ]
+  ],
+  "scoring": "Evalúa cada área de 0 a 3: 0 ausente; 1 funciona con ayuda constante; 2 funciona y se explica con evidencia; 3 se adapta a un caso nuevo y se mantiene. Aprueba con al menos 2 en todas las áreas. Si publicas, seguridad debe cubrir también el entorno real.",
+  "next": "Después elige una especialidad y construye dos proyectos revisados por otra persona. Python te permite continuar con backend, automatización y datos; TypeScript aporta interfaces web y Kotlin desarrollo Android. No necesitas aprenderlos todos a la vez."
+}

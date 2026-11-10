@@ -1,0 +1,35 @@
+{
+  "id": 2,
+  "title": "Informe de gastos desde CSV",
+  "after": 16,
+  "hours": "10–15",
+  "path": "projects/02-expense-report",
+  "brief": "Transforma un CSV de muestra en totales por categoría. El archivo original se conserva; el informe se escribe solo después de validar todas las filas.",
+  "milestones": [
+    "Define encabezados category y amount_cents.",
+    "Lee con DictReader y valida fila por fila.",
+    "Agrupa por categoría y ordena resultados.",
+    "Escribe un JSON nuevo en build dentro del proyecto.",
+    "Prueba una fila inválida y demuestra que no reemplaza un informe anterior."
+  ],
+  "deliverables": [
+    "Archivo CSV ficticio y contrato del formato.",
+    "Código y pruebas con encabezado ausente, importes negativos y categoría vacía.",
+    "Informe reproducible y explicación de datos incluidos."
+  ],
+  "acceptance": [
+    "La muestra suma office=1500, travel=500, total=2000.",
+    "Un importe abc o negativo detiene el informe.",
+    "Un encabezado incorrecto se rechaza.",
+    "Rechazar el archivo no modifica el informe anterior.",
+    "Las categorías con comas entre comillas se leen correctamente."
+  ],
+  "commands": [
+    "python projects/02-expense-report/cli.py",
+    "python -m unittest discover -s projects/02-expense-report/tests -p 'test_*.py' -v"
+  ],
+  "extensions": [
+    "Añade rango de fechas y conteo de filas.",
+    "Separa totales por moneda sin sumar monedas distintas."
+  ]
+}

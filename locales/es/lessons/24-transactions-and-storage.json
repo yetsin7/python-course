@@ -1,0 +1,66 @@
+{
+  "id": 24,
+  "slug": "transactions-and-storage",
+  "phase": 5,
+  "title": "Transacciones y recuperación",
+  "minutes": 180,
+  "objectives": [
+    "Confirmar o revertir un grupo.",
+    "Cerrar conexiones.",
+    "Demostrar persistencia y restauración."
+  ],
+  "concepts": [
+    "Una transacción agrupa cambios que deben verse como una unidad. Restar saldo y sumarlo a otra cuenta no debería quedar a medias. commit confirma; rollback revierte lo pendiente. Un fallo intermedio debe dejar un estado consistente.",
+    "En sqlite3, with connection confirma o revierte al salir, pero no cierra la conexión. Usa close o contextlib.closing. El comportamiento depende de la configuración; aquí usamos el control tradicional predeterminado y operaciones DML dentro de with.",
+    "La validación de la aplicación mejora mensajes; las restricciones defienden consistencia. Haz fallar una restricción después de una primera actualización y comprueba que ambas se reviertan. No basta ver un error: inspecciona el estado posterior.",
+    "Dos operaciones pueden competir por los mismos registros. Leer, decidir y escribir sin control puede perder actualizaciones. Usa una operación condicional dentro de una transacción o el mecanismo apropiado de tu base. SQLite limita escritura simultánea; no prometas escala sin medir.",
+    "Completa los proyectos 2 y 3: informe CSV y gastos SQLite. El tercero exige crear, listar, totalizar, cerrar y recuperar. Añade una copia y un ensayo de restauración con datos de muestra. Una copia no verificada no demuestra recuperación; conserva el trabajo dentro de tu carpeta de práctica."
+  ],
+  "output": "[(100,), (50,)]\n",
+  "walkthrough": [
+    "La carga inicial está confirmada.",
+    "La segunda actualización falla.",
+    "También se revierte la primera."
+  ],
+  "exercises": [
+    [
+      "Cambia la transferencia a 20.",
+      "Ahora las restricciones la permiten.",
+      "Los saldos terminan en 80 y 70; la suma sigue siendo 150."
+    ],
+    [
+      "Guarda datos, cierra y abre otra conexión al mismo archivo.",
+      "No uses :memory: para esta prueba.",
+      "Los registros deben sobrevivir a la ejecución; verifica la ruta absoluta."
+    ],
+    [
+      "Entrega el proyecto 3 con restauración comprobada.",
+      "Prueba connection.backup sobre datos de muestra.",
+      "Abre la copia y compara filas y totales. Registra evidencia de recuperación."
+    ]
+  ],
+  "mistakes": [
+    "Creer que with connection cierra.",
+    "Confirmar cada mitad por separado."
+  ],
+  "quiz": {
+    "question": "¿Qué corresponde cuando falla la segunda mitad?",
+    "options": [
+      "Revertir el grupo pendiente.",
+      "Conservar siempre la primera.",
+      "Ocultar el fallo y decir éxito."
+    ],
+    "correct": 0,
+    "explanation": "La transacción evita conservar una operación parcial."
+  },
+  "mastery": [
+    "Demuestro rollback.",
+    "Recupero al reabrir.",
+    "Compruebo una restauración."
+  ],
+  "references": [
+    "sqlite"
+  ],
+  "example": "examples/24-transactions-and-storage.py",
+  "command": "python examples/24-transactions-and-storage.py"
+}

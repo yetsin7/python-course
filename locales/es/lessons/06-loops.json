@@ -1,0 +1,66 @@
+{
+  "id": 6,
+  "slug": "loops",
+  "phase": 1,
+  "title": "Repeticiones y acumuladores",
+  "minutes": 120,
+  "objectives": [
+    "Recorrer valores con for y range.",
+    "Construir un acumulador.",
+    "Garantizar que un while termine."
+  ],
+  "concepts": [
+    "Repetir código copiando líneas es frágil: cambiar una regla exige editar todas las copias. Un for aplica un bloque a cada elemento de un iterable. range(1, 6) ofrece 1, 2, 3, 4 y 5; no incluye el extremo final. Piensa el bucle como una tabla: valor actual, acumulador antes, acumulador después.",
+    "El acumulador empieza en un valor neutro: 0 para suma, 1 para multiplicación. Dentro del bucle actualizas total con total + current_number. += es una forma abreviada. Si inicializas total dentro del bucle, borras el resultado anterior en cada vuelta. Colocar una instrucción dentro o fuera cambia su frecuencia de ejecución.",
+    "while repite mientras una condición siga siendo True. Necesita que algo cambie para acercarse al final: un contador, una entrada o un estado. Antes de ejecutarlo, identifica esa condición de salida. Ctrl+C interrumpe un programa que no termina. No uses un bucle infinito para esperar si existe una forma de esperar un evento o leer una entrada.",
+    "break sale del bucle más cercano; continue salta lo que resta de la vuelta actual. Úsalos cuando simplifican la intención. A menudo una condición dentro de for es suficiente. No modifiques una lista que estés recorriendo: puedes omitir elementos sin querer. En la siguiente lección de colecciones crearás una lista nueva.",
+    "Primero resuelve un ejemplo pequeño con lápiz. Para sumar del 1 al 5, registra 0, 1, 3, 6, 10 y 15. Cuando el código no coincide con la tabla, busca en qué vuelta se separan. Esta técnica funciona mejor que cambiar instrucciones al azar."
+  ],
+  "output": "15\n3\n2\n1\n",
+  "walkthrough": [
+    "total se inicializa una sola vez.",
+    "range excluye 6: hay cinco vueltas.",
+    "remaining_attempts baja hasta 0 y while deja de entrar."
+  ],
+  "exercises": [
+    [
+      "Suma del 1 al 10 sin escribir diez sumas.",
+      "El extremo final de range debe ser 11.",
+      "total empieza en 0; for current_number in range(1, 11): total += current_number. Resultado: 55."
+    ],
+    [
+      "Cuenta cuántos enteros del 1 al 20 son pares.",
+      "El resto al dividir por 2 indica paridad.",
+      "Incrementa even_count cuando current_number % 2 == 0. Hay 10 pares."
+    ],
+    [
+      "Escribe una cuenta regresiva de 5 a 1 y explica su salida.",
+      "Cambia el contador dentro del bloque.",
+      "remaining = 5; while remaining > 0 imprime y resta 1. Imprimir después de restar produciría 4 a 0."
+    ]
+  ],
+  "mistakes": [
+    "Inicializar el acumulador dentro de la repetición.",
+    "Olvidar actualizar el estado que controla while."
+  ],
+  "quiz": {
+    "question": "¿Qué valores recorre range(2, 5)?",
+    "options": [
+      "2, 3, 4 y 5.",
+      "2, 3 y 4.",
+      "3, 4 y 5."
+    ],
+    "correct": 1,
+    "explanation": "Incluye el inicio y excluye el extremo final."
+  },
+  "mastery": [
+    "Trazo un acumulador por vuelta.",
+    "Evito un bucle infinito de forma razonada.",
+    "Elijo for para una colección conocida."
+  ],
+  "references": [
+    "control"
+  ],
+  "example": "examples/06-loops.py",
+  "command": "python examples/06-loops.py"
+}

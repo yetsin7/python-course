@@ -1,0 +1,66 @@
+{
+  "id": 21,
+  "slug": "dates-and-time",
+  "phase": 5,
+  "title": "Fechas, zonas horarias y plazos",
+  "minutes": 120,
+  "objectives": [
+    "Distinguir fecha y momento.",
+    "Usar ISO y datetimes con zona.",
+    "Calcular duración sin manipular texto."
+  ],
+  "concepts": [
+    "Una date expresa un día; un datetime expresa fecha y hora. Un momento compartido necesita zona o desplazamiento: 08:00 no identifica el mismo instante en todos los lugares. Registra eventos con datetimes conscientes de zona, normalmente UTC, y convierte al mostrar.",
+    "date.fromisoformat interpreta AAAA-MM-DD. ISO evita confundir 07/10 entre julio y octubre. Un timedelta expresa una duración. No restes fragmentos de cadenas para calcular días: hay meses de distintas longitudes y años bisiestos.",
+    "«Vence el 8 de octubre» puede ser una fecha de calendario; «vence exactamente dentro de 24 horas» es una duración desde un instante. Guardar uno como si fuera el otro cambia el significado al convertir de zona. Define qué representa cada campo.",
+    "Un datetime sin zona es ingenuo; mezclarlo con uno consciente puede fallar o ser ambiguo. Para pruebas usa momentos fijos o pasa un reloj como dependencia. Una prueba que depende del minuto actual puede fallar al cruzar medianoche.",
+    "El ejemplo usa fechas fijas para ser repetible. Distingue recorded_at del día de negocio business_date. Si necesitas America/Guatemala en Windows, zoneinfo puede requerir tzdata: no adivines la zona por el reloj del equipo."
+  ],
+  "output": "2026-10-14\n7\n2026-10-07T12:00:00+00:00\n",
+  "walkthrough": [
+    "ISO evita ambigüedad.",
+    "timedelta calcula correctamente el calendario.",
+    "+00:00 expresa UTC."
+  ],
+  "exercises": [
+    [
+      "Calcula siete días después de 2024-02-26.",
+      "Es bisiesto.",
+      "date.fromisoformat('2024-02-26') + timedelta(days=7) da 2024-03-04."
+    ],
+    [
+      "Distingue fecha de factura y momento de creación.",
+      "Solo uno identifica un instante.",
+      "invoice_date es date; created_at es datetime consciente. Documenta su significado."
+    ],
+    [
+      "Prueba un vencimiento sin usar el reloj actual.",
+      "Pasa now como parámetro.",
+      "Usa un momento fijo y prueba antes, en el límite y después."
+    ]
+  ],
+  "mistakes": [
+    "Usar 07/10/26 para intercambio.",
+    "Mezclar instantes sin zona y con zona."
+  ],
+  "quiz": {
+    "question": "¿Qué representa timedelta?",
+    "options": [
+      "Una duración.",
+      "Una zona.",
+      "Una cadena localizada."
+    ],
+    "correct": 0,
+    "explanation": "Representa una diferencia temporal."
+  },
+  "mastery": [
+    "Uso ISO.",
+    "Distingo calendario e instante.",
+    "Pruebo límites con reloj fijo."
+  ],
+  "references": [
+    "datetime"
+  ],
+  "example": "examples/21-dates-and-time.py",
+  "command": "python examples/21-dates-and-time.py"
+}

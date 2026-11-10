@@ -1,0 +1,67 @@
+{
+  "id": 23,
+  "slug": "sql-and-sqlite",
+  "phase": 5,
+  "title": "SQL y una base de datos",
+  "minutes": 180,
+  "objectives": [
+    "Crear y consultar una tabla.",
+    "Usar parámetros SQL.",
+    "Explicar claves y restricciones."
+  ],
+  "concepts": [
+    "Una base relacional organiza registros en tablas con columnas y restricciones. SQL permite crear, insertar, consultar, actualizar y eliminar. Una clave primaria identifica una fila; UNIQUE evita duplicados; CHECK limita valores; NOT NULL exige presencia. La base también protege reglas porque otros programas pueden escribir allí.",
+    "sqlite3 guarda en un archivo o en memoria. :memory: crea una base temporal que desaparece al cerrar. Para persistir usa una ruta dentro del proyecto. Tener una conexión no significa que cualquier cambio esté confirmado: la siguiente lección explica commit y rollback.",
+    "No construyas SQL pegando texto recibido del usuario. Usa ? y envía valores separados en una tupla. Los parámetros sirven para valores, no para elegir nombres de tabla arbitrarios. Si necesitas columnas dinámicas, selecciónalas desde una lista permitida.",
+    "SELECT pide columnas; WHERE filtra; ORDER BY define orden. No asumas el orden de inserción. SUM y GROUP BY agregan datos; verifica filtros y valores nulos. Un informe debe declarar qué registros y monedas incluye.",
+    "El ejemplo consulta un código y luego una cadena con apariencia de instrucción. Con parámetros, esa cadena sigue siendo un valor literal. La restricción impide stock negativo. Diseña identidad y consistencia antes de añadir una interfaz."
+  ],
+  "output": "8\nTrue\n",
+  "walkthrough": [
+    "CHECK limita stock.",
+    "El parámetro va separado del SQL.",
+    "fetchone devuelve None sin coincidencia."
+  ],
+  "exercises": [
+    [
+      "Diseña expenses con id, category y amount_cents.",
+      "Protege identidad y no negativos.",
+      "id INTEGER PRIMARY KEY; category TEXT NOT NULL; amount_cents INTEGER NOT NULL CHECK(amount_cents >= 0)."
+    ],
+    [
+      "Consulta la suma de dos gastos por categoría.",
+      "Define el orden.",
+      "SELECT category, SUM(amount_cents) FROM expenses GROUP BY category ORDER BY category."
+    ],
+    [
+      "Busca un nombre que contiene una comilla.",
+      "No escapes mediante concatenación.",
+      "Usa WHERE name = ? y una tupla con el valor; la comilla sigue siendo parte del texto."
+    ]
+  ],
+  "mistakes": [
+    "Concatenar entradas en SQL.",
+    "Depender del orden sin ORDER BY."
+  ],
+  "quiz": {
+    "question": "¿Qué hace el marcador ? en sqlite3?",
+    "options": [
+      "Separa un valor del SQL.",
+      "Selecciona cualquier tabla enviada por usuarios.",
+      "Garantiza mayor velocidad."
+    ],
+    "correct": 0,
+    "explanation": "El valor enlazado no se interpreta como código SQL."
+  },
+  "mastery": [
+    "Creo restricciones.",
+    "Uso parámetros.",
+    "Defino el orden de consultas."
+  ],
+  "references": [
+    "sqlite",
+    "sql"
+  ],
+  "example": "examples/23-sql-and-sqlite.py",
+  "command": "python examples/23-sql-and-sqlite.py"
+}

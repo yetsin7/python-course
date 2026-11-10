@@ -1,0 +1,66 @@
+{
+  "id": 3,
+  "slug": "values-and-variables",
+  "phase": 0,
+  "title": "Valores, variables y operaciones",
+  "minutes": 120,
+  "objectives": [
+    "Nombrar valores por su significado.",
+    "Distinguir int, float, str y bool.",
+    "Calcular y explicar el orden de operaciones."
+  ],
+  "concepts": [
+    "Una variable es un nombre asociado a un valor. quantity = 3 asocia el nombre quantity al entero 3; el signo = asigna, no pregunta si algo es igual. Cuando escribes quantity * unit_price, Python busca los valores actuales de ambos nombres. Nombra por intención: unit_price explica más que x.",
+    "Un int representa enteros como 3; un float representa números como 12.5 con precisión binaria limitada; un str es texto entre comillas; un bool solo puede ser True o False. type(valor) permite observar el tipo. El texto '3' no se convierte automáticamente en el número 3. En Python, '3' * 2 repite texto y da '33'.",
+    "Los operadores +, -, *, / calculan; // produce división de piso y % el resto. Los paréntesis hacen explícito el orden. 2 + 3 * 4 produce 14; (2 + 3) * 4 produce 20. Un costo unitario y una cantidad no son intercambiables aunque ambos sean números: los nombres preservan esa diferencia.",
+    "En el ejemplo seguimos una cadena de dependencias: cantidad y precio generan subtotal; subtotal y tasa generan impuesto; ambos producen total. Cuando cambias quantity, las líneas siguientes calculan con ese nuevo valor. Python no actualiza una variable calculada antes de reasignar su entrada: hay que volver a realizar el cálculo.",
+    "Para dinero real usa centavos enteros o Decimal, que estudiarás en la lección 22. Aquí los valores permiten concentrarnos en asignación. Mantén unidades en los nombres cuando importe: duration_minutes, price_cents. Antes de ejecutar, anota el valor de cada variable y predice la salida. Esto se llama trazar un programa."
+  ],
+  "output": "36\n39.6\nint\n",
+  "walkthrough": [
+    "quantity y unit_price son las entradas internas.",
+    "subtotal conserva 36; total añade 10 % de ese subtotal.",
+    "type(...).__name__ solo permite observar el nombre del tipo."
+  ],
+  "exercises": [
+    [
+      "Calcula siete unidades de 8 con un impuesto del 5 %.",
+      "Primero subtotal, luego impuesto.",
+      "subtotal = 7 * 8 da 56; total = subtotal + subtotal * 0.05 da 58.8."
+    ],
+    [
+      "Predice y compara 17 // 5 y 17 % 5.",
+      "Tres grupos completos usan 15 unidades.",
+      "Los resultados son 3 y 2; el resto son las unidades que no completan otro grupo."
+    ],
+    [
+      "Reasigna quantity después de calcular subtotal. ¿Cambia subtotal?",
+      "Las asignaciones se ejecutan en un momento concreto.",
+      "No. El valor calculado se conserva hasta otra asignación. Repite subtotal = quantity * unit_price para actualizarlo."
+    ]
+  ],
+  "mistakes": [
+    "Confundir = con ==.",
+    "Mezclar minutos con horas o texto con números sin una conversión explícita."
+  ],
+  "quiz": {
+    "question": "¿Cuánto produce (2 + 3) * 4?",
+    "options": [
+      "14.",
+      "20.",
+      "24."
+    ],
+    "correct": 1,
+    "explanation": "Primero se calcula el paréntesis: 5; después se multiplica por 4."
+  },
+  "mastery": [
+    "Trazo cinco asignaciones sin ejecutar.",
+    "Elijo nombres que indican significado y unidades.",
+    "Explico por qué '3' y 3 tienen comportamientos distintos."
+  ],
+  "references": [
+    "introduction"
+  ],
+  "example": "examples/03-values-and-variables.py",
+  "command": "python examples/03-values-and-variables.py"
+}

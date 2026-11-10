@@ -1,0 +1,35 @@
+{
+  "id": 1,
+  "title": "Calculadora de cotizaciones",
+  "after": 16,
+  "hours": "8–12",
+  "path": "projects/01-quote-calculator",
+  "brief": "Una herramienta para cotizar una cantidad de artículos con precio y descuento en porcentaje entero. Todas las cantidades monetarias están en centavos de una moneda única de ejemplo.",
+  "milestones": [
+    "Escribe ejemplos y reglas antes del cálculo.",
+    "Implementa calculate_quote como función pura con validación.",
+    "Añade una CLI con argumentos y mensajes localizados.",
+    "Agrega pruebas de cero, límites y negativos.",
+    "Documenta comandos y registra tres commits."
+  ],
+  "deliverables": [
+    "Código propio en study-work/quote-calculator.",
+    "README en inglés y archivos de traducción.",
+    "Pruebas automatizadas y demostración de tres cotizaciones."
+  ],
+  "acceptance": [
+    "1250 centavos × 2 sin descuento = 2500.",
+    "1250 × 2 con 10 % = 2250.",
+    "Un descuento de 100 % da 0; fuera de 0–100 falla.",
+    "Precio o cantidad negativos fallan sin presentar éxito.",
+    "La regla de referencia usa redondeo decimal ROUND_HALF_UP al centavo."
+  ],
+  "commands": [
+    "python projects/01-quote-calculator/cli.py --price-cents 1250 --quantity 2 --discount-percent 10",
+    "python -m unittest discover -s projects/01-quote-calculator/tests -p 'test_*.py' -v"
+  ],
+  "extensions": [
+    "Añade varias líneas de pedido y un total.",
+    "Define y prueba una política de impuestos separada."
+  ]
+}

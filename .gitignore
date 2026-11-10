@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.venv/
+build/
+*.sqlite3
+*.sqlite3-wal
+*.sqlite3-shm
+.env
+study-work/
+node_modules/
+dist/
+out/
+.claude/

@@ -1,0 +1,273 @@
+{
+  "title": "Aprende a construir",
+  "subtitle": "Python · de tu primera instrucción a una aplicación propia",
+  "description": "Un curso para entender lo que programas, practicar con intención y demostrar lo que sabes.",
+  "languageChoice": "Elegí Python para ti porque facilita concentrarte en la lógica y permite crear herramientas útiles para los proyectos y negocios con los que trabajas. Más adelante podrás trasladar estos fundamentos a otros lenguajes.",
+  "phases": [
+    "Primeros pasos",
+    "Lógica y funciones",
+    "Modelar y depurar",
+    "Herramientas y archivos",
+    "Calidad y diseño",
+    "Datos confiables",
+    "Aplicaciones y API",
+    "Entrega y autonomía"
+  ],
+  "ui": {
+    "home": "Inicio",
+    "setup": "Empieza aquí",
+    "setupCallTitle": "¿Es tu primera vez? Empieza aquí",
+    "setupCallText": "Si nunca instalaste Python ni abriste una terminal, sigue primero la guía paso a paso. Explica el teclado, la instalación y cómo ejecutar tu primer programa.",
+    "setupCallLink": "Abrir la guía «Empieza aquí»",
+    "setupSteps": "Paso a paso",
+    "setupWords": "Para tener a mano",
+    "plain": "En palabras simples",
+    "terms": "Palabras nuevas de esta lección",
+    "run": "Ejecuta el ejemplo completo y compara",
+    "runIntro": "El fragmento de arriba es solo una parte. El programa completo está en la carpeta examples del curso. Ejecútalo así:",
+    "runOpen": "Abre PowerShell: presiona la tecla Windows, escribe PowerShell y presiona Enter.",
+    "runFolder": "Entra en la carpeta python del curso con Set-Location seguido de su ubicación. Si no recuerdas cómo, mira la guía «Empieza aquí».",
+    "runCommand": "Escribe esta orden y presiona Enter:",
+    "runAnswers": "El programa te hará preguntas. Escribe estas respuestas, presionando Enter después de cada una:",
+    "runOutput": "Deberías ver exactamente esto:",
+    "runDifferent": "¿Ves algo distinto o un mensaje de error? No pasa nada: revisa la sección «Cómo leer un error sin asustarte» de la guía «Empieza aquí» y vuelve a intentarlo.",
+    "route": "Lecciones",
+    "projects": "Proyectos",
+    "plan": "Cómo estudiar",
+    "glossary": "Glosario",
+    "graduation": "Graduación",
+    "search": "Buscar una lección",
+    "searchPlaceholder": "Funciones, archivos, API…",
+    "noResults": "No hay lecciones con ese término.",
+    "start": "Comenzar el curso",
+    "resume": "Continuar aprendiendo",
+    "lesson": "Lección",
+    "completed": "Completada",
+    "markComplete": "Marcar como completada",
+    "undoComplete": "Marcar como pendiente",
+    "progress": "Tu progreso",
+    "progressDetail": "lecciones completadas",
+    "localNotice": "Tu avance y notas se guardan en este navegador. Exporta una copia para conservarlos si cambias de navegador, borras sus datos o mueves esta carpeta.",
+    "exportProgress": "Exportar progreso",
+    "importProgress": "Importar progreso",
+    "importSuccess": "Progreso importado.",
+    "importError": "No se pudo importar. Elige una copia válida del progreso de este curso.",
+    "storageError": "El navegador no pudo guardar el avance. Conserva una copia con Exportar progreso antes de cerrar.",
+    "objectives": "Lo que vas a lograr",
+    "concepts": "La explicación",
+    "walkthrough": "Lee el programa paso a paso",
+    "example": "Fragmento para estudiar",
+    "snippetLabel": "Fragmento breve; faltan partes a propósito",
+    "snippetPracticeTitle": "Ahora piensa y escribe tú",
+    "snippetPracticeText": "Este fragmento enseña una idea, no es un programa completo para copiar. Antes de programar, explica qué hace cada línea; después resuelve el reto con tus propias palabras y ejecuta tu archivo desde VS Code, PowerShell o CMD.",
+    "practice": "Practica sin mirar la respuesta",
+    "hint": "Ver una pista",
+    "solution": "Ver una respuesta orientativa",
+    "solutionWarning": "Registra tu intento antes de abrir la respuesta. Los archivos solutions/ contienen las referencias de las prácticas comprobables.",
+    "mistakes": "Errores frecuentes",
+    "quiz": "Comprueba tu comprensión",
+    "quizCheck": "Comprobar respuesta",
+    "quizChoose": "Elige una opción para comprobarla.",
+    "quizCorrect": "Respuesta correcta.",
+    "quizIncorrect": "Revisa tu razonamiento.",
+    "mastery": "Antes de avanzar",
+    "notes": "Tus notas de esta lección",
+    "notesPlaceholder": "¿Qué probaste? ¿Qué salió distinto? ¿Qué puedes explicar sin ayuda?",
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "references": "Para profundizar",
+    "estimated": "minutos orientativos",
+    "menu": "Abrir navegación",
+    "closeMenu": "Cerrar navegación",
+    "courseMap": "Tu ruta de aprendizaje",
+    "overview": "De cero a trabajar con autonomía",
+    "overviewText": "Aprende una idea, escríbela, ponla a prueba y úsala en un proyecto. Todo el material de lectura está en esta carpeta; la etapa de API necesita descargar sus dependencias una vez.",
+    "statsLessons": "lecciones guiadas",
+    "statsExercises": "ejercicios",
+    "statsProjects": "proyectos",
+    "journey": "Una ruta, ocho etapas",
+    "openProject": "Ver instrucciones",
+    "projectAfter": "Después de la lección",
+    "projectHours": "horas de práctica orientativas",
+    "referencePath": "Referencia separada",
+    "deliverables": "Tu entrega",
+    "milestones": "Construye en este orden",
+    "acceptance": "Casos de aceptación",
+    "extensions": "Cuando funcione, amplíalo",
+    "projectCommands": "Comandos para explorar la referencia",
+    "referenceReminder": "Construye primero tu intento en study-work. La referencia es material para comparar y aprender, no una entrega propia.",
+    "rubric": "Rúbrica",
+    "back": "Volver",
+    "print": "Imprimir esta vista",
+    "daily": "Tu primera sesión",
+    "notesSaved": "Notas guardadas.",
+    "footer": "Estudia a tu ritmo. Avanza cuando puedas hacerlo y explicarlo.",
+    "downloadName": "python-course-progress.json",
+    "hours": "horas",
+    "optional": "Opcional",
+    "guide": "Guía de estudio",
+    "sourceNote": "Referencias oficiales para ampliar el material original del curso.",
+    "brand": "Tu curso de Python",
+    "completionHelp": "Marca los tres criterios y responde correctamente la autoevaluación para completar la lección.",
+    "whyPython": "Por qué Python para ti",
+    "practiceToolsTitle": "Usa el editor o la terminal que prefieras",
+    "practiceToolsText": "El curso muestra fragmentos breves para estudiar una idea, no programas completos para copiar. Predice qué harán, explica cada línea y escribe tus propios ejercicios en VS Code o cualquier editor; luego ejecútalos desde su terminal, PowerShell o CMD.",
+    "schedule": "Un calendario adaptable",
+    "session": "Una sesión de práctica",
+    "recall": "Recuerda y combina",
+    "checkpoints": "Puntos de revisión",
+    "studyRules": "Reglas de trabajo",
+    "askingHelp": "Cómo pedir ayuda",
+    "troubleshooting": "Si algo falla",
+    "evaluation": "Cómo evaluarte",
+    "nextSpecialty": "El siguiente paso",
+    "completedCount": "completadas",
+    "documentTitleSuffix": " · Python"
+  },
+  "references": {
+    "python": [
+      "Python para principiantes",
+      "https://www.python.org/about/gettingstarted/"
+    ],
+    "windows": [
+      "Python en Windows",
+      "https://docs.python.org/3.13/using/windows.html"
+    ],
+    "introduction": [
+      "Valores y operaciones",
+      "https://docs.python.org/3.13/tutorial/introduction.html"
+    ],
+    "builtins": [
+      "Funciones incorporadas",
+      "https://docs.python.org/3.13/library/functions.html"
+    ],
+    "control": [
+      "Control de flujo y funciones",
+      "https://docs.python.org/3.13/tutorial/controlflow.html"
+    ],
+    "collections": [
+      "Estructuras de datos",
+      "https://docs.python.org/3.13/tutorial/datastructures.html"
+    ],
+    "strings": [
+      "Métodos de texto",
+      "https://docs.python.org/3.13/library/stdtypes.html#text-sequence-type-str"
+    ],
+    "errors": [
+      "Excepciones",
+      "https://docs.python.org/3.13/tutorial/errors.html"
+    ],
+    "debugger": [
+      "Depurador pdb",
+      "https://docs.python.org/3.13/library/pdb.html"
+    ],
+    "modules": [
+      "Módulos",
+      "https://docs.python.org/3.13/tutorial/modules.html"
+    ],
+    "venv": [
+      "Entornos virtuales",
+      "https://docs.python.org/3.13/library/venv.html"
+    ],
+    "json": [
+      "Serialización JSON",
+      "https://docs.python.org/3.13/library/json.html"
+    ],
+    "paths": [
+      "Rutas con pathlib",
+      "https://docs.python.org/3.13/library/pathlib.html"
+    ],
+    "csv": [
+      "Lectura CSV",
+      "https://docs.python.org/3.13/library/csv.html"
+    ],
+    "git": [
+      "Tutorial de Git",
+      "https://git-scm.com/docs/gittutorial"
+    ],
+    "tests": [
+      "Pruebas con unittest",
+      "https://docs.python.org/3.13/library/unittest.html"
+    ],
+    "classes": [
+      "Clases",
+      "https://docs.python.org/3.13/tutorial/classes.html"
+    ],
+    "dataclasses": [
+      "Dataclasses",
+      "https://docs.python.org/3.13/library/dataclasses.html"
+    ],
+    "typing": [
+      "Anotaciones de tipos",
+      "https://docs.python.org/3.13/library/typing.html"
+    ],
+    "time": [
+      "Medición de tiempo",
+      "https://docs.python.org/3.13/library/time.html#time.perf_counter"
+    ],
+    "datetime": [
+      "Fechas y horas",
+      "https://docs.python.org/3.13/library/datetime.html"
+    ],
+    "decimal": [
+      "Decimal",
+      "https://docs.python.org/3.13/library/decimal.html"
+    ],
+    "sqlite": [
+      "SQLite con Python",
+      "https://docs.python.org/3.13/library/sqlite3.html"
+    ],
+    "sql": [
+      "SQL de SQLite",
+      "https://www.sqlite.org/lang.html"
+    ],
+    "argparse": [
+      "Argumentos de terminal",
+      "https://docs.python.org/3.13/library/argparse.html"
+    ],
+    "http": [
+      "Descripción de HTTP",
+      "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview"
+    ],
+    "fastapi": [
+      "Tutorial FastAPI",
+      "https://fastapi.tiangolo.com/tutorial/"
+    ],
+    "body": [
+      "Cuerpo de solicitudes",
+      "https://fastapi.tiangolo.com/tutorial/body/"
+    ],
+    "security": [
+      "Seguridad de FastAPI",
+      "https://fastapi.tiangolo.com/tutorial/security/"
+    ],
+    "fastapi-tests": [
+      "Pruebas de FastAPI",
+      "https://fastapi.tiangolo.com/tutorial/testing/"
+    ],
+    "logging": [
+      "Logging",
+      "https://docs.python.org/3.13/library/logging.html"
+    ],
+    "asyncio": [
+      "Asyncio",
+      "https://docs.python.org/3.13/library/asyncio.html"
+    ],
+    "concurrency": [
+      "Concurrent futures",
+      "https://docs.python.org/3.13/library/concurrent.futures.html"
+    ],
+    "deployment": [
+      "Despliegue FastAPI",
+      "https://fastapi.tiangolo.com/deployment/"
+    ],
+    "ci": [
+      "Pruebas Python en GitHub Actions",
+      "https://docs.github.com/en/actions/tutorials/build-and-test-code/python"
+    ],
+    "packaging": [
+      "Empaquetar Python",
+      "https://packaging.python.org/en/latest/tutorials/packaging-projects/"
+    ]
+  }
+}

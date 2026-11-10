@@ -1,0 +1,67 @@
+{
+  "id": 1,
+  "slug": "first-program",
+  "phase": 0,
+  "title": "Empezar desde cero",
+  "minutes": 90,
+  "objectives": [
+    "Distinguir programa, código y lenguaje.",
+    "Abrir la carpeta correcta y ejecutar un archivo.",
+    "Reconocer una entrada, un proceso y una salida."
+  ],
+  "concepts": [
+    "Programar es describir instrucciones precisas que una computadora puede repetir. Una receta dice «mezcla hasta que esté listo»; un programa necesita saber qué significa listo. Primero conviertes una necesidad en pasos, luego escribes esos pasos en un lenguaje y finalmente verificas el resultado. No necesitas memorizar todo: sí necesitas aprender a observar y comprobar.",
+    "Un archivo de código es texto. Python es el programa que lee ese texto y ejecuta sus instrucciones. Un editor sirve para escribir; una terminal sirve para dar órdenes al sistema. Son tres cosas distintas. Un error no significa que no puedas aprender: señala una instrucción que todavía no coincide con lo que esperabas.",
+    "Para comenzar, abre PowerShell desde el menú de Windows. Escribe python --version. En este equipo se comprobó Python 3.13.11. Si no aparece una versión 3.13 o superior, visita la descarga oficial enlazada al final. Instala Python desde su sitio oficial, vuelve a abrir PowerShell y repite la comprobación. Si python no funciona pero py sí, puedes sustituir python por py en los comandos del curso. Escribe los ejemplos en VS Code o cualquier editor y ejecútalos desde la terminal integrada, PowerShell o CMD.",
+    "Escribe Set-Location C:\\Dev\\python-course y después python examples/01-first-program.py. Si guardaste el curso en otro lugar, usa esa ubicación. La primera orden cambia la carpeta de trabajo; la segunda ejecuta el ejemplo. Debes ver 42. Para editar puedes usar IDLE, incluido con Python: abre el archivo mediante File > Open, cambia 6 por 8, guarda una copia en study-work y ejecútala. Puedes crear study-work con New-Item -ItemType Directory study-work. No necesitas comprar un editor.",
+    "Tu rutina por sesión: predice el resultado antes de ejecutar; escribe o modifica algo; compara lo ocurrido; explica por qué. Dedica 10 minutos a recordar la sesión anterior, 20 a leer y 40 a practicar. Cierra con una nota: qué lograste y qué sigue pendiente. Avanza por evidencia, no por velocidad."
+  ],
+  "output": "42\n",
+  "walkthrough": [
+    "print es una función incorporada: muestra el valor entre paréntesis.",
+    "El asterisco multiplica los números; Python calcula antes de mostrar.",
+    "El texto entre comillas triples explica el archivo; no es una orden que produzca salida."
+  ],
+  "exercises": [
+    [
+      "Predice el resultado de print(8 * 5), ejecútalo y compara.",
+      "Multiplica primero en papel.",
+      "40. Cambiar una entrada cambia el resultado sin cambiar la regla."
+    ],
+    [
+      "Describe los pasos para calcular el costo de tres cuadernos de 12 unidades monetarias.",
+      "Identifica cantidad, precio y operación.",
+      "Entradas: 3 y 12; proceso: multiplicar; salida: 36. Escribe print(3 * 12) en una copia del ejemplo."
+    ],
+    [
+      "Cierra la terminal y vuelve a ejecutar el ejemplo sin copiar el comando.",
+      "Recuerda la carpeta antes del archivo.",
+      "Abre PowerShell, cambia a la carpeta donde guardaste el curso y ejecuta python examples/01-first-program.py. Explica cada parte del comando."
+    ]
+  ],
+  "mistakes": [
+    "Escribir una orden de PowerShell dentro del archivo Python.",
+    "Editar un archivo y ejecutar una copia diferente sin haber guardado."
+  ],
+  "quiz": {
+    "question": "¿Qué ejecuta las instrucciones del archivo .py?",
+    "options": [
+      "El nombre de la carpeta.",
+      "El intérprete de Python.",
+      "El navegador del curso."
+    ],
+    "correct": 1,
+    "explanation": "El intérprete lee y ejecuta el código. La carpeta organiza archivos y el navegador presenta las lecciones."
+  },
+  "mastery": [
+    "Vuelvo a ejecutar el ejemplo sin ayuda.",
+    "Explico entrada, proceso y salida con otro caso.",
+    "Puedo cambiar una operación y predecir su resultado."
+  ],
+  "references": [
+    "python",
+    "windows"
+  ],
+  "example": "examples/01-first-program.py",
+  "command": "python examples/01-first-program.py"
+}

@@ -1,0 +1,66 @@
+{
+  "id": 8,
+  "slug": "lists",
+  "phase": 1,
+  "title": "Listas y transformación",
+  "minutes": 120,
+  "objectives": [
+    "Guardar varios valores en una lista.",
+    "Distinguir índice y elemento.",
+    "Filtrar sin modificar la lista de origen."
+  ],
+  "concepts": [
+    "Una lista conserva una secuencia ordenada de valores. Los corchetes la construyen; el primer índice es 0. Si prices tiene tres elementos, sus índices válidos son 0, 1 y 2. prices[-1] accede al último. Un índice fuera del rango produce IndexError. len(prices) dice cuántos elementos hay; no cuál es el último índice.",
+    "append añade un elemento al final y modifica la lista. sorted(prices) devuelve otra lista ordenada; prices.sort() modifica la original y devuelve None. Antes de elegir, decide si otras partes necesitan el orden anterior. Dos nombres pueden apuntar a la misma lista: alias = prices no copia su contenido.",
+    "Filtrar significa conservar elementos que cumplen una regla. Crea una nueva lista y recorre la original. No elimines elementos de la misma lista dentro de ese recorrido. La comprensión [price for price in prices if price >= 1000] expresa el mismo patrón de forma compacta; aprende primero la versión con for para poder explicarla.",
+    "Para un promedio necesitas suma y cantidad. ¿Qué pasa con una lista vacía? Dividir entre cero falla; decide si tu contrato devolverá 0, None o rechazará el caso. La decisión debe ser explícita. Los casos vacíos son normales cuando una búsqueda no encuentra resultados.",
+    "Una colección no es solo almacenamiento: permite transformar un problema grande en operaciones pequeñas. Seleccionar precios, calcular suma y ordenar son pasos distintos. Nómbralos y verifica cada uno. El ejercicio 03 pide una transformación que conserve el origen; después comprobarás también esa propiedad."
+  ],
+  "output": "[1500, 2000]\n3500\n[500, 1500, 900, 2000]\n",
+  "walkthrough": [
+    "selected_prices comienza como una colección nueva.",
+    "El if elige 1500 y 2000.",
+    "La lista original conserva los cuatro elementos."
+  ],
+  "exercises": [
+    [
+      "Completa practice/03-positive-values.py para conservar positivos.",
+      "El cero no es positivo.",
+      "[0, -2, 5, 3] se transforma en [5, 3]; [] en []; el origen no debe cambiar."
+    ],
+    [
+      "Obtén el mayor valor de [4, 9, 2] sin usar max.",
+      "Mantén el mayor visto hasta ahora.",
+      "Empieza con el primer valor; compara cada siguiente y reemplaza si es mayor. Resultado 9. Define aparte qué harás con []."
+    ],
+    [
+      "Haz una copia y cambia solo su primer valor.",
+      "Asignar otro nombre no basta.",
+      "copied_prices = prices_cents.copy(); copied_prices[0] = 700 no modifica prices_cents. Es una copia superficial; estructuras anidadas requieren más cuidado."
+    ]
+  ],
+  "mistakes": [
+    "Empezar los índices en 1.",
+    "Guardar el resultado de append esperando recibir la lista."
+  ],
+  "quiz": {
+    "question": "¿Qué produce [10, 20, 30][0]?",
+    "options": [
+      "10.",
+      "20.",
+      "Un error."
+    ],
+    "correct": 0,
+    "explanation": "La numeración de índices empieza en cero."
+  },
+  "mastery": [
+    "Filtro una lista sin alterar su origen.",
+    "Explico una lista vacía en mi contrato.",
+    "Distingo modificar de devolver una colección nueva."
+  ],
+  "references": [
+    "collections"
+  ],
+  "example": "examples/08-lists.py",
+  "command": "python examples/08-lists.py"
+}

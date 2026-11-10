@@ -1,0 +1,66 @@
+{
+  "id": 17,
+  "slug": "automated-tests",
+  "phase": 4,
+  "title": "Pruebas automáticas y regresiones",
+  "minutes": 150,
+  "objectives": [
+    "Escribir una prueba con unittest.",
+    "Cubrir límites y errores.",
+    "Verificar comportamiento sin copiar la implementación."
+  ],
+  "concepts": [
+    "Una prueba automática ejecuta una operación y compara el resultado con un contrato. No demuestra que no existan defectos; demuestra que los casos elegidos se comportan como esperas. Cuando corriges un fallo, añade primero un caso que lo reproduzca: así una regresión futura se vuelve visible.",
+    "unittest viene con Python. Una clase que hereda de TestCase agrupa métodos cuyos nombres empiezan por test. assertEqual compara valores; assertRaises comprueba un fallo previsto. Estructura cada caso en preparar, actuar y comprobar. Nombra la situación, no solo el número: test_rejects_negative_quantity explica la regla.",
+    "El valor esperado debe venir de una regla o ejemplo independiente. Calcular expected con la misma fórmula del código puede repetir el mismo defecto y dar una falsa aprobación. Para 125 centavos por cuatro unidades, escribe 500 como esperado. Incluye cero, negativos y el límite de cada condición.",
+    "Las pruebas unitarias aíslan operaciones pequeñas; las de integración verifican colaboraciones como guardar y recuperar; las de aceptación recorren una necesidad de usuario. No sustituyas todas por pruebas de funciones internas. Una refactorización que conserva comportamiento debería poder pasar las mismas pruebas de contrato.",
+    "Ejecuta python scripts/check-practice.py --exercise 02 y lee cada fallo. En tu proyecto usa python -m unittest discover -s tests -p 'test_*.py' -v. Los archivos test_*.py usan la convención exigida por unittest para poder importarlos. Un resultado verde en la referencia no significa que tu implementación ya esté completa: ejecuta contra tus archivos."
+  ],
+  "output": "1\nTrue\n",
+  "walkthrough": [
+    "La función se enfoca en un contrato.",
+    "El prefijo test permite descubrir el método.",
+    "El runner ejecuta y cuenta los casos."
+  ],
+  "exercises": [
+    [
+      "Escribe una prueba para el envío exactamente en 10000 centavos.",
+      "El esperado viene del contrato de la lección 05.",
+      "shipping_cost(10000) debe ser 0. Agrega 9999 -> 1500 y un negativo -> ValueError."
+    ],
+    [
+      "Introduce un defecto y comprueba que una prueba falle.",
+      "Una prueba que nunca puede fallar no aporta evidencia.",
+      "Cambia >= por > en el envío; el caso del límite debe detectar el defecto."
+    ],
+    [
+      "Clasifica una prueba de guardar y volver a leer JSON.",
+      "Necesita operaciones que colaboran.",
+      "Es integración. Una prueba solo del cálculo puro es unitaria."
+    ]
+  ],
+  "mistakes": [
+    "Copiar la fórmula del programa para generar el esperado.",
+    "Afirmar que todo funciona porque una prueba pasó."
+  ],
+  "quiz": {
+    "question": "¿Qué protege una prueba de regresión?",
+    "options": [
+      "Un comportamiento que antes falló.",
+      "La ausencia de todos los defectos.",
+      "Solo el formato del archivo."
+    ],
+    "correct": 0,
+    "explanation": "Repite un caso conocido para detectar que el defecto reaparezca."
+  },
+  "mastery": [
+    "Una prueba mía detecta un defecto introducido.",
+    "Pruebo límites y excepciones.",
+    "Distingo unidad, integración y aceptación."
+  ],
+  "references": [
+    "tests"
+  ],
+  "example": "examples/17-automated-tests.py",
+  "command": "python examples/17-automated-tests.py"
+}

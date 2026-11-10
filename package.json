@@ -1,0 +1,12 @@
+{
+  "name": "python-course",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A self-contained Spanish Python course for teenagers and adults.",
+  "scripts": {
+    "build": "python scripts/build-course.py",
+    "check:javascript": "node --check assets/course-session.js && node --check assets/progress.js && node --check assets/markup.js && node --check assets/reader.js && node --check assets/views.js && node --check assets/application.js",
+    "check:python": "python scripts/verify-course.py",
+    "check": "pnpm run check:javascript && pnpm run build && git diff --exit-code -- assets/course-content.js && pnpm run check:python"
+  }
+}

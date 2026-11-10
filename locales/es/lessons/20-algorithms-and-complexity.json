@@ -1,0 +1,67 @@
+{
+  "id": 20,
+  "slug": "algorithms-and-complexity",
+  "phase": 4,
+  "title": "Algoritmos y costo de ejecución",
+  "minutes": 150,
+  "objectives": [
+    "Explicar un algoritmo paso a paso.",
+    "Comparar búsqueda e indexación.",
+    "Medir antes de optimizar."
+  ],
+  "concepts": [
+    "Un algoritmo es una secuencia de pasos para resolver una familia de problemas. Buscar recorriendo una lista es búsqueda lineal: en el peor caso inspeccionas cada elemento. Un diccionario ofrece consultas de costo promedio constante después de construir el índice. Ese índice requiere memoria y trabajo inicial.",
+    "O(n) describe cómo crece el trabajo, no cuántos milisegundos tardará. Dos bucles anidados sobre la misma colección suelen crecer como O(n²); ordenar suele costar O(n log n). Los tamaños reales importan: una solución sencilla para veinte registros puede ser mejor que una estructura compleja.",
+    "El ejemplo elimina duplicados conservando el primer orden. Un conjunto seen permite saber qué apareció; una lista result conserva la secuencia. Son responsabilidades distintas. Así evitas revisar repetidamente toda la lista de resultados. El contrato admite cadenas, que pueden usarse como elementos de conjunto.",
+    "Usa time.perf_counter para medir un tramo y repite con varios tamaños. Separa lectura de archivos de cálculo para conocer lo que mides. No hagas una prueba que falle porque un tiempo fluctuó unas milésimas. Las pruebas funcionales y las mediciones de rendimiento tienen propósitos distintos.",
+    "Antes de optimizar establece una medida base y conserva la exactitud. Una mejora que pierde registros o altera el orden requerido es un defecto. Documenta tamaño, patrón de datos y carga para que otro desarrollador pueda repetir la medición."
+  ],
+  "output": "['B', 'A', 'C']\n[]\n",
+  "walkthrough": [
+    "seen solo responde pertenencia.",
+    "result conserva el orden de aparición.",
+    "Cada elemento se visita una vez."
+  ],
+  "exercises": [
+    [
+      "Completa practice/10-unique-codes.py.",
+      "Combina conjunto y lista.",
+      "['B', 'A', 'B'] produce ['B', 'A']; [] produce []; no ordenes alfabéticamente."
+    ],
+    [
+      "Cuenta comparaciones buscando un ausente entre cinco códigos.",
+      "Debes llegar al final.",
+      "Se revisan cinco; al duplicar el tamaño crece el trabajo lineal."
+    ],
+    [
+      "Mide tu deduplicación para 1000 y 10000 códigos.",
+      "Repite un caso reproducible.",
+      "Registra Python, tamaño, duplicados y tiempos; compara tendencia sin garantías por una sola ejecución."
+    ]
+  ],
+  "mistakes": [
+    "Decir que O(1) significa instantáneo.",
+    "Optimizar sin preservar el contrato."
+  ],
+  "quiz": {
+    "question": "¿Qué conserva el orden?",
+    "options": [
+      "La lista result.",
+      "El conjunto seen como garantía.",
+      "La notación O(n)."
+    ],
+    "correct": 0,
+    "explanation": "La lista se construye siguiendo el recorrido; el conjunto verifica pertenencia."
+  },
+  "mastery": [
+    "Explico costo de búsqueda.",
+    "Preservo orden y unicidad.",
+    "Completo el ejercicio 10."
+  ],
+  "references": [
+    "time",
+    "collections"
+  ],
+  "example": "examples/20-algorithms-and-complexity.py",
+  "command": "python examples/20-algorithms-and-complexity.py"
+}

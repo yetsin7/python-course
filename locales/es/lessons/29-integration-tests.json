@@ -1,0 +1,67 @@
+{
+  "id": 29,
+  "slug": "integration-tests",
+  "phase": 7,
+  "title": "Pruebas de API y aislamiento",
+  "minutes": 180,
+  "objectives": [
+    "Probar estado y cuerpo HTTP.",
+    "Aislar bases por prueba.",
+    "Cubrir persistencia, paginación y fallos."
+  ],
+  "concepts": [
+    "Una prueba de API crea un cliente que llama la aplicación sin abrir un puerto real. TestClient permite solicitudes y lectura de respuestas. Comprueba status_code y el cuerpo: recibir un JSON no demuestra éxito si el estado es incorrecto, ni un 201 demuestra que se guardó lo esperado.",
+    "Cada prueba debe controlar su base. Usa TemporaryDirectory y pasa una ruta a create_app; al terminar elimina únicamente ese directorio temporal que creó la prueba. No pruebes sobre build/tasks.sqlite3 del uso normal ni cambies rutas compartidas. Un fallo no debería destruir registros de otra sesión.",
+    "En el proyecto 5 ejecuta build/api-env/Scripts/python.exe -m unittest discover -s tests -p 'test_*.py' -v. Incluye creación, título inválido, campo extra, id ausente, paginación, completar dos veces y volver a construir la aplicación con la misma base. El último caso verifica recuperación entre instancias.",
+    "Una prueba de contrato del repositorio comprueba transacciones y estado; una de API comprueba además traducción a HTTP. Mantén ambas cuando protegen riesgos diferentes. Si todo se prueba solo a través de HTTP, localizar el fallo cuesta más; si nada se prueba por HTTP, podrías romper el contrato externo sin enterarte.",
+    "Añade un caso nuevo que falle al introducir un defecto deliberado. Quitar el filtro de id, ignorar offset o permitir un título vacío son defectos útiles para comprobar cobertura. Después restaura la implementación. No marques una suite como válida por contar pruebas: importa qué defectos puede detectar."
+  ],
+  "output": "True\n",
+  "walkthrough": [
+    "Los esperados vienen del contrato escrito.",
+    "Se verifica el estado y dos campos.",
+    "El ejemplo es una analogía; la suite del proyecto hace llamadas reales al objeto de aplicación."
+  ],
+  "exercises": [
+    [
+      "Ejecuta la suite del proyecto 5 y añade un caso para título de 121 caracteres.",
+      "Verifica que tampoco se guarde.",
+      "POST debe devolver 422; GET debe conservar el conteo anterior."
+    ],
+    [
+      "Prueba completar un id ausente.",
+      "El contrato declara 404.",
+      "La respuesta debe tener 404 y task_not_found; no debe crear una tarea."
+    ],
+    [
+      "Prueba persistencia entre dos create_app con la misma ruta temporal.",
+      "No compartas la base con otra prueba.",
+      "Crea con el primer cliente, construye otra aplicación y consulta. La tarea debe persistir."
+    ]
+  ],
+  "mistakes": [
+    "Usar datos reales para pruebas destructivas.",
+    "Verificar solamente que una respuesta existe."
+  ],
+  "quiz": {
+    "question": "¿Por qué usar una base temporal por prueba?",
+    "options": [
+      "Para aislar estado y preservar datos de uso normal.",
+      "Para evitar comprobar persistencia.",
+      "Para ocultar errores de SQL."
+    ],
+    "correct": 0,
+    "explanation": "Permite repetir pruebas sin interferencia ni cambios sobre registros reales."
+  },
+  "mastery": [
+    "Pruebo estados y cuerpos.",
+    "Demuestro aislamiento.",
+    "Una prueba detecta un defecto deliberado."
+  ],
+  "references": [
+    "fastapi-tests",
+    "tests"
+  ],
+  "example": "examples/29-integration-tests.py",
+  "command": "python examples/29-integration-tests.py"
+}

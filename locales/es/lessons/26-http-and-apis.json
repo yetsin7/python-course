@@ -1,0 +1,66 @@
+{
+  "id": 26,
+  "slug": "http-and-apis",
+  "phase": 6,
+  "title": "HTTP, JSON y contratos de API",
+  "minutes": 150,
+  "objectives": [
+    "Distinguir cliente y servidor.",
+    "Interpretar métodos y estados HTTP.",
+    "Diseñar un contrato antes del endpoint."
+  ],
+  "concepts": [
+    "Un cliente envía una solicitud; un servidor responde. HTTP describe método, dirección, encabezados y cuerpo. GET consulta; POST suele crear; PATCH cambia parcialmente; DELETE elimina según el contrato. La ruta identifica un recurso, no un archivo local de tu computadora.",
+    "El estado informa una categoría de resultado: 200 éxito, 201 creación, 400 solicitud inválida, 401 sin autenticación válida, 403 sin permiso, 404 recurso ausente, 409 conflicto y 422 validación semántica según el framework. No respondas 200 para todos los errores: los clientes usan ese estado para decidir.",
+    "JSON es un formato del cuerpo, no una garantía de autenticación. Content-Type indica el formato. HTTPS protege el transporte, pero no decide si una persona tiene permiso para ver una tarea. CORS regula ciertas solicitudes de navegadores; tampoco sustituye autenticación ni autorización.",
+    "Escribe ejemplos de solicitud y respuesta antes de implementar. Para tareas: POST /tasks recibe title y devuelve id, title y completed con estado 201; GET /tasks recibe limit y offset; PATCH /tasks/{id}/complete cambia el estado; un id ausente da 404. Define límites y orden para evitar devolver colecciones ilimitadas.",
+    "La serialización transforma registros en bytes. El ejemplo solo modela la forma del mensaje; no inicia servidor ni necesita internet. En la siguiente lección usarás Invoke-RestMethod desde PowerShell para hablar con una API real en 127.0.0.1. Una interfaz bonita no demuestra que el contrato se cumpla: comprueba estado y cuerpo."
+  ],
+  "output": "201\nFalse\n1\n",
+  "walkthrough": [
+    "201 representa creación.",
+    "El cuerpo incluye el identificador.",
+    "JSON transforma False de Python a false en texto y lo recupera."
+  ],
+  "exercises": [
+    [
+      "Escribe el contrato de un id de tarea inexistente.",
+      "No lo confundas con lista vacía.",
+      "PATCH de un id ausente debe dar 404 y un identificador de error estable."
+    ],
+    [
+      "Diseña paginación con limit y offset.",
+      "Define mínimos, máximos y orden.",
+      "limit entre 1 y 100, offset desde 0, orden por id. Documenta que cambios simultáneos pueden mover páginas."
+    ],
+    [
+      "Explica por qué HTTPS y CORS no deciden permisos.",
+      "Piensa en un usuario autenticado viendo datos ajenos.",
+      "HTTPS protege transporte; CORS reglas de navegador; la autorización debe filtrar recursos por usuario."
+    ]
+  ],
+  "mistakes": [
+    "Confundir 401 y 403.",
+    "Usar GET para modificar estado sin un contrato justificado."
+  ],
+  "quiz": {
+    "question": "¿Qué estado representa un recurso ausente?",
+    "options": [
+      "404.",
+      "201.",
+      "200 en todo caso."
+    ],
+    "correct": 0,
+    "explanation": "404 comunica ausencia al cliente de forma estándar."
+  },
+  "mastery": [
+    "Describo solicitud y respuesta.",
+    "Defino estados de éxito y error.",
+    "Diseño límites de una colección."
+  ],
+  "references": [
+    "http"
+  ],
+  "example": "examples/26-http-and-apis.py",
+  "command": "python examples/26-http-and-apis.py"
+}

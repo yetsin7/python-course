@@ -1,0 +1,66 @@
+{
+  "id": 12,
+  "slug": "debugging",
+  "phase": 2,
+  "title": "Depurar de forma metódica",
+  "minutes": 120,
+  "objectives": [
+    "Reproducir un fallo mínimo.",
+    "Comparar esperado y observado.",
+    "Usar inspección y puntos de interrupción."
+  ],
+  "concepts": [
+    "Depurar es encontrar por qué el comportamiento observado no coincide con el esperado. Empieza con un caso reproducible: entradas exactas, comando y resultado. Si el requisito no dice qué esperas, aún no puedes distinguir un defecto de una preferencia. Reduce el ejemplo hasta conservar solo el comportamiento que falla.",
+    "En un programa que calcula promedios, el caso [10, 20] debería dar 15, pero dividir por 3 da 10. No hay excepción: el código es válido y la regla está mal. Inspecciona numerator y denominator por separado. Busca la primera divergencia entre tu tabla manual y los valores reales.",
+    "print puede mostrar temporalmente valores; breakpoint() pausa para examinarlos con el depurador pdb. En una copia del ejemplo inserta breakpoint() antes del return y ejecuta. Usa p values para inspeccionar, n para avanzar, c para continuar y q para salir. No pongas un breakpoint en un servidor de uso real ni en una prueba automática desatendida.",
+    "Una hipótesis debe producir una predicción: «si el denominador está fijo, al añadir un tercer dato el resultado cambiará de forma incorrecta». Haz un solo cambio y repite el mismo caso. Corregir cinco cosas a la vez impide saber qué resolvió el problema. Conserva una prueba que reproduzca el fallo antes de arreglarlo.",
+    "Cuando una lista vacía causa división entre cero, todavía falta una decisión del contrato. El ejemplo rechaza el vacío con ValueError. Explicar esa decisión es parte de la solución; esconder la excepción no lo es. En la lección 17 automatizarás estas comprobaciones."
+  ],
+  "output": "15.0\n20.0\n",
+  "walkthrough": [
+    "sum calcula el numerador.",
+    "len obtiene el denominador real.",
+    "El caso vacío se rechaza antes de dividir."
+  ],
+  "exercises": [
+    [
+      "Introduce el defecto / 3 en una copia y diseña un caso que lo detecte.",
+      "Dos elementos no deben dividirse entre tres.",
+      "[10, 20] debe dar 15; el defecto da 10. Registra entrada, esperado, observado y causa."
+    ],
+    [
+      "Usa breakpoint() en la copia y observa values.",
+      "El ejemplo del curso no contiene pausas para que pueda verificarse automáticamente.",
+      "p values muestra la lista; n avanza; c continúa. Retira la pausa al finalizar."
+    ],
+    [
+      "Escribe una lista de pasos para ayudar a alguien con el mismo error.",
+      "No empieces por reinstalar herramientas.",
+      "Reproducir, precisar esperado, reducir caso, inspeccionar valores, probar una hipótesis, corregir y guardar una prueba de regresión."
+    ]
+  ],
+  "mistakes": [
+    "Cambiar código sin reproducir el fallo.",
+    "Usar un valor alternativo para esconder una regla indefinida."
+  ],
+  "quiz": {
+    "question": "¿Cuál es el primer paso útil ante un defecto?",
+    "options": [
+      "Reescribir todo.",
+      "Conseguir un caso reproducible con resultado esperado.",
+      "Añadir excepciones a todas las líneas."
+    ],
+    "correct": 1,
+    "explanation": "Un caso concreto permite verificar hipótesis y confirmar la corrección."
+  },
+  "mastery": [
+    "Reproduzco un defecto lógico sin excepciones.",
+    "Uso una hipótesis y un cambio por vez.",
+    "Puedo inspeccionar una variable con el depurador."
+  ],
+  "references": [
+    "debugger"
+  ],
+  "example": "examples/12-debugging.py",
+  "command": "python examples/12-debugging.py"
+}

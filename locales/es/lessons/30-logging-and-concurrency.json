@@ -1,0 +1,68 @@
+{
+  "id": 30,
+  "slug": "logging-and-concurrency",
+  "phase": 7,
+  "title": "Logs, concurrencia y medición",
+  "minutes": 180,
+  "objectives": [
+    "Registrar eventos útiles sin secretos.",
+    "Distinguir tareas concurrentes y cálculo paralelo.",
+    "Medir latencia y errores."
+  ],
+  "concepts": [
+    "Un log técnico registra qué pasó para poder diagnosticar: evento, nivel, identificador de operación y contexto permitido. INFO informa acciones normales; WARNING señala situaciones anómalas recuperables; ERROR indica un fallo. No registres contraseñas, tokens ni todo el cuerpo de una solicitud. Usa identificadores para relacionar eventos.",
+    "Concurrencia permite alternar tareas mientras esperan. async y await son útiles cuando las operaciones ceden control durante I/O. No hacen más rápido un cálculo de CPU por escribir async def. Una llamada bloqueante dentro de un endpoint async puede bloquear el bucle; usa librerías apropiadas o mueve el trabajo a un mecanismo adecuado.",
+    "asyncio.gather espera varias tareas concurrentes. ThreadPoolExecutor puede servir para I/O bloqueante; procesos pueden separar cálculos intensivos. Cada opción tiene costos y errores: cancelación, límites de trabajadores, excepciones y recursos compartidos. Empieza con un flujo correcto y agrega concurrencia si una medición justifica la complejidad.",
+    "El ejemplo utiliza esperas sin red para demostrar cooperación y un logger en memoria para no contaminar el entorno. El orden de resultados de gather sigue el orden de los argumentos; el orden en que las tareas terminan puede ser diferente. Mantén esta distinción al correlacionar respuestas.",
+    "Para tu API mide latencia de lectura y creación con datos de muestra; registra tamaño, carga y percentiles si haces muchas solicitudes. Añade una política de timeout y un resultado observable al fallar una dependencia. No reintentes indiscriminadamente operaciones que crean recursos: puedes duplicarlas si la primera solicitud sí se ejecutó."
+  ],
+  "output": "[10, 20]\nSample collection completed.\n",
+  "walkthrough": [
+    "await permite ceder control.",
+    "gather conserva el orden de argumentos en sus resultados.",
+    "El mensaje es un diagnóstico técnico en inglés."
+  ],
+  "exercises": [
+    [
+      "Añade un evento técnico al crear una tarea sin registrar su título.",
+      "Define qué contexto es necesario.",
+      "Registra task_created, task_id y duración; evita el contenido privado y credenciales."
+    ],
+    [
+      "Explica por qué un cálculo pesado no mejora por envolverlo en async def.",
+      "La cooperación necesita una espera que ceda control.",
+      "El cálculo sigue ocupando CPU. Mide y considera separar procesos si corresponde."
+    ],
+    [
+      "Diseña un reintento de creación sin duplicados.",
+      "Una respuesta perdida no implica operación fallida.",
+      "Usa una clave de idempotencia con almacenamiento y unicidad, o consulta estado antes de repetir según el contrato."
+    ]
+  ],
+  "mistakes": [
+    "Loguear toda la solicitud para depurar.",
+    "Reintentar un POST creando duplicados."
+  ],
+  "quiz": {
+    "question": "¿async vuelve paralelo cualquier cálculo?",
+    "options": [
+      "No; habilita cooperación en operaciones que ceden control.",
+      "Sí, siempre usa todos los núcleos.",
+      "Solo si agregas más comentarios."
+    ],
+    "correct": 0,
+    "explanation": "Concurrencia de espera y paralelismo de CPU son problemas distintos."
+  },
+  "mastery": [
+    "Registro contexto útil sin secretos.",
+    "Explico concurrencia y paralelismo.",
+    "Mido antes de complicar la arquitectura."
+  ],
+  "references": [
+    "logging",
+    "asyncio",
+    "concurrency"
+  ],
+  "example": "examples/30-logging-and-concurrency.py",
+  "command": "python examples/30-logging-and-concurrency.py"
+}

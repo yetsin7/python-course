@@ -1,0 +1,67 @@
+{
+  "id": 14,
+  "slug": "files-and-json",
+  "phase": 3,
+  "title": "Archivos y persistencia JSON",
+  "minutes": 150,
+  "objectives": [
+    "Construir rutas con pathlib.",
+    "Guardar y recuperar estructuras JSON.",
+    "Distinguir archivo ausente y archivo corrupto."
+  ],
+  "concepts": [
+    "Hasta ahora los valores desaparecen al terminar el proceso. Persistir significa guardarlos para una ejecución posterior. pathlib.Path representa rutas y combina partes con /. Usa encoding='utf-8' para texto y JSON para estructuras sencillas. Una ruta relativa depende de la carpeta actual; una ruta anclada a __file__ depende de la ubicación del script.",
+    "json.dumps convierte un objeto compatible a texto; json.loads hace el camino inverso. JSON admite objetos, listas, cadenas, números, booleanos y null. No guarda funciones ni clases de forma automática. Después de cargar, valida la forma del resultado: que el JSON sea válido no implica que sus campos cumplan tu contrato.",
+    "Si guardas directamente encima del archivo y el proceso se corta, puedes dejarlo incompleto. Para datos importantes escribe primero un archivo temporal en la misma carpeta, ciérralo y reemplaza el destino. Esto reduce escrituras parciales; no garantiza por sí solo durabilidad frente a cualquier fallo eléctrico ni evita dos escritores simultáneos. Una base de datos ofrece herramientas mejores para esos casos.",
+    "El ejemplo escribe solo en build/labs, dentro del curso. No practiques sobre archivos personales. FileNotFoundError puede significar primera ejecución; JSONDecodeError significa que existe contenido ilegible. No reemplaces silenciosamente un archivo corrupto por un estado vacío: conserva evidencia y comunica el problema.",
+    "Añade un número de versión al formato si esperas evolucionarlo. Cambiar campos de registros ya guardados exige migración, no solo editar el código. Prueba guardar, cerrar, volver a leer y comparar. Una aplicación que muestra datos en memoria pero no los recupera todavía no ha demostrado persistencia."
+  ],
+  "output": "True\n3\n",
+  "walkthrough": [
+    "La ruta se ancla al archivo del ejemplo.",
+    "mkdir crea únicamente la carpeta de laboratorio.",
+    "El documento recuperado se compara con el objeto original."
+  ],
+  "exercises": [
+    [
+      "Guarda una lista de tres tareas de prueba en build/labs/tasks.json.",
+      "Cada registro necesita campos consistentes.",
+      "Usa json.dumps para escribir y json.loads para leer; verifica igualdad después de una segunda ejecución."
+    ],
+    [
+      "Daña una copia del JSON quitando una llave final y observa el error.",
+      "Conserva el original como referencia.",
+      "json.loads provoca JSONDecodeError. No interpretes corrupción como «no hay tareas»."
+    ],
+    [
+      "Añade version: 1 a un documento y explica una futura migración.",
+      "Un lector debe saber qué esquema encontró.",
+      "Al pasar a version: 2 transforma los registros 1 a la forma nueva con una copia y pruebas; rechaza versiones desconocidas."
+    ]
+  ],
+  "mistakes": [
+    "Abrir una ruta relativa desde otra carpeta sin comprobarla.",
+    "Sobrescribir datos corruptos para que el programa parezca funcionar."
+  ],
+  "quiz": {
+    "question": "¿JSON válido garantiza reglas de negocio válidas?",
+    "options": [
+      "Sí.",
+      "No; hay que validar campos y tipos.",
+      "Solo si está indentado."
+    ],
+    "correct": 1,
+    "explanation": "El formato puede ser correcto y contener cantidades negativas o campos faltantes."
+  },
+  "mastery": [
+    "Guardo y recupero valores dentro del proyecto.",
+    "Explico ausencia frente a corrupción.",
+    "Identifico el riesgo de una escritura parcial."
+  ],
+  "references": [
+    "json",
+    "paths"
+  ],
+  "example": "examples/14-files-and-json.py",
+  "command": "python examples/14-files-and-json.py"
+}

@@ -1,0 +1,66 @@
+{
+  "id": 5,
+  "slug": "conditions",
+  "phase": 1,
+  "title": "Decisiones y lógica",
+  "minutes": 120,
+  "objectives": [
+    "Construir if, elif y else.",
+    "Comparar valores y combinar condiciones.",
+    "Comprobar límites de una regla."
+  ],
+  "concepts": [
+    "Un programa útil cambia su comportamiento según la situación. if ejecuta un bloque cuando una condición es True. elif prueba otra condición si la anterior fue falsa; else cubre lo restante. Los dos puntos abren el bloque y cuatro espacios indican sus instrucciones. La indentación forma parte de la sintaxis de Python.",
+    "== compara igualdad; != diferencia; < y > comparan; <= y >= incluyen el límite. Escribe primero la regla en lenguaje cotidiano: «aplicar diez por ciento cuando el subtotal sea al menos cien». Luego tradúcela: subtotal >= 100. Prueba 99, 100 y 101: los límites detectan errores que un caso aleatorio no muestra.",
+    "and exige ambas condiciones; or acepta al menos una; not invierte el valor lógico. Para una cantidad válida puedes exigir quantity > 0 and quantity <= 100. Evita combinaciones difíciles de leer. Usa nombres como is_available para representar estados booleanos. bool('False') es True porque el texto no está vacío; no sirve para interpretar una palabra escrita.",
+    "El ejemplo asigna discount_rate en ambos caminos y calcula el total después. Así la variable siempre existe. Si solo la asignas dentro de if y la condición es falsa, intentar usarla después falla. Separar elección de tasa y cálculo evita repetir operaciones en cada rama.",
+    "Al diseñar validación, distingue formato y regla de negocio: convertir a int verifica que puedas interpretar el texto; comprobar quantity > 0 verifica lo permitido. No todas las entradas incorrectas son errores del intérprete. Un programa puede ejecutarse sin excepciones y aun así tomar una decisión equivocada."
+  ],
+  "output": "90.0\nTrue\n",
+  "walkthrough": [
+    "100 cumple el umbral porque >= incluye igualdad.",
+    "Ambas ramas asignan discount_rate.",
+    "La comparación encadenada pregunta si 3 está dentro del intervalo."
+  ],
+  "exercises": [
+    [
+      "Clasifica una temperatura: menor a 18, entre 18 y 28 inclusive, o mayor a 28. Imprime códigos 0, 1 o 2.",
+      "Ordena ramas de menor a mayor.",
+      "if temperature < 18: código 0; elif temperature <= 28: código 1; else: código 2. Prueba 17, 18, 28 y 29."
+    ],
+    [
+      "Cambia el subtotal del ejemplo a 99 y luego a 101.",
+      "Revisa el umbral antes de calcular.",
+      "99 da 99.0; 101 da 90.9. No se aplica descuento al primero."
+    ],
+    [
+      "Resuelve practice/01-shipping.py y ejecuta el comprobador.",
+      "Usa primero la validación negativa, luego el umbral.",
+      "Una cantidad negativa debe lanzar ValueError; desde 10000 centavos el envío es 0; para importes inferiores es 1500. Referencia separada: solutions/01-shipping.py."
+    ]
+  ],
+  "mistakes": [
+    "Usar = en una condición.",
+    "Escribir > cuando la regla incluye el límite."
+  ],
+  "quiz": {
+    "question": "¿Qué valores prueban mejor un umbral de 100?",
+    "options": [
+      "1, 2 y 3.",
+      "99, 100 y 101.",
+      "1000 y 2000 solamente."
+    ],
+    "correct": 1,
+    "explanation": "Incluyen un valor inmediatamente inferior, el límite y uno superior."
+  },
+  "mastery": [
+    "Explico cada rama sin ejecutar.",
+    "Pruebo los límites de mis condiciones.",
+    "Completo el ejercicio 01 y sus pruebas."
+  ],
+  "references": [
+    "control"
+  ],
+  "example": "examples/05-conditions.py",
+  "command": "python examples/05-conditions.py"
+}

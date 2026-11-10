@@ -1,0 +1,1 @@
+{"description":"Genera un informe validado desde un CSV de muestra.","source_help":"Archivo de entrada.","output_help":"Archivo JSON de salida dentro de tu proyecto.","invalid":"No se pudo generar el informe. Revisa el archivo, los encabezados y los importes.","result":"Filas: {rows}. Total: {total} centavos."}

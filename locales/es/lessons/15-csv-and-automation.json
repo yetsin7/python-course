@@ -1,0 +1,66 @@
+{
+  "id": 15,
+  "slug": "csv-and-automation",
+  "phase": 3,
+  "title": "CSV y automatización útil",
+  "minutes": 150,
+  "objectives": [
+    "Leer registros con csv.DictReader.",
+    "Convertir y validar columnas.",
+    "Generar un informe sin tocar los originales."
+  ],
+  "concepts": [
+    "CSV representa filas con columnas. No lo leas separando por comas manualmente: un campo puede contener una coma entre comillas. El módulo csv interpreta el formato. DictReader asocia encabezados a valores, que normalmente siguen siendo cadenas; convierte explícitamente los números.",
+    "Define antes el contrato del archivo: encabezados requeridos, separador, codificación, unidad monetaria y política ante filas inválidas. Un campo amount_cents no debe aceptar '12.50' como si ya fueran centavos. Decide si una fila mala detiene todo o se registra aparte. No descartes filas silenciosamente para producir un total más bonito.",
+    "Automatizar es repetir una tarea con reglas observables. Para un informe de gastos: leer, validar, sumar por categoría, ordenar y escribir un archivo nuevo. Conserva la entrada intacta. Incluye conteo de filas procesadas y rechazadas para saber cuánto representa el resultado.",
+    "El ejemplo usa StringIO, un archivo de texto en memoria, para aislar la lectura sin depender de una carpeta. El resultado no es una interfaz de usuario: muestra registros y cálculos de prueba. Luego llevarás el mismo proceso a proyectos con un CSV real. Para archivos CSV usa newline='' al abrirlos para que el módulo controle los saltos de línea.",
+    "Un informe que otra persona abre en una hoja de cálculo puede interpretar valores que empiezan por = como fórmulas. Si exportas texto proporcionado por terceros, define una política de neutralización adecuada al consumidor. Esta lección enseña el formato, pero la automatización real exige entender también dónde se abrirá el resultado."
+  ],
+  "output": "{'office': 1500, 'travel': 500}\n2000\n",
+  "walkthrough": [
+    "Los encabezados definen las claves de cada registro.",
+    "Cada importe se convierte de texto a entero.",
+    "El acumulador se agrupa por categoría."
+  ],
+  "exercises": [
+    [
+      "Completa practice/07-category-totals.py con registros ya convertidos.",
+      "Usa category y amount_cents; valida importes negativos.",
+      "Dos registros office de 100 y 50 suman 150; una categoría nueva se inicia en cero; un negativo produce ValueError."
+    ],
+    [
+      "Agrega una fila cuyo importe sea abc y define una política.",
+      "El total no debe aparentar incluir lo descartado.",
+      "La referencia básica detiene la operación con error; una variante puede separar rechazos y reportar su cantidad. Explica la elección."
+    ],
+    [
+      "Crea un CSV con una categoría entre comillas que contiene coma.",
+      "Un split manual rompe ese campo.",
+      "csv.DictReader conserva 'office,home' como un solo valor si está correctamente entre comillas."
+    ]
+  ],
+  "mistakes": [
+    "Dividir líneas con split(',') para un CSV real.",
+    "Sumar cadenas o mezclar monedas sin conversión."
+  ],
+  "quiz": {
+    "question": "¿Qué tipo devuelve normalmente una columna numérica de DictReader?",
+    "options": [
+      "str.",
+      "int siempre.",
+      "Decimal siempre."
+    ],
+    "correct": 0,
+    "explanation": "CSV no impone tipos: el programa convierte cada columna según su contrato."
+  },
+  "mastery": [
+    "Leo encabezados y valido importes.",
+    "Conservo archivos originales.",
+    "Completo el ejercicio de agregación."
+  ],
+  "references": [
+    "csv"
+  ],
+  "example": "examples/15-csv-and-automation.py",
+  "command": "python examples/15-csv-and-automation.py"
+}

@@ -1,0 +1,37 @@
+{
+  "id": 4,
+  "title": "CLI de tareas persistentes",
+  "after": 25,
+  "hours": "15–20",
+  "path": "projects/04-task-cli",
+  "brief": "Crea, lista y completa tareas con un almacenamiento que luego podrá reutilizar una API. Diseña una transición que pueda repetirse sin duplicar efectos.",
+  "milestones": [
+    "Define Task con id, title y completed.",
+    "Valida títulos recortados de 1–120 caracteres.",
+    "Guarda en SQLite usando un repositorio.",
+    "Añade comandos add, list y complete.",
+    "Prueba una segunda invocación y un id inexistente."
+  ],
+  "deliverables": [
+    "CLI propia y repositorio desacoplado.",
+    "Pruebas de límites, persistencia e id ausente.",
+    "Documentación y traducciones."
+  ],
+  "acceptance": [
+    "Crear una tarea devuelve un id positivo.",
+    "Completar dos veces mantiene completed=true.",
+    "Un id ausente termina con error distinto de cero.",
+    "Título vacío o de más de 120 caracteres se rechaza.",
+    "Listar no modifica el estado."
+  ],
+  "commands": [
+    "python projects/04-task-cli/cli.py add --title 'Review report'",
+    "python projects/04-task-cli/cli.py list",
+    "python projects/04-task-cli/cli.py complete --id 1",
+    "python -m unittest discover -s projects/04-task-cli/tests -p 'test_*.py' -v"
+  ],
+  "extensions": [
+    "Añade paginación y filtro de pendientes.",
+    "Extrae una dependencia compartida con la API sin importar una CLI."
+  ]
+}

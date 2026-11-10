@@ -1,0 +1,68 @@
+{
+  "id": 27,
+  "slug": "fastapi-project",
+  "phase": 6,
+  "title": "Construir tu primera API con FastAPI",
+  "minutes": 240,
+  "objectives": [
+    "Crear un entorno aislado para la API.",
+    "Ejecutar y explorar endpoints reales.",
+    "Validar entradas con un esquema."
+  ],
+  "concepts": [
+    "FastAPI convierte funciones y modelos en una API HTTP y genera un contrato OpenAPI. Aquí empiezan las dependencias externas; los ejemplos anteriores usan la biblioteca estándar. La referencia final está en projects/05-task-api. Incluye requirements.txt y un archivo de bloqueo con el conjunto probado.",
+    "Desde la raíz del curso entra con Set-Location projects/05-task-api. Ejecuta python -m venv build/api-env y después build/api-env/Scripts/python.exe -m pip install -r requirements-lock.txt. Comprueba build/api-env/Scripts/python.exe -m pip check. Esta ruta mantiene el entorno dentro del proyecto y evita modificar PowerShell para activarlo.",
+    "Inicia build/api-env/Scripts/python.exe -m uvicorn application:app --host 127.0.0.1 --port 8017. Abre http://127.0.0.1:8017/docs. En POST /tasks usa {\"title\":\"Review report\"}, luego GET /tasks y PATCH /tasks/1/complete si ese fue el id recibido. Usa el id real de tu respuesta. Detén con Ctrl+C.",
+    "En otra terminal PowerShell puedes ejecutar Invoke-RestMethod -Method Post -Uri http://127.0.0.1:8017/tasks -ContentType 'application/json' -Body '{\"title\":\"Review report\"}'. No cambies host a 0.0.0.0 mientras estudias esta referencia sin autenticación. La práctica es local; publicar exige el trabajo de la lección 31.",
+    "El esquema permite title no vacío con longitud limitada y rechaza campos extra. La base guarda registros mediante consultas parametrizadas. La aplicación se construye con una función factory para poder usar una base temporal en pruebas. Lee los archivos en orden: domain.py, storage.py, application.py y tests/test_api.py. El ejemplo pequeño siguiente muestra el formato esperado sin requerir instalar nada."
+  ],
+  "output": "{'id': 1, 'title': 'Review report', 'completed': False}\n",
+  "walkthrough": [
+    "Task agrupa campos con significado.",
+    "frozen evita reasignar atributos de esta instancia.",
+    "asdict muestra la forma que consumirá una capa de transporte."
+  ],
+  "exercises": [
+    [
+      "Instala el entorno y ejecuta los endpoints indicados.",
+      "Mantén ambas terminales dentro de la carpeta del proyecto.",
+      "POST devuelve 201 con id; GET incluye esa tarea; PATCH la devuelve con completed true. Guarda las respuestas."
+    ],
+    [
+      "Envía title vacío y un campo extra.",
+      "El esquema debe rechazarlos.",
+      "La API debe devolver 422 sin insertar un registro. Comprueba luego la lista."
+    ],
+    [
+      "Crea tu implementación en study-work sin consultar application.py durante el primer intento.",
+      "Empieza por el contrato y las pruebas.",
+      "Implementa el mismo comportamiento con tus nombres profesionales y explica dónde validas, guardas y presentas."
+    ]
+  ],
+  "mistakes": [
+    "Instalar dependencias globales por comodidad.",
+    "Afirmar que iniciar Uvicorn demuestra preparación para producción."
+  ],
+  "quiz": {
+    "question": "¿Para qué sirve una factory create_app en pruebas?",
+    "options": [
+      "Construir la aplicación con una base aislada.",
+      "Ocultar todos los errores.",
+      "Publicar automáticamente en internet."
+    ],
+    "correct": 0,
+    "explanation": "Permite elegir dependencias y separar los datos de cada prueba de los datos reales."
+  },
+  "mastery": [
+    "Instalo con el lock y pip check.",
+    "Compruebo la API real local.",
+    "Explico esquema, almacenamiento y rutas."
+  ],
+  "references": [
+    "fastapi",
+    "body",
+    "deployment"
+  ],
+  "example": "examples/27-fastapi-project.py",
+  "command": "python examples/27-fastapi-project.py"
+}

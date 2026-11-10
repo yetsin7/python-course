@@ -1,0 +1,66 @@
+{
+  "id": 10,
+  "slug": "text-and-normalization",
+  "phase": 2,
+  "title": "Texto, limpieza y validación",
+  "minutes": 120,
+  "objectives": [
+    "Normalizar texto con intención.",
+    "Dividir y reunir cadenas.",
+    "Separar transformación de validación."
+  ],
+  "concepts": [
+    "Los datos escritos por personas suelen incluir espacios y variaciones de mayúsculas. strip() quita espacios de los extremos; casefold() facilita comparaciones de texto sin distinguir mayúsculas; split() separa palabras por espacios cuando no le pasas un separador. Cada método devuelve una cadena o colección nueva: las cadenas no se modifican en su lugar.",
+    "Normalizar no es borrar cualquier carácter incómodo. Un nombre puede necesitar tildes y espacios internos. Una contraseña no debe convertirse silenciosamente a minúsculas ni recortarse: eso cambia el secreto. Decide qué normalización permite cada campo. Para comparar una categoría puede servir strip().casefold(); para mostrar un nombre conserva su forma original.",
+    "join reúne una colección de cadenas con un separador. El separador es quien llama al método: '-'.join(parts). slicing permite seleccionar un tramo con [start:stop], excluyendo stop. Úsalo cuando el formato está bien definido; no extraigas información importante de un texto arbitrario confiando solo en posiciones.",
+    "Validar pregunta si un valor es admisible; transformar produce otro valor. Una función normalize_category puede recortar y unificar; otra puede comprobar si el resultado pertenece a categorías permitidas. No llames a una cadena «segura» solo porque quitaste espacios: seguridad depende del uso, como SQL, HTML o nombres de archivo.",
+    "En el ejemplo limpiamos una etiqueta de muestra y agrupamos palabras. Escribe antes el resultado esperado, incluidos espacios. Después prueba cadena vacía, solo espacios y varios espacios internos. Documenta si tu función conserva o colapsa esos espacios; un requisito ambiguo produce resultados inconsistentes."
+  ],
+  "output": "office\nFalse\n['paper', 'and', 'pen']\npaper-and-pen\n",
+  "walkthrough": [
+    "strip y casefold generan nuevos textos.",
+    "La comparación da False porque el original conserva espacios y mayúsculas.",
+    "split sin separador colapsa espacios para separar palabras."
+  ],
+  "exercises": [
+    [
+      "Completa practice/05-normalize-label.py.",
+      "El contrato pide recortar extremos y usar casefold, no borrar espacios internos.",
+      "'  OFFICE  ' produce 'office'; 'Two Words' produce 'two words'; '' sigue vacío."
+    ],
+    [
+      "Construye un código a partir de tres palabras separadas por guiones.",
+      "Primero divide, luego reúne.",
+      "'-'.join('paper and pen'.split()) produce 'paper-and-pen'. Aclara si aceptas caracteres no ASCII."
+    ],
+    [
+      "Explica por qué no aplicarías casefold a una contraseña.",
+      "Normalizar cambia el valor recibido.",
+      "La contraseña debe verificarse tal como fue definida; transformar el secreto cambia sus reglas."
+    ]
+  ],
+  "mistakes": [
+    "Usar replace(' ', '') para campos que permiten espacios.",
+    "Creer que limpiar texto impide inyección SQL o HTML."
+  ],
+  "quiz": {
+    "question": "¿strip modifica la cadena original?",
+    "options": [
+      "Sí, siempre.",
+      "No, devuelve otra cadena.",
+      "Solo si tiene mayúsculas."
+    ],
+    "correct": 1,
+    "explanation": "Las cadenas son inmutables. Hay que usar o asignar el resultado."
+  },
+  "mastery": [
+    "Defino la normalización permitida por campo.",
+    "Pruebo texto vacío y espacios.",
+    "Completo el ejercicio 05."
+  ],
+  "references": [
+    "strings"
+  ],
+  "example": "examples/10-text-and-normalization.py",
+  "command": "python examples/10-text-and-normalization.py"
+}

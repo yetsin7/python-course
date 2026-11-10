@@ -1,0 +1,67 @@
+{
+  "id": 13,
+  "slug": "modules-and-environments",
+  "phase": 3,
+  "title": "Módulos, entornos y dependencias",
+  "minutes": 150,
+  "objectives": [
+    "Importar una operación existente.",
+    "Separar archivos por responsabilidad.",
+    "Usar un entorno virtual sin cambiar políticas del sistema."
+  ],
+  "concepts": [
+    "Un módulo es un archivo Python que puede importarse. import math permite llamar math.ceil; from math import ceil permite usar ceil directamente. Prefiere imports explícitos; import * hace difícil saber de dónde salió un nombre. La biblioteca estándar viene con Python; un paquete externo se instala aparte.",
+    "Divide por responsabilidad: billing.py calcula, cli.py presenta y storage.py persiste. Para tu primer experimento crea billing.py y order-demo.py en study-work. Importa billing desde el segundo. Evita nombres como json.py o math.py: pueden ocultar módulos estándar. Los nombres de archivo de ejemplos usan guiones porque se ejecutan como scripts, no se importan con una expresión normal.",
+    "if __name__ == '__main__': permite ejecutar una acción al lanzar el archivo y evitarla cuando se importa. Una importación no debería pedir datos ni modificar registros sin intención. Usa funciones para la operación y una pequeña llamada principal bajo esa condición.",
+    "Un entorno virtual aísla las dependencias de un proyecto. Desde la raíz ejecuta python -m venv build/learning-env. Para instalar, usa build/learning-env/Scripts/python.exe -m pip ...; así no necesitas activar scripts ni cambiar la política de PowerShell. La opción -m ejecuta un módulo con ese intérprete concreto.",
+    "No instales librerías por costumbre. Para esta parte basta la biblioteca estándar. Cuando el proyecto final necesite FastAPI, registrarás versiones y comprobarás el entorno con pip check. Un entorno aislado no hace segura cualquier dependencia: conoce para qué sirve, revisa su origen y mantén las versiones deliberadamente."
+  ],
+  "output": "3\n20\nTrue\n",
+  "walkthrough": [
+    "math se conserva como espacio de nombres.",
+    "mean se importa explícitamente desde statistics.",
+    "__name__ indica que este archivo se está ejecutando directamente."
+  ],
+  "exercises": [
+    [
+      "Crea billing.py con calculate_total y úsala desde otro script.",
+      "Mantén ambos archivos en study-work para este experimento.",
+      "from billing import calculate_total funciona al ejecutar un script ubicado en esa carpeta; no pidas input al importar billing."
+    ],
+    [
+      "Crea el entorno build/learning-env y consulta su versión.",
+      "No hace falta activar el entorno.",
+      "python -m venv build/learning-env; después build/learning-env/Scripts/python.exe --version."
+    ],
+    [
+      "Explica por qué llamar pip sin indicar intérprete puede confundir.",
+      "Puede pertenecer a otra instalación.",
+      "python -m pip relaciona la instalación con ese Python. Para el entorno usa su ruta explícita."
+    ]
+  ],
+  "mistakes": [
+    "Crear un archivo con nombre de un módulo estándar.",
+    "Instalar en el Python global lo que pertenece solo a un proyecto."
+  ],
+  "quiz": {
+    "question": "¿Qué aísla principalmente venv?",
+    "options": [
+      "Las dependencias del proyecto.",
+      "Todo el sistema operativo.",
+      "Los permisos del usuario."
+    ],
+    "correct": 0,
+    "explanation": "Es un entorno de paquetes e intérprete; no un contenedor ni una barrera completa de seguridad."
+  },
+  "mastery": [
+    "Importo un módulo propio sin efectos inesperados.",
+    "Uso el intérprete del entorno por ruta.",
+    "Explico estándar frente a externo."
+  ],
+  "references": [
+    "modules",
+    "venv"
+  ],
+  "example": "examples/13-modules-and-environments.py",
+  "command": "python examples/13-modules-and-environments.py"
+}

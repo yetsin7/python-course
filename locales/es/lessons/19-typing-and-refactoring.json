@@ -1,0 +1,66 @@
+{
+  "id": 19,
+  "slug": "typing-and-refactoring",
+  "phase": 4,
+  "title": "Tipos y refactorización",
+  "minutes": 150,
+  "objectives": [
+    "Expresar entradas y resultados con tipos.",
+    "Representar ausencia con None.",
+    "Refactorizar sin cambiar comportamiento."
+  ],
+  "concepts": [
+    "Las anotaciones expresan contratos: list[int] indica una colección de enteros; int | None indica que puede faltar un resultado. El intérprete no aplica automáticamente esas reglas a cualquier función. Un verificador estático puede encontrar inconsistencias antes de ejecutar, pero tampoco sustituye pruebas ni validación externa.",
+    "Un valor opcional exige un camino para la ausencia. Si find_price devuelve None cuando el código no existe, el llamador debe comprobarlo antes de sumar. No uses 0 para «no encontrado» si un precio cero es válido. Distinguir esos estados evita condiciones implícitas.",
+    "Refactorizar cambia la estructura interna sin alterar el comportamiento observable. Antes reúne pruebas; después extrae funciones, renombra por intención y elimina duplicación. No mezcles una nueva regla de descuentos con una reorganización: así podrás comprobar qué tipo de cambio estás realizando.",
+    "Un Protocol describe operaciones que un colaborador debe ofrecer sin exigir herencia. Es una herramienta para contratos de colaboración, no una razón para complicar un programa pequeño. Introduce abstracciones cuando haya usos concretos. El objetivo es encontrar y probar las reglas con facilidad.",
+    "El ejemplo devuelve un precio o None. Escribe pruebas de un código presente, uno ausente y uno con precio cero. Luego extrae el cálculo que consume el resultado y conserva esas pruebas. Una refactorización útil permite describir la intención más claramente."
+  ],
+  "output": "125\n0\nNone\n",
+  "walkthrough": [
+    "La anotación admite dos situaciones.",
+    "Un precio cero sigue siendo un precio registrado.",
+    "Un código ausente produce None."
+  ],
+  "exercises": [
+    [
+      "Anota tipos en los ejercicios 01 y 02.",
+      "Incluye parámetros y resultado.",
+      "shipping_cost recibe int y devuelve int; calculate_total recibe dos int y devuelve int. La validación sigue dentro."
+    ],
+    [
+      "Completa practice/09-find-price.py.",
+      "No reemplaces ausencia por cero.",
+      "Un código registrado en cero devuelve 0; uno ausente devuelve None; no modifiques el diccionario."
+    ],
+    [
+      "Extrae una operación repetida del proyecto 1 y repite pruebas.",
+      "El contrato no cambia.",
+      "Crea una función documentada, reemplaza duplicaciones y compara los mismos casos antes y después."
+    ]
+  ],
+  "mistakes": [
+    "Creer que int como anotación convierte un str.",
+    "Usar None sin tratar ausencia."
+  ],
+  "quiz": {
+    "question": "¿Qué significa int | None?",
+    "options": [
+      "Un entero siempre positivo.",
+      "Un entero o ausencia explícita.",
+      "Una suma en ejecución."
+    ],
+    "correct": 1,
+    "explanation": "El resultado puede tener un entero o no estar disponible."
+  },
+  "mastery": [
+    "Explico los límites de las anotaciones.",
+    "Distingo cero y ausencia.",
+    "Refactorizo conservando pruebas."
+  ],
+  "references": [
+    "typing"
+  ],
+  "example": "examples/19-typing-and-refactoring.py",
+  "command": "python examples/19-typing-and-refactoring.py"
+}

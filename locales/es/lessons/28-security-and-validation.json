@@ -1,0 +1,67 @@
+{
+  "id": 28,
+  "slug": "security-and-validation",
+  "phase": 6,
+  "title": "Seguridad y validación de fronteras",
+  "minutes": 180,
+  "objectives": [
+    "Validar tipos, límites y campos extra.",
+    "Distinguir autenticación y autorización.",
+    "Preparar un modelo de amenazas concreto."
+  ],
+  "concepts": [
+    "Cada entrada externa es una frontera: argumentos, JSON, archivos, parámetros y variables de entorno. Valida lo que esperas en esa frontera y protege también invariantes en el dominio y la base. Una anotación Python no basta; un esquema puede aplicar límites y rechazar campos desconocidos.",
+    "Autenticación identifica quién realiza la solicitud; autorización determina qué puede hacer sobre ese recurso. La referencia del curso no tiene usuarios: por eso usa únicamente una interfaz local. Para una versión con usuarios añade owner_id, relación con identidad y filtros por propietario a consultas y mutaciones. Un token válido no permite acceder a cualquier id.",
+    "No inventes criptografía ni guardes contraseñas en texto. Si eliges sesiones o tokens, sigue documentación actual del proveedor y prueba expiración, revocación y permisos. Los secretos van en variables de entorno o un almacén apropiado, nunca en código, commits o logs. Una API key única puede servir para un experimento controlado, pero no reemplaza cuentas y permisos de usuarios.",
+    "Limita tamaño de título, tamaño de cuerpo, cantidad de registros y frecuencia según tu entorno. Registra errores técnicos en inglés sin copiar secretos ni cuerpos privados. El cliente necesita un código estable, como task_not_found; un frontend puede traducirlo. Evita incluir trazas internas en respuestas.",
+    "Haz un modelo de amenazas de tu proyecto: qué activo proteges, quién puede dañarlo, por qué entrada, qué control lo reduce y cómo pruebas ese control. Incluye un ensayo donde el usuario A intenta completar una tarea de B. Aunque el identificador exista, debe rechazarse. Esta práctica es requisito para publicar una variante multiusuario."
+  ],
+  "output": "Review report\nFalse\n",
+  "walkthrough": [
+    "La normalización permitida está definida.",
+    "La longitud se comprueba después de recortar.",
+    "Un título vacío es rechazado de forma observable."
+  ],
+  "exercises": [
+    [
+      "Completa practice/12-validate-title.py.",
+      "Aplica trim y longitud entre 1 y 120.",
+      "Un texto de 120 pasa; 121 falla; solo espacios falla; conserva mayúsculas internas."
+    ],
+    [
+      "Escribe una tabla de acceso para usuarios A y B.",
+      "Incluye lectura y modificación.",
+      "A puede operar sus tareas; una tarea de B no debe exponerse ni modificarse. Prueba cada operación, no solo el botón."
+    ],
+    [
+      "Busca secretos de prueba en tu repositorio antes de compartirlo.",
+      "Revisa el historial, no solo el archivo actual.",
+      "git status y revisión de diff previenen futuras inclusiones; si un secreto real se publicó, revócalo y rota antes de limpiar historial."
+    ]
+  ],
+  "mistakes": [
+    "Usar CORS como autorización.",
+    "Registrar tokens o datos privados en logs."
+  ],
+  "quiz": {
+    "question": "¿Qué determina la autorización?",
+    "options": [
+      "Qué recursos y acciones están permitidos.",
+      "Solo el nombre del usuario.",
+      "La codificación del JSON."
+    ],
+    "correct": 0,
+    "explanation": "Después de identificar una persona todavía hay que comprobar sus permisos sobre cada recurso."
+  },
+  "mastery": [
+    "Valido todas las fronteras.",
+    "Distingo identidad y permiso.",
+    "Defino pruebas de acceso cruzado."
+  ],
+  "references": [
+    "security",
+    "body"
+  ],
+  "example": "examples/28-security-and-validation.py",
+  "command": "python examples/28-security-and-validation.py"
+}

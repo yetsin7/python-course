@@ -1,0 +1,67 @@
+{
+  "id": 18,
+  "slug": "classes-and-composition",
+  "phase": 4,
+  "title": "Clases, dataclasses y composición",
+  "minutes": 150,
+  "objectives": [
+    "Agrupar estado y comportamiento.",
+    "Validar una transición de estado.",
+    "Preferir composición cuando simplifica el modelo."
+  ],
+  "concepts": [
+    "Una clase define un tipo de objeto con atributos y operaciones. Una instancia es un objeto concreto. Si muchos campos deben viajar juntos y cumplir reglas, una clase puede expresar ese contrato mejor que diccionarios sueltos. No conviertas todas las funciones en clases: un cálculo sin estado suele seguir siendo una función.",
+    "dataclass genera métodos habituales como inicialización a partir de campos declarados. self representa la instancia sobre la que se ejecuta un método. Un método puede leer y modificar su estado. Documenta qué cambios permite. Gastar en una cuenta no debería aceptar negativos ni dejar el saldo por debajo de cero.",
+    "La validación debe proteger todas las rutas de entrada. __post_init__ permite revisar valores iniciales después de la inicialización generada. Un método de transición protege cambios posteriores. Si los atributos se pueden reasignar desde fuera, la clase no ofrece encapsulación completa; decide si esa libertad es aceptable o necesitas un diseño más estricto.",
+    "Composición significa que una operación usa otra dependencia: un servicio de tareas usa un repositorio, sin heredar de él. Herencia afirma una relación de tipo y puede acoplar comportamientos. Empieza con composición y contratos pequeños; introduce jerarquías solo cuando resuelvan un problema concreto.",
+    "En el ejemplo el objeto mantiene centavos y permite gastar dentro de un límite. La operación devuelve el saldo restante para hacerlo observable. Prueba dos instancias para comprobar que el estado no se comparte. Implementa un modelo de inventario con reglas equivalentes en el ejercicio 08."
+  ],
+  "output": "750\n750\n",
+  "walkthrough": [
+    "dataclass genera la inicialización.",
+    "__post_init__ valida la apertura.",
+    "spend valida antes de cambiar el estado."
+  ],
+  "exercises": [
+    [
+      "Completa practice/08-reserve-stock.py.",
+      "Comprueba antes de restar.",
+      "Stock 5 y cantidad 3 devuelven 2; pedir 6 o un negativo produce ValueError; cero conserva 5."
+    ],
+    [
+      "Crea dos Wallet y gasta en una sola.",
+      "Instancias distintas mantienen estados distintos.",
+      "Wallet(1000) y Wallet(500): tras gastar 250 en la primera, los saldos son 750 y 500."
+    ],
+    [
+      "Explica si un informe que usa un repositorio debe heredar de él.",
+      "Usar una capacidad no significa ser ese tipo.",
+      "Puede recibir el repositorio por parámetro; la composición permite sustituirlo en pruebas."
+    ]
+  ],
+  "mistakes": [
+    "Validar cambios pero permitir un estado inicial inválido.",
+    "Usar herencia solo para compartir líneas."
+  ],
+  "quiz": {
+    "question": "¿Qué representa self?",
+    "options": [
+      "La instancia actual.",
+      "Todas las clases.",
+      "La terminal."
+    ],
+    "correct": 0,
+    "explanation": "Permite consultar o cambiar atributos del objeto sobre el que se llamó el método."
+  },
+  "mastery": [
+    "Modelo estado y transiciones.",
+    "Conservo el estado tras un fallo.",
+    "Elijo función o clase por necesidad."
+  ],
+  "references": [
+    "classes",
+    "dataclasses"
+  ],
+  "example": "examples/18-classes-and-composition.py",
+  "command": "python examples/18-classes-and-composition.py"
+}

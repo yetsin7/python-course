@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title></title>
+  <link rel="stylesheet" href="assets/course.css">
+  <script src="assets/course-content.js" defer></script>
+  <script src="assets/progress.js" defer></script>
+  <script src="assets/markup.js" defer></script>
+  <script src="assets/reader.js" defer></script>
+  <script src="assets/views.js" defer></script>
+  <script src="assets/course-session.js" defer></script>
+  <script src="assets/application.js" defer></script>
+</head>
+<body>
+  <button id="menu-toggle" class="menu-toggle" aria-expanded="false" aria-controls="sidebar"></button>
+  <aside id="sidebar">
+    <a class="brand" href="#home"><span class="brand-symbol" aria-hidden="true">P</span><span id="brand-title"></span></a>
+    <nav id="primary-navigation"></nav>
+    <label id="search-label" for="lesson-search"></label>
+    <input id="lesson-search" type="search" autocomplete="off">
+    <nav id="lesson-navigation"></nav>
+    <div class="sidebar-footer">
+      <div id="progress-caption"></div>
+      <progress id="course-progress" max="32" value="0"></progress>
+      <div class="backup-controls">
+        <button id="export-progress"></button>
+        <button id="import-progress"></button>
+        <input id="progress-file" type="file" accept=".json,application/json" hidden>
+      </div>
+    </div>
+  </aside>
+  <main id="main-content" tabindex="-1"></main>
+  <div id="status-message" class="status-message" role="status" aria-live="polite"></div>
+</body>
+</html>

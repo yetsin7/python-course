@@ -1,0 +1,67 @@
+{
+  "id": 4,
+  "slug": "input-and-conversion",
+  "phase": 0,
+  "title": "Entradas y conversión de tipos",
+  "minutes": 120,
+  "objectives": [
+    "Leer una entrada escrita por una persona.",
+    "Convertir texto a números.",
+    "Separar adquisición, cálculo y presentación."
+  ],
+  "concepts": [
+    "Hasta ahora las entradas estaban escritas en el archivo. input() espera una línea de la terminal y devuelve texto, incluso cuando escribes 3. int(...) convierte un texto entero como '3' en el número 3; float(...) admite números decimales con punto. Una conversión no valida todas las reglas del negocio: int('-3') funciona, aunque una cantidad negativa quizá no sea permitida.",
+    "Ejecuta el ejemplo y escribe Ana, pulsa Enter, luego escribe 3 y pulsa Enter. No verás preguntas impresas: el ejemplo omite etiquetas para concentrarse en la lectura. Si parece detenido, está esperando tu entrada. Cada input consume una línea. print muestra después el nombre y el costo calculado.",
+    "Conviene pensar en tres momentos: obtener texto, transformarlo y calcular. No pongas todo en una expresión larga si eso te impide inspeccionar valores. quantity_text conserva lo escrito; quantity lo convierte. Si escribes tres, int(...) lanza ValueError. Más adelante aprenderás a tratar ese caso con un mensaje adecuado.",
+    "Un f-string comienza con f y permite insertar expresiones entre llaves. Es útil para construir texto, pero el cálculo debe seguir siendo numérico. En aplicaciones, etiquetas y mensajes van en archivos de traducción. En esta etapa imprime valores directamente; no confundas valores de prueba como un nombre con etiquetas fijas de la interfaz.",
+    "Haz pruebas con 0, 1, un número grande y texto inválido. No intentes ocultar todavía el error: lee su última línea y localiza la instrucción que falló. Tener un caso que falla de forma conocida es información. Más adelante convertirás esas observaciones en pruebas automáticas y reglas de validación."
+  ],
+  "stdin": "Ana\n3\n",
+  "output": "Ana\n36\n",
+  "walkthrough": [
+    "El primer input recoge el nombre como str.",
+    "El segundo recoge texto; int lo convierte.",
+    "El cálculo usa quantity numérico y produce 36 con la entrada propuesta."
+  ],
+  "exercises": [
+    [
+      "Adapta una copia para convertir horas escritas a minutos.",
+      "Usa int(input()) y multiplica por 60.",
+      "La entrada 2 debe producir 120; 0 debe producir 0. Mantén hours y duration_minutes separados."
+    ],
+    [
+      "Prueba la entrada 2.5 con int y luego con float.",
+      "La conversión requerida depende del dominio.",
+      "int('2.5') falla; float('2.5') da 2.5. Aceptar decimales es una decisión del problema, no una reparación automática."
+    ],
+    [
+      "Convierte una cantidad a entero y predice qué pasa con una línea vacía.",
+      "Una cadena vacía no expresa un entero.",
+      "int('') produce ValueError. Registra este caso para repetirlo al estudiar validación."
+    ]
+  ],
+  "mistakes": [
+    "Sumar input() directamente con un número.",
+    "Usar coma decimal cuando float espera un punto."
+  ],
+  "quiz": {
+    "question": "Si escribes 5, ¿qué devuelve input()?",
+    "options": [
+      "El entero 5.",
+      "El texto '5'.",
+      "El booleano True."
+    ],
+    "correct": 1,
+    "explanation": "input siempre devuelve texto; tú decides cuándo y cómo convertirlo."
+  },
+  "mastery": [
+    "Ejecuto el ejemplo y suministro dos líneas.",
+    "Explico dónde ocurre la conversión.",
+    "Identifico al menos dos entradas inválidas."
+  ],
+  "references": [
+    "builtins"
+  ],
+  "example": "examples/04-input-and-conversion.py",
+  "command": "python examples/04-input-and-conversion.py"
+}

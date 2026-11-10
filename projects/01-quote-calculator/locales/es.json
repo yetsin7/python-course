@@ -1,0 +1,1 @@
+{"description":"Calcula una cotización de muestra en centavos.","price_help":"Precio unitario en centavos.","quantity_help":"Cantidad entera no negativa.","discount_help":"Descuento entero de 0 a 100 por ciento.","invalid":"Revisa precio, cantidad y descuento: no están dentro del rango permitido.","total":"Total: {total_cents} centavos."}

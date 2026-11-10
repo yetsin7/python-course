@@ -1,0 +1,154 @@
+[
+  [
+    "Algoritmo",
+    "Pasos definidos para resolver una familia de problemas."
+  ],
+  [
+    "Argumento",
+    "Valor enviado al llamar una función."
+  ],
+  [
+    "API",
+    "Contrato para que un programa use capacidades de otro."
+  ],
+  [
+    "Booleano",
+    "Valor lógico True o False."
+  ],
+  [
+    "Clase",
+    "Definición de un tipo de objeto con campos y operaciones."
+  ],
+  [
+    "CLI",
+    "Interfaz usada mediante comandos en una terminal."
+  ],
+  [
+    "Commit",
+    "Registro de cambios seleccionados en Git."
+  ],
+  [
+    "Contrato",
+    "Entradas, resultados, reglas y fallos que una operación promete."
+  ],
+  [
+    "Dependencia",
+    "Capacidad externa que una parte necesita para funcionar."
+  ],
+  [
+    "Diccionario",
+    "Relación entre claves y valores."
+  ],
+  [
+    "Docstring",
+    "Nota entre comillas triples que explica qué hace una función, clase o módulo."
+  ],
+  [
+    "Entorno virtual",
+    "Intérprete y paquetes aislados para un proyecto."
+  ],
+  [
+    "Excepción",
+    "Aviso que Python produce cuando algo sale mal mientras el programa se ejecuta; puedes responder a un tipo concreto de aviso."
+  ],
+  [
+    "except",
+    "Palabra que inicia la respuesta a un error esperado que ocurrió dentro de try."
+  ],
+  [
+    "try",
+    "Palabra que inicia el bloque de instrucciones que Python intenta ejecutar y que podría producir un error."
+  ],
+  [
+    "ValueError",
+    "Tipo de excepción que indica que una operación recibió un valor que no puede usar, como convertir \"tres\" en un entero."
+  ],
+  [
+    "Factory",
+    "Función que construye un objeto con dependencias elegidas."
+  ],
+  [
+    "Función",
+    "Operación nombrada con entradas y resultado o efectos."
+  ],
+  [
+    "Idempotencia",
+    "Repetir una operación conserva el mismo efecto final que hacerla una vez."
+  ],
+  [
+    "Instancia",
+    "Objeto concreto creado a partir de una clase."
+  ],
+  [
+    "JSON",
+    "Formato textual para intercambiar estructuras simples."
+  ],
+  [
+    "Lista",
+    "Secuencia ordenada de valores."
+  ],
+  [
+    "Migración",
+    "Transformación controlada de esquema o registros persistentes."
+  ],
+  [
+    "Módulo",
+    "Archivo Python que ofrece operaciones importables."
+  ],
+  [
+    "None",
+    "Valor especial de Python que significa «no hay un resultado o dato aquí»; no equivale a cero."
+  ],
+  [
+    "Parámetro",
+    "Nombre de una entrada declarada por una función."
+  ],
+  [
+    "Persistencia",
+    "Conservar estado para ejecuciones posteriores."
+  ],
+  [
+    "Refactorización",
+    "Cambio de estructura que conserva comportamiento observable."
+  ],
+  [
+    "raise",
+    "Palabra que detiene la operación actual y comunica un error con una excepción."
+  ],
+  [
+    "Regresión",
+    "Reaparición de un defecto o ruptura de un comportamiento anterior."
+  ],
+  [
+    "Repositorio",
+    "Componente que guarda y recupera registros; en Git, carpeta con historial."
+  ],
+  [
+    "Rollback",
+    "Reversión de cambios de una transacción."
+  ],
+  [
+    "SQL",
+    "Lenguaje para operar bases relacionales."
+  ],
+  [
+    "Terminal",
+    "Interfaz de texto para ejecutar comandos."
+  ],
+  [
+    "Tipo",
+    "Clase de valores y operaciones admitidas."
+  ],
+  [
+    "Transacción",
+    "Grupo de cambios confirmado o revertido como unidad."
+  ],
+  [
+    "Variable",
+    "Nombre asociado a un valor."
+  ],
+  [
+    "Zona horaria",
+    "Reglas que permiten interpretar una hora local."
+  ]
+]

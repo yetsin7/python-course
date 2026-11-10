@@ -1,0 +1,68 @@
+{
+  "id": 32,
+  "slug": "capstone-and-portfolio",
+  "phase": 7,
+  "title": "Proyecto final y práctica profesional",
+  "minutes": 300,
+  "objectives": [
+    "Resolver un requisito nuevo con autonomía.",
+    "Presentar evidencia y límites.",
+    "Mantener una aplicación después de entregarla."
+  ],
+  "concepts": [
+    "Terminar de leer no equivale a trabajar con autonomía. El cierre es construir una variante propia del proyecto 5: un sistema de trabajos para un pequeño negocio, con título, cliente, vencimiento, estado y costo en centavos. La referencia te enseña la estructura; tu entrega debe incorporar reglas que no puedas obtener copiando un archivo.",
+    "Escribe historias con criterios: crear trabajo válido; rechazar costo negativo; filtrar por estado y cliente; actualizar solo campos permitidos; completar sin duplicar efectos; recuperar tras reinicio. Usa datos ficticios. Diseña el esquema y una migración antes de modificar registros existentes. Añade pruebas que fallen con un defecto que hayas elegido.",
+    "Presenta un README en inglés con instalación, comandos, contrato, ejemplos, pruebas y límites. Incluye decisiones: por qué esa base, cómo representas dinero, cómo proteges entradas, qué ocurriría con dos escritores. Adjunta una breve demostración en español para una persona usuaria. Si hay un riesgo pendiente, descríbelo con precisión.",
+    "Usa la rúbrica de graduación del lector. Debes aprobar corrección, pruebas, persistencia, calidad, seguridad y entrega; ningún área crítica se compensa con un diseño bonito. Explica una función elegida al azar sin leer la solución y corrige un defecto nuevo. Repite partes si necesitas ayuda constante; eso indica qué practicar, no un fracaso definitivo.",
+    "Después de la entrega simula mantenimiento: añade prioridad sin romper clientes existentes, migra datos de muestra, mide una consulta lenta y escribe una nota de versión. La experiencia profesional crece con esos cambios, revisión y colaboración. Según tus intereses puedes continuar con TypeScript para interfaces web, Kotlin para Android o Python para backend y automatización, apoyado en estas bases.",
+    "Si te bloqueas, prepara tu intento, resultado esperado, salida real y una hipótesis. Puedes pedir revisión de una práctica concreta en este chat. Solicita pistas primero y verifica cualquier código recibido. Una herramienta puede acelerar una operación; comprender el contrato y justificar el resultado siguen siendo tu responsabilidad."
+  ],
+  "output": "[]\nTrue\n",
+  "walkthrough": [
+    "El conjunto describe categorías de evidencia.",
+    "La diferencia muestra faltantes.",
+    "La presencia de archivos no sustituye la revisión de su calidad."
+  ],
+  "exercises": [
+    [
+      "Construye la variante de trabajos descrita sin copiar la referencia completa.",
+      "Divide requisito, esquema, dominio, interfaz y pruebas.",
+      "Entrega crear, filtrar, actualizar, completar, validar dinero y recuperar; incluye pruebas de límites y una migración comprobada."
+    ],
+    [
+      "Pide o realiza una revisión de una función elegida al azar.",
+      "Explica contratos y efectos, no solo sintaxis.",
+      "Debes justificar entradas, salida, fallos, persistencia y una alternativa razonable. Si no puedes, vuelve a la lección correspondiente."
+    ],
+    [
+      "Mantén la entrega agregando prioridad con compatibilidad.",
+      "Los datos antiguos deben seguir siendo legibles.",
+      "Versiona el esquema, migra con respaldo probado, preserva el contrato anterior donde corresponda y registra evidencia de regresión."
+    ]
+  ],
+  "mistakes": [
+    "Usar la referencia como portafolio propio sin adaptación.",
+    "Prometer preparación profesional por una cantidad de semanas."
+  ],
+  "quiz": {
+    "question": "¿Qué demuestra mejor aprendizaje autónomo?",
+    "options": [
+      "Resolver un requisito nuevo, probarlo y explicarlo.",
+      "Solo leer las 32 lecciones.",
+      "Copiar el proyecto final sin cambios."
+    ],
+    "correct": 0,
+    "explanation": "La transferencia a un problema nuevo, con evidencia, demuestra dominio de los fundamentos."
+  },
+  "mastery": [
+    "Supero la rúbrica con una variante propia.",
+    "Defiendo decisiones y límites.",
+    "Mantengo la aplicación sin romper datos."
+  ],
+  "references": [
+    "python",
+    "git"
+  ],
+  "example": "examples/32-capstone-and-portfolio.py",
+  "command": "python examples/32-capstone-and-portfolio.py"
+}

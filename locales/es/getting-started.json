@@ -1,0 +1,133 @@
+{
+  "title": "Empieza aquí: de encender la computadora a tu primer programa",
+  "intro": "Esta guía no da nada por sabido. Si nunca instalaste un programa ni abriste una terminal, sigue los pasos en orden y sin prisa. Cada paso dice qué hacer, qué deberías ver y qué hacer si ves otra cosa. Te tomará entre 30 y 60 minutos, y solo se hace una vez.",
+  "sections": [
+    {
+      "title": "1. Cuatro palabras que usarás todos los días",
+      "paragraphs": [
+        "Antes de tocar nada, pongamos nombre a las cosas. Programar es mucho más fácil cuando sabes cómo se llama lo que tienes delante."
+      ],
+      "definitions": [
+        ["Archivo", "Un documento guardado en la computadora: una foto, una canción, un texto. Tiene un nombre y una terminación llamada extensión, como foto.jpg. Tus programas serán archivos de texto que terminan en .py."],
+        ["Carpeta", "Un lugar con nombre que guarda archivos y otras carpetas, igual que una carpeta de papel guarda hojas. Sirve para tener cada cosa en su sitio."],
+        ["Programa o aplicación", "Algo que la computadora ejecuta para hacer un trabajo: el navegador donde lees esto es un programa. Tú vas a aprender a crear los tuyos."],
+        ["Ventana", "El rectángulo en pantalla donde vive un programa abierto. Puedes tener varias ventanas a la vez y pasar de una a otra con un clic."]
+      ],
+      "steps": [
+        "Clic: presiona una vez el botón izquierdo del ratón (o toca una vez el panel táctil). Sirve para elegir algo.",
+        "Doble clic: presiona dos veces seguidas y rápido. Sirve para abrir un archivo o una carpeta.",
+        "Clic derecho: presiona el botón derecho. Abre un pequeño menú con opciones para lo que señalas.",
+        "Tecla Windows: es la tecla con el dibujo de una ventana, abajo a la izquierda del teclado. Al presionarla se abre el menú Inicio, y ahí puedes escribir el nombre de cualquier programa para encontrarlo.",
+        "Tecla Enter (o Intro): la tecla grande a la derecha de las letras. Significa «ya terminé de escribir, hazlo»."
+      ]
+    },
+    {
+      "title": "2. El teclado para programar",
+      "paragraphs": [
+        "Programar usa símbolos que casi no aparecen al escribir mensajes. No hace falta memorizarlos hoy: vuelve a esta tabla cada vez que no encuentres uno.",
+        "Regla general: mira la tecla. Si el símbolo está dibujado arriba, mantén presionada la tecla Shift (la flecha hacia arriba ⇧, también llamada Mayús) y luego presiona esa tecla. Si el símbolo está dibujado abajo a la derecha, mantén presionada la tecla Alt Gr (a la derecha de la barra espaciadora) y luego presiona esa tecla. Los ejemplos siguientes son para teclados en español; si el tuyo es distinto, busca el dibujo del símbolo y aplica la regla."
+      ],
+      "definitions": [
+        ["\" comillas dobles", "Shift + 2. Rodean el texto: \"hola\". Siempre van en pareja: una para abrir y otra para cerrar."],
+        ["' comilla simple", "La tecla a la derecha del 0. También sirve para rodear texto: 'hola'."],
+        ["( ) paréntesis", "Shift + 8 abre y Shift + 9 cierra. Van después del nombre de una instrucción: print(\"hola\")."],
+        ["= igual", "Shift + 0. En Python significa «guarda este valor con este nombre», no «es igual a»."],
+        [": dos puntos", "Shift + la tecla del punto. Anuncian que debajo viene un bloque de instrucciones."],
+        ["_ guion bajo", "Shift + la tecla del guion. Une palabras en un nombre: precio_total."],
+        ["# numeral", "Shift + 3 o Alt Gr + 3, según el teclado. Lo que escribas después en esa línea es una nota para personas; Python la ignora."],
+        ["[ ] corchetes", "Están junto a la tecla Enter; según el teclado necesitan Shift o Alt Gr. Rodean una lista: [1, 2, 3]."],
+        ["{ } llaves", "Junto a los corchetes, con Shift o Alt Gr. Rodean un diccionario, que verás en la lección 9."],
+        ["* asterisco", "Shift + la tecla del signo +, o la tecla * del teclado numérico. Multiplica: 6 * 7."],
+        ["/ barra", "Shift + 7. Divide: 10 / 2. También separa carpetas al escribir rutas."],
+        ["< > menor y mayor", "La tecla a la izquierda de la Z; con Shift escribe >. Comparan valores: edad > 18."],
+        ["Tab", "La tecla con dos flechas, a la izquierda de la Q. En un editor de código escribe cuatro espacios de una vez. Esos espacios al inicio de una línea se llaman sangría y en Python son obligatorios dentro de un bloque."]
+      ],
+      "note": "Si al presionar una tecla sale un símbolo distinto al dibujado, tu computadora está configurada con otro idioma de teclado. Presiona tecla Windows + barra espaciadora para cambiar de idioma hasta que coincida."
+    },
+    {
+      "title": "3. Instala Python",
+      "paragraphs": [
+        "Python es un programa gratuito que lee tus instrucciones y las ejecuta. Sin él, un archivo .py es solo texto. Se instala una vez."
+      ],
+      "steps": [
+        "Abre el navegador y escribe en la barra de direcciones: python.org/downloads. Presiona Enter.",
+        "Haz clic en el botón grande que dice «Download Python» seguido de un número de versión. Se descargará un archivo instalador.",
+        "Abre el archivo descargado con doble clic. Suele quedar en la carpeta Descargas, y el navegador lo muestra arriba a la derecha.",
+        "Si la primera pantalla tiene una casilla que dice «Add python.exe to PATH», márcala con un clic antes de continuar. Es el paso que más se olvida: permite que la terminal encuentre Python. Si esa casilla no aparece, tu instalador ya lo hace por ti.",
+        "Haz clic en «Install Now» (o «Instalar»). Si Windows pregunta si permites cambios en el equipo, responde «Sí».",
+        "Espera hasta ver un mensaje de instalación correcta y cierra la ventana."
+      ],
+      "note": "Instala Python solamente desde python.org. Otros sitios pueden ofrecer versiones viejas o modificadas."
+    },
+    {
+      "title": "4. Abre la terminal y comprueba la instalación",
+      "paragraphs": [
+        "La terminal es una ventana donde escribes órdenes en lugar de hacer clic. En Windows se llama PowerShell. Parece intimidante porque casi no tiene botones, pero funciona siempre igual: escribes una orden, presionas Enter y lees la respuesta."
+      ],
+      "steps": [
+        "Presiona la tecla Windows, escribe PowerShell y presiona Enter. Se abre una ventana oscura con un texto parecido a PS C:\\Users\\TuNombre>. Ese texto se llama indicador: significa «estoy esperando tu orden».",
+        "Escribe exactamente python --version (la palabra python, un espacio, dos guiones seguidos y la palabra version) y presiona Enter.",
+        "Deberías ver una línea como Python 3.13.11. El número puede ser mayor; lo importante es que empiece por 3.",
+        "Si aparece un mensaje en rojo que dice que python no se reconoce, cierra PowerShell, vuelve a abrirlo e inténtalo otra vez. Si sigue igual, prueba py --version. Si py funciona, usa py en lugar de python en todo el curso.",
+        "Si ninguna de las dos órdenes funciona, repite la sección 3 y fíjate en la casilla «Add python.exe to PATH»."
+      ],
+      "note": "En la terminal no puedes romper nada por escribir mal una orden: lo peor que ocurre es un mensaje de error. Léelo, corrige y vuelve a intentar."
+    },
+    {
+      "title": "5. Crea tu carpeta de trabajo",
+      "paragraphs": [
+        "Guarda todos tus intentos en una sola carpeta. Así siempre sabrás dónde están y la terminal podrá encontrarlos."
+      ],
+      "steps": [
+        "En PowerShell escribe Set-Location C:\\Dev\\python-course y presiona Enter. Set-Location significa «llévame a esta carpeta». Si guardaste el curso en otro lugar, escribe esa ubicación.",
+        "Fíjate en el indicador: ahora termina con el nombre de esa carpeta. Todo lo que ejecutes ocurrirá ahí dentro.",
+        "Escribe New-Item -ItemType Directory study-work y presiona Enter. Acabas de crear una carpeta llamada study-work para tus archivos.",
+        "Si aparece un error que dice que ya existe, perfecto: la carpeta ya estaba creada."
+      ]
+    },
+    {
+      "title": "6. Escribe y ejecuta tu primer programa",
+      "paragraphs": [
+        "Necesitas un editor: un programa para escribir código. Python trae uno sencillo llamado IDLE, y es suficiente para empezar. Más adelante puedes cambiar a Visual Studio Code si quieres."
+      ],
+      "steps": [
+        "Presiona la tecla Windows, escribe IDLE y presiona Enter. Se abre una ventana blanca con el símbolo >>>. Si no encuentras IDLE, escribe en PowerShell python -m idlelib y presiona Enter.",
+        "En el menú de arriba haz clic en File y luego en New File. Se abre una segunda ventana vacía: esa es tu hoja para escribir.",
+        "Escribe exactamente esta línea: print(\"Hola, ya sé programar\"). Revisa que estén los dos paréntesis y las dos comillas.",
+        "Haz clic en File y luego en Save As. Entra en la carpeta study-work, escribe el nombre hola.py y haz clic en Guardar.",
+        "Presiona la tecla F5, en la fila de arriba del teclado. En algunas laptops hay que mantener presionada la tecla Fn mientras presionas F5. También puedes hacer clic en Run y luego en Run Module.",
+        "Mira la primera ventana: debe aparecer el texto Hola, ya sé programar. Ese es el resultado de tu programa.",
+        "Cambia el mensaje entre las comillas, guarda con Ctrl + S y presiona F5 otra vez. Acabas de completar el ciclo que repetirás en todo el curso: escribir, guardar, ejecutar y observar."
+      ],
+      "note": "También puedes ejecutar el mismo archivo desde PowerShell con python study-work/hola.py. Las dos formas hacen lo mismo; usa la que te resulte más cómoda."
+    },
+    {
+      "title": "7. Cómo leer un error sin asustarte",
+      "paragraphs": [
+        "Todas las personas que programan ven errores todos los días. Un error no dice que seas malo en esto: es Python explicando en qué línea dejó de entender. Lee siempre de abajo hacia arriba: la última línea dice qué pasó y las anteriores dicen dónde."
+      ],
+      "definitions": [
+        ["SyntaxError", "Python no pudo leer la línea. Casi siempre falta cerrar una comilla o un paréntesis, o faltan los dos puntos al final. Compara la línea símbolo por símbolo con el ejemplo."],
+        ["NameError", "Usaste un nombre que Python no conoce. Suele ser un error de tipeo: escribiste pritn en lugar de print, o Total en lugar de total. Las mayúsculas cuentan."],
+        ["IndentationError", "Los espacios al inicio de la línea no son los esperados. Dentro de un bloque usa siempre cuatro espacios, y no mezcles espacios con la tecla Tab."],
+        ["TypeError", "Intentaste combinar cosas que no se combinan, como sumar un texto con un número. Convierte uno de los dos: verás cómo en la lección 4."],
+        ["ValueError", "El tipo de dato es correcto pero el contenido no sirve, como pedir convertir la palabra hola en número."],
+        ["No such file or directory", "La terminal no encuentra el archivo. Revisa que estés en la carpeta correcta con Set-Location y que el nombre esté escrito igual, incluida la terminación .py."]
+      ]
+    },
+    {
+      "title": "8. Qué hacer cuando te atoras",
+      "steps": [
+        "Lee el mensaje de error completo, en voz alta si hace falta. La respuesta suele estar ahí.",
+        "Revisa la línea que indica el error y también la línea anterior: a veces el fallo está justo antes.",
+        "Deshaz el último cambio. Si antes funcionaba, el problema está en lo que acabas de tocar.",
+        "Cambia una sola cosa por vez y vuelve a ejecutar. Si cambias cinco cosas, no sabrás cuál lo arregló.",
+        "Explícale el problema a alguien, o a un objeto sobre tu escritorio, paso a paso. Al explicarlo es común encontrar el error por tu cuenta.",
+        "Descansa diez minutos. Volver con la cabeza despejada resuelve más errores que insistir cansado.",
+        "Si pides ayuda, comparte tres cosas: qué querías lograr, qué escribiste y el mensaje de error exacto."
+      ],
+      "note": "Sentirte perdido al principio es normal y no dura para siempre. Nadie entiende todo la primera vez: se aprende repitiendo."
+    }
+  ],
+  "next": "Cuando hayas visto tu mensaje en pantalla, estás listo para la lección 01."
+}

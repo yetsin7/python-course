@@ -1,0 +1,38 @@
+{
+  "id": 3,
+  "title": "Registro de gastos SQLite",
+  "after": 24,
+  "hours": "15–20",
+  "path": "projects/03-expense-ledger",
+  "brief": "Guarda gastos de muestra, lista el historial y calcula un total. Debe recuperar registros al reiniciar y demostrar una copia restaurable.",
+  "milestones": [
+    "Diseña una tabla con identidad y CHECK no negativo.",
+    "Implementa insertar, listar y totalizar con parámetros.",
+    "Añade CLI y separa mensajes de SQL.",
+    "Prueba reapertura y fallos sin datos parciales.",
+    "Haz backup, abre la copia y compara filas y total."
+  ],
+  "deliverables": [
+    "Esquema, repositorio, CLI y pruebas.",
+    "Demostración de reinicio y restauración.",
+    "Runbook en inglés con rutas y límites."
+  ],
+  "acceptance": [
+    "Agregar office=1200 y travel=500 produce 1700.",
+    "Un importe negativo no cambia el total.",
+    "La base conserva datos entre invocaciones.",
+    "El resultado se ordena por id.",
+    "La copia puede abrirse y conserva los mismos registros."
+  ],
+  "commands": [
+    "python projects/03-expense-ledger/cli.py add --category office --amount-cents 1200",
+    "python projects/03-expense-ledger/cli.py list",
+    "python projects/03-expense-ledger/cli.py total",
+    "python projects/03-expense-ledger/cli.py backup",
+    "python -m unittest discover -s projects/03-expense-ledger/tests -p 'test_*.py' -v"
+  ],
+  "extensions": [
+    "Añade fechas ISO y filtros.",
+    "Introduce una migración versionada y prueba registros anteriores."
+  ]
+}

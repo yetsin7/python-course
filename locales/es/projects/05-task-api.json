@@ -1,0 +1,43 @@
+{
+  "id": 5,
+  "title": "API de tareas y variante de portafolio",
+  "after": 32,
+  "hours": "30–45",
+  "path": "projects/05-task-api",
+  "brief": "Construye y prueba una API local. Después crea una variante propia para gestionar trabajos de un negocio. La referencia es local y no tiene autenticación; publicar una variante exige permisos y endurecimiento.",
+  "milestones": [
+    "Sigue la instalación detallada de la lección 27.",
+    "Implementa health, crear, listar y completar.",
+    "Prueba contratos, paginación y persistencia con bases temporales.",
+    "Recrea el entorno desde el lock y ensaya una prueba de humo.",
+    "Adapta el dominio con cliente, vencimiento, estado y costo; escribe migración.",
+    "Aplica la rúbrica y documenta seguridad, restauración y operación."
+  ],
+  "deliverables": [
+    "Aplicación propia con API y base persistente.",
+    "Pruebas y evidencia de instalación limpia.",
+    "README, runbook, migración comprobada y demostración.",
+    "Modelo de amenazas; autenticación y autorización antes de una publicación multiusuario."
+  ],
+  "acceptance": [
+    "POST válido: 201; título inválido o campos extra: 422.",
+    "GET paginado: limit 1–100, offset no negativo y orden definido.",
+    "PATCH de ausente: 404; completar dos veces es estable.",
+    "Datos recuperables al construir otra instancia.",
+    "Pruebas no modifican la base de uso normal.",
+    "La variante propia cumple los criterios de la lección 32."
+  ],
+  "commands": [
+    "Set-Location projects/05-task-api",
+    "python -m venv build/api-env",
+    "build/api-env/Scripts/python.exe -m pip install -r requirements-lock.txt",
+    "build/api-env/Scripts/python.exe -m pip check",
+    "build/api-env/Scripts/python.exe -m unittest discover -s tests -p 'test_*.py' -v",
+    "build/api-env/Scripts/python.exe -m uvicorn application:app --host 127.0.0.1 --port 8017"
+  ],
+  "extensions": [
+    "Añade usuarios y prueba acceso cruzado.",
+    "Ensaya idempotencia, logs sin secretos y límites de carga.",
+    "Publica solo después de completar y verificar los requisitos de operación."
+  ]
+}
