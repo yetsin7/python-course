@@ -5,7 +5,7 @@ const STORAGE_KEY = "python-programming-course-v1";
 
 /** Construct independent empty progress records for a new learner. */
 function emptyProgress() {
-  return { version: 1, completed: [], notes: {}, checks: {}, quizzes: {}, drafts: {}, lastLesson: null };
+  return { version: 1, completed: [], notes: {}, checks: {}, quizzes: {}, drafts: {}, typed: {}, days: [], lastLesson: null };
 }
 
 /** Reject incompatible backups, excessive notes and unknown lesson identifiers. */
@@ -40,6 +40,15 @@ function validateProgress(candidate) {
       result[field][identifier] = value;
     }
   }
+  const typed = candidate.typed || {};
+  if (typeof typed !== "object" || Array.isArray(typed)) throw new Error("Invalid typing records.");
+  for (const [identifier, value] of Object.entries(typed)) {
+    if (validIds.has(identifier) && value === true) result.typed[identifier] = true;
+  }
+  for (const day of Array.isArray(candidate.days) ? candidate.days : []) {
+    if (typeof day === "string" && /^\d{4}-\d{2}-\d{2}$/.test(day) && !result.days.includes(day)) result.days.push(day);
+  }
+  result.days = result.days.sort().slice(-730);
   if (Number.isInteger(candidate.lastLesson) && validIds.has(String(candidate.lastLesson))) {
     result.lastLesson = candidate.lastLesson;
   }

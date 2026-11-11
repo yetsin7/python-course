@@ -28,7 +28,8 @@ def build_course() -> None:
     catalog = json.loads((ROOT / "locales/es/catalog.json").read_text(encoding="utf-8"))
     for section, filename in [
         ("plan", "study-plan.json"), ("glossary", "glossary.json"), ("graduation", "graduation.json"),
-        ("setup", "getting-started.json"),
+        ("setup", "getting-started.json"), ("keyboard", "keyboard.json"),
+        ("motivation", "motivation.json"), ("ideas", "project-ideas.json"),
     ]:
         catalog[section] = json.loads((ROOT / "locales/es" / filename).read_text(encoding="utf-8"))
     catalog["projects"] = []

@@ -1,0 +1,14 @@
+{
+  "levels": ["Curioso", "Aprendiz", "Explorador", "Practicante", "Constructor", "Solucionador", "Artesano", "Diseñador", "Ingeniero", "Arquitecto", "Autor", "Maestro"],
+  "phaseBadge": ["🏅", "Etapa superada: {phase}", "Completaste las cuatro lecciones de esta etapa."],
+  "badges": [
+    ["first-typing", "⌨️", "Primeras líneas", "Escribiste a mano el código de una lección."],
+    ["first-lesson", "🌱", "Primer paso", "Completaste tu primera lección."],
+    ["streak-3", "🔥", "Tres días seguidos", "Practicaste tres días consecutivos."],
+    ["streak-7", "🚀", "Una semana imparable", "Practicaste siete días consecutivos."],
+    ["typing-10", "🎹", "Dedos entrenados", "Escribiste a mano el código de diez lecciones."],
+    ["notes-5", "📝", "Cuaderno propio", "Tomaste notas en cinco lecciones."],
+    ["halfway", "⛰️", "Mitad del camino", "Completaste dieciséis lecciones."],
+    ["graduate", "🎓", "Ruta completa", "Completaste las treinta y dos lecciones."]
+  ]
+}

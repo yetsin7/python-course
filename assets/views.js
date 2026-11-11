@@ -8,7 +8,7 @@ function homeMarkup() {
     '</p><h1 tabindex="-1">' + escapeHtml(COURSE.title) + '</h1><p class="hero-description">' +
     escapeHtml(COURSE.description) + '</p><a class="primary" href="#lesson-' + lessonNumber(upcoming.id) +
     '">' + escapeHtml(translate(learnerProgress.lastLesson || learnerProgress.completed.length ? "resume" : "start")) +
-    ' <span aria-hidden="true">→</span></a><div class="course-stats">';
+    ' <span aria-hidden="true">→</span></a>' + dashboardMarkup(upcoming) + '<div class="course-stats">';
   for (const [count, key] of [[32, "statsLessons"], [96, "statsExercises"], [5, "statsProjects"]]) {
     markup += "<div><strong>" + count + "</strong><span>" + escapeHtml(translate(key)) + "</span></div>";
   }
@@ -27,6 +27,7 @@ function homeMarkup() {
       '</h3><span class="phase-count">' + completed + " / 4 · " + escapeHtml(translate("completedCount")) + "</span></a>";
   }
   markup += "</div></section>";
+  markup += sectionMarkup(translate("badges"), badgesMarkup());
   markup += sectionMarkup(translate("practiceToolsTitle"),
     "<p>" + escapeHtml(translate("practiceToolsText")) + "</p>",
     "goal-panel");
@@ -48,6 +49,22 @@ function setupMarkup() {
   }
   return markup + sectionMarkup(translate("start"), "<p>" + escapeHtml(setup.next) +
     '</p><a class="primary" href="#lesson-01">' + escapeHtml(translate("lesson")) + " 01 →</a>", "goal-panel");
+}
+
+/** Render the method and the staged list of projects a learner can build alone. */
+function ideasMarkup() {
+  const ideas = COURSE.ideas;
+  let markup = pageHeading(ideas.title, ideas.intro) +
+    sectionMarkup(ideas.methodTitle, listMarkup(ideas.method, true), "goal-panel");
+  for (const group of ideas.groups) {
+    let cards = '<div class="idea-grid">';
+    for (const [title, what, how] of group.ideas) {
+      cards += '<article class="idea-item"><h3>' + escapeHtml(title) + "</h3><p>" + escapeHtml(what) +
+        '</p><p class="muted">' + escapeHtml(how) + "</p></article>";
+    }
+    markup += sectionMarkup(group.title, cards + "</div>");
+  }
+  return markup + '<p class="plain-panel">' + escapeHtml(ideas.closing) + "</p>";
 }
 
 /** Render all projects in their recommended completion order. */

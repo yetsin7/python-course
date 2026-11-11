@@ -85,6 +85,16 @@ def verify_beginner_material() -> int:
     for section in setup["sections"]:
         if not section["title"] or not (section.get("steps") or section.get("definitions")):
             raise AssertionError(f"Setup section has no actionable content: {section.get('title')}")
+    keyboard = json.loads((ROOT / "locales/es/keyboard.json").read_text(encoding="utf-8"))
+    symbols = [entry[0] for entry in keyboard["symbols"]]
+    if len(symbols) != len(set(symbols)) or any(len(entry) != 4 or not isinstance(entry[2], int) for entry in keyboard["symbols"]):
+        raise AssertionError("Keyboard symbols must be unique entries of symbol, name, Alt code and keys.")
+    ideas = json.loads((ROOT / "locales/es/project-ideas.json").read_text(encoding="utf-8"))
+    if len(ideas["method"]) < 5 or any(len(group["ideas"]) < 3 for group in ideas["groups"]):
+        raise AssertionError("The ideas workshop needs a method and at least three ideas per stage.")
+    motivation = json.loads((ROOT / "locales/es/motivation.json").read_text(encoding="utf-8"))
+    if len(motivation["levels"]) < 5 or any(len(badge) != 4 for badge in motivation["badges"]):
+        raise AssertionError("Motivation data needs level names and complete badge entries.")
     return len(notes)
 
 

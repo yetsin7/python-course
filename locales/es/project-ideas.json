@@ -1,0 +1,53 @@
+{
+  "title": "Taller de ideas: crea lo que tú quieras",
+  "intro": "El objetivo del curso no es terminar lecciones: es que puedas construir tus propias herramientas. Aquí tienes un método que sirve para cualquier idea y una lista de proyectos ordenados por etapa. Elige uno que te importe de verdad: se aprende el doble cuando el resultado te sirve.",
+  "methodTitle": "El método para construir cualquier cosa",
+  "method": [
+    "Escribe en una frase qué hará tu programa y para quién. Si no cabe en una frase, la idea todavía es demasiado grande.",
+    "Anota un ejemplo concreto: con esta entrada, espero esta salida. Ese ejemplo será tu primera prueba.",
+    "Divide la idea en pasos tan pequeños que cada uno te parezca casi demasiado fácil.",
+    "Construye solo el primer paso y ejecútalo. No avances hasta verlo funcionar.",
+    "Agrega un paso por vez. Después de cada uno, ejecuta todo de nuevo y guarda una versión.",
+    "Cuando algo falle, vuelve a la última versión que funcionaba y avanza con un cambio más pequeño.",
+    "Muéstraselo a alguien. Explicar lo que hiciste es la mejor forma de descubrir qué mejorar."
+  ],
+  "groups": [
+    {
+      "title": "Después de la lección 08 · Lógica y funciones",
+      "ideas": [
+        ["Calculadora de propinas y cuentas compartidas", "Pide el total y el número de personas, y muestra cuánto paga cada una con la propina incluida.", "Usa input, conversión de tipos, operaciones y una función que devuelva el resultado."],
+        ["Juego de adivinar el número", "El programa elige un número y da pistas de «más alto» o «más bajo» hasta que aciertas.", "Usa el módulo random, un ciclo while, condiciones y un contador de intentos."],
+        ["Generador de tablas de multiplicar", "Pide un número y muestra su tabla con buen formato.", "Usa for con range y texto con formato."],
+        ["Conversor de unidades", "Convierte entre kilómetros y millas, o entre grados Celsius y Fahrenheit, según un menú.", "Usa funciones pequeñas, una por conversión, y condiciones para el menú."]
+      ]
+    },
+    {
+      "title": "Después de la lección 16 · Herramientas y archivos",
+      "ideas": [
+        ["Lista de tareas que no se olvida", "Agrega, marca y borra tareas; al cerrar y abrir el programa, siguen ahí.", "Usa listas de diccionarios y un archivo JSON para guardar."],
+        ["Registro de gastos del mes", "Anota gastos con categoría y obtén el total por categoría.", "Usa un archivo CSV, diccionarios para acumular y validación de entradas."],
+        ["Organizador de archivos", "Ordena los archivos de una carpeta en subcarpetas según su extensión.", "Usa pathlib y manejo de errores. Prueba primero con una carpeta de copia."],
+        ["Agenda de contactos", "Busca personas por nombre aunque escribas con mayúsculas o espacios de más.", "Usa diccionarios, normalización de texto y persistencia en JSON."]
+      ]
+    },
+    {
+      "title": "Después de la lección 24 · Calidad y datos confiables",
+      "ideas": [
+        ["Control de inventario para un negocio pequeño", "Registra productos, entradas y salidas, y avisa cuando queda poco.", "Usa SQLite, transacciones, clases para el modelo y pruebas automáticas."],
+        ["Seguimiento de hábitos", "Marca cada día lo que cumpliste y calcula tu racha más larga.", "Usa fechas con datetime, una base SQLite y pruebas de los casos límite."],
+        ["Calculadora de presupuestos con precisión", "Arma cotizaciones con impuestos y descuentos sin errores de centavos.", "Usa dinero en centavos enteros, Decimal y pruebas de redondeo."],
+        ["Biblioteca personal", "Guarda tus libros, préstamos y fechas de devolución.", "Usa tablas relacionadas, consultas con parámetros y anotaciones de tipo."]
+      ]
+    },
+    {
+      "title": "Después de la lección 32 · Aplicaciones y entrega",
+      "ideas": [
+        ["API de notas personales", "Crea, lista, edita y borra notas desde cualquier programa que hable HTTP.", "Usa FastAPI, validación con esquemas, SQLite y pruebas de integración."],
+        ["Herramienta de línea de comandos para tu trabajo", "Automatiza una tarea que hoy haces a mano cada semana.", "Usa argparse, separación entre interfaz, dominio y almacenamiento, y logs."],
+        ["Servicio de reservas", "Administra turnos sin permitir dos reservas en el mismo horario.", "Usa transacciones, zonas horarias, autorización básica y un runbook."],
+        ["Tu propia idea", "El mejor proyecto es el que resuelve un problema tuyo o de alguien que conoces.", "Aplica el método de arriba y empieza por la versión más pequeña que ya sea útil."]
+      ]
+    }
+  ],
+  "closing": "No esperes a sentirte listo. Nadie se siente listo: se empieza con lo que se sabe y se aprende lo que falta en el camino."
+}

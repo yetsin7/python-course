@@ -18,7 +18,7 @@ function currentRoute() {
       if (project.id === Number(projectMatch[1])) return { kind: "project", project };
     }
   }
-  if (["setup", "projects", "plan", "glossary", "graduation"].includes(hash)) return { kind: hash };
+  if (["setup", "projects", "ideas", "plan", "glossary", "graduation"].includes(hash)) return { kind: hash };
   return { kind: "home" };
 }
 
@@ -48,7 +48,9 @@ function renderNavigation() {
   const count = learnerProgress.completed.length;
   document.getElementById("course-progress").value = count;
   document.getElementById("course-progress").setAttribute("aria-label", translate("progress"));
-  document.getElementById("progress-caption").textContent = count + " / 32 · " + translate("progressDetail");
+  const level = levelInfo();
+  document.getElementById("progress-caption").textContent = count + " / 32 · " + translate("progressDetail") +
+    " · " + translate("level") + " " + level.number + " · 🔥 " + streakInfo().current;
   for (const link of document.querySelectorAll("#primary-navigation a")) {
     const page = link.hash.slice(1);
     if (page === route.kind || (page === "projects" && route.kind === "project")) link.setAttribute("aria-current", "page");
@@ -64,6 +66,7 @@ function renderApplication(moveFocus = false) {
   else if (route.kind === "project") markup = projectMarkup(route.project);
   else if (route.kind === "setup") markup = setupMarkup();
   else if (route.kind === "projects") markup = projectsMarkup();
+  else if (route.kind === "ideas") markup = ideasMarkup();
   else if (route.kind === "plan") markup = planMarkup();
   else if (route.kind === "graduation") markup = graduationMarkup();
   else if (route.kind === "glossary") markup = pageHeading(translate("glossary")) + definitionsMarkup(COURSE.glossary);
@@ -71,6 +74,7 @@ function renderApplication(moveFocus = false) {
   markup += '<footer class="reader-footer"><p>' + escapeHtml(translate("footer")) +
     '</p><button data-action="print">' + escapeHtml(translate("print")) + "</button></footer>";
   document.getElementById("main-content").innerHTML = markup;
+  if (route.kind === "lesson") refreshTyping(route.lesson, false);
   renderNavigation();
   const heading = document.querySelector("#main-content h1");
   document.title = heading.textContent + translate("documentTitleSuffix");
@@ -140,8 +144,11 @@ function handleQuizSubmit(event) {
   const route = currentRoute();
   const selected = new FormData(event.target).get("answer");
   if (selected === null) { announce(translate("quizChoose")); return; }
+  const badgesBeforeQuiz = earnedBadgeIds();
   learnerProgress.quizzes[route.lesson.id] = Number(selected);
+  recordActivity();
   saveProgress();
+  announceNewBadges(badgesBeforeQuiz);
   const previousFeedback = event.target.querySelector(".quiz-feedback");
   if (previousFeedback) previousFeedback.remove();
   event.target.insertAdjacentHTML("beforeend", '<p class="quiz-feedback" role="status"><strong>' +
@@ -160,10 +167,16 @@ function handleMainClick(event) {
   if (route.kind !== "lesson") return;
   if (button.dataset.action === "complete") {
     const identifier = route.lesson.id;
+    const badgesBefore = earnedBadgeIds();
     if (learnerProgress.completed.includes(identifier)) {
       learnerProgress.completed.splice(learnerProgress.completed.indexOf(identifier), 1);
-    } else if (canCompleteLesson(route.lesson)) learnerProgress.completed.push(identifier);
+    } else if (canCompleteLesson(route.lesson)) {
+      learnerProgress.completed.push(identifier);
+      recordActivity();
+      showToast("🎉 " + translate("lessonDone") + " +" + EXPERIENCE.lesson + " XP");
+    }
     saveProgress();
+    announceNewBadges(badgesBefore);
     const readingPosition = window.scrollY;
     renderApplication();
     window.scrollTo(0, readingPosition);
@@ -191,7 +204,7 @@ function initializeApplication() {
     document.getElementById(key === "exportProgress" ? "export-progress" : "import-progress").textContent = translate(key);
   }
   let primaryMarkup = "";
-  for (const key of ["home", "setup", "projects", "plan", "glossary", "graduation"]) {
+  for (const key of ["home", "setup", "projects", "ideas", "plan", "glossary", "graduation"]) {
     primaryMarkup += '<a href="#' + key + '">' + escapeHtml(translate(key)) + "</a>";
   }
   document.getElementById("primary-navigation").innerHTML = primaryMarkup;
@@ -206,6 +219,7 @@ function initializeApplication() {
   main.addEventListener("change", handleMainChange);
   main.addEventListener("input", handleNotesInput);
   main.addEventListener("submit", handleQuizSubmit);
+  bindTyping(main);
   document.addEventListener("keydown", handleKeyboard);
   window.addEventListener("hashchange", handleHashChange);
   window.addEventListener("pagehide", saveProgress);

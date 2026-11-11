@@ -4,7 +4,8 @@
 /** Decide whether a learner has satisfied the lesson's visible completion checks. */
 function canCompleteLesson(lesson) {
   const checked = learnerProgress.checks[lesson.id] || [false, false, false];
-  return checked.every(Boolean) && learnerProgress.quizzes[lesson.id] === lesson.quiz.correct;
+  return checked.every(Boolean) && learnerProgress.quizzes[lesson.id] === lesson.quiz.correct &&
+    (learnerProgress.typed[lesson.id] === true || typingLines(lesson).length === 0);
 }
 
 /** Build a quiz whose feedback is revealed only after the learner submits an answer. */
@@ -42,7 +43,7 @@ function exercisesMarkup(lesson) {
 function masteryMarkup(lesson) {
   const checked = learnerProgress.checks[lesson.id] || [false, false, false];
   const completed = learnerProgress.completed.includes(lesson.id);
-  let markup = "";
+  let markup = completed ? celebrationMarkup(lesson) : "";
   for (let index = 0; index < lesson.mastery.length; index += 1) {
     markup += '<label class="mastery-item"><input type="checkbox" data-check="' + index + '"' +
       (checked[index] ? " checked" : "") + "><span>" + escapeHtml(lesson.mastery[index]) + "</span></label>";
@@ -94,6 +95,7 @@ function lessonMarkup(lesson) {
     '<aside class="external-practice"><strong>' + escapeHtml(translate("snippetPracticeTitle")) +
     '</strong><p>' + escapeHtml(translate("snippetPracticeText")) + "</p></aside>");
   markup += sectionMarkup(translate("walkthrough"), listMarkup(lesson.walkthrough, true));
+  markup += sectionMarkup(translate("typing"), typingMarkup(lesson), "typing-panel");
   markup += sectionMarkup(translate("run"), runMarkup(lesson));
   markup += sectionMarkup(translate("practice"), exercisesMarkup(lesson));
   markup += sectionMarkup(translate("mistakes"), listMarkup(lesson.mistakes), "mistake-panel");
