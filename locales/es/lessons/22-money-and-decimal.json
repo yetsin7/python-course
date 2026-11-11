@@ -11,7 +11,7 @@
   ],
   "concepts": [
     "float usa representación binaria y muchos decimales no se representan exactamente. Imprimir dos decimales no cambia cómo se almacenan. Para una moneda con dos decimales, centavos enteros simplifican suma y comparación. 1250 significa 12.50 porque tu contrato define esa unidad.",
-    "Decimal construido desde texto mantiene la representación decimal. Decimal(0.1) ya recibe una aproximación binaria; Decimal('0.1') parte del valor escrito. Antes de convertir a centavos valida finitud, signo y precisión permitida.",
+    "Decimal construido desde texto mantiene la representación decimal. `Decimal(0.1)` ya recibe una aproximación binaria; `Decimal('0.1')` parte del valor escrito. Antes de convertir a centavos valida finitud, signo y precisión permitida.",
     "Redondear es una regla de negocio que puede depender de acuerdos y legislación. No copies una política arbitraria a facturación real. La función de práctica acepta como máximo dos decimales y rechaza fracciones de centavo. En porcentajes define dónde redondeas y prueba los límites.",
     "Nunca sumes monedas distintas solo porque sus importes son enteros. Incluye currency en el modelo y convierte solo con una tasa documentada si corresponde. También limita magnitudes y distingue descuento absoluto de porcentaje.",
     "El ejemplo contrasta binario y decimal, y convierte 12.50 a centavos. Completa el ejercicio 11 con 12.50, 0, -1, abc, NaN y 1.001. Que la biblioteca pueda representar NaN no significa que tu aplicación deba aceptarlo."
@@ -24,9 +24,9 @@
   ],
   "exercises": [
     [
-      "Completa practice/11-money-to-cents.py.",
+      "Completa `practice/11-money-to-cents.py`.",
       "Valida finitud y que cents sea integral.",
-      "'12.50' -> 1250; '0' -> 0; negativos, NaN, Infinity, abc y fracciones de centavo producen ValueError."
+      "'12.50' -> 1250; '0' -> 0; negativos, NaN, Infinity, abc y fracciones de centavo producen `ValueError`."
     ],
     [
       "Explica por qué round al imprimir no resuelve todo un libro contable.",
@@ -46,9 +46,9 @@
   "quiz": {
     "question": "¿Cómo representar exactamente el decimal escrito 0.1?",
     "options": [
-      "Decimal('0.1').",
-      "Decimal(0.1) garantiza lo mismo.",
-      "int(0.1)."
+      "`Decimal('0.1')`.",
+      "`Decimal(0.1)` garantiza lo mismo.",
+      "`int(0.1)`."
     ],
     "correct": 0,
     "explanation": "La cadena evita pasar primero por una aproximación binaria."

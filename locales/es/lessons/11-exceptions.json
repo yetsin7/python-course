@@ -10,31 +10,31 @@
     "Comunicar un fallo sin esconderlo."
   ],
   "concepts": [
-    "Un error es un problema que impide que el programa haga lo esperado. SyntaxError significa que Python no puede leer la forma del código. Una excepción es una señal de problema durante la ejecución. ValueError es el nombre que Python da cuando una operación recibe un valor que no puede usar: por ejemplo, int(\"tres\") no puede convertir la palabra tres en un número entero.",
-    "try significa «intenta»: las líneas indentadas debajo son la operación que podría fallar. except significa «si ocurre este error, responde aquí». ValueError nombra el tipo concreto de error que este except sabe manejar. Así, except ValueError se lee: «si el intento falla porque el valor no sirve, sigue por aquí». Captura solo lo que sabes manejar; deja visible lo inesperado.",
+    "Un error es un problema que impide que el programa haga lo esperado. `SyntaxError` significa que Python no puede leer la forma del código. Una excepción es una señal de problema durante la ejecución. `ValueError` es el nombre que Python da cuando una operación recibe un valor que no puede usar: por ejemplo, `int(\"tres\")` no puede convertir la palabra tres en un número entero.",
+    "try significa «intenta»: las líneas indentadas debajo son la operación que podría fallar. except significa «si ocurre este error, responde aquí». `ValueError` nombra el tipo concreto de error que este except sabe manejar. Así, except `ValueError` se lee: «si el intento falla porque el valor no sirve, sigue por aquí». Captura solo lo que sabes manejar; deja visible lo inesperado.",
     "None significa «no hay un valor aquí»; no significa cero. Si la conversión falla, quantity = None deja claro que no se obtuvo un número. Un traceback es el informe que muestra dónde ocurrió el problema: lee primero su última línea para conocer el tipo y luego encuentra la línea de tu programa que lo provocó.",
-    "Una función de dominio puede lanzar ValueError con un mensaje técnico en inglés cuando una regla se viola. La capa de interfaz convierte esa condición en un mensaje localizado. No muestres al usuario un traceback con rutas internas; tampoco lo borres del diagnóstico del desarrollador. Error técnico y comunicación al usuario sirven a públicos distintos.",
+    "Una función de dominio puede lanzar `ValueError` con un mensaje técnico en inglés cuando una regla se viola. La capa de interfaz convierte esa condición en un mensaje localizado. No muestres al usuario un traceback con rutas internas; tampoco lo borres del diagnóstico del desarrollador. Error técnico y comunicación al usuario sirven a públicos distintos.",
     "La pregunta es qué recuperación tiene sentido. Para una entrada mal escrita puedes solicitar otra; para un archivo opcional ausente puedes usar un estado inicial; para un archivo de cuentas corrupto conviene detenerse y preservar una copia, no reemplazarlo por una lista vacía. El valor alternativo depende de la importancia de lo que se pierde.",
-    "El fragmento muestra el camino que falla. Si la conversión tuviera éxito, int(\"3\") produciría el número 3 y no se ejecutaría el bloque except. Decide qué debe hacer tu programa después de un fallo y prueba tanto el caso válido como el inválido; devolver None es una decisión, no una regla universal."
+    "El fragmento muestra el camino que falla. Si la conversión tuviera éxito, `int(\"3\")` produciría el número 3 y no se ejecutaría el bloque except. Decide qué debe hacer tu programa después de un fallo y prueba tanto el caso válido como el inválido; devolver None es una decisión, no una regla universal."
   ],
   "snippet": "try:\n    quantity = int(\"three\")\nexcept ValueError:\n    print(\"Escribe un número, por ejemplo 3\")\n# ... (fragmento; observa cómo se responde al error)",
   "output": "None\n3\n",
   "walkthrough": [
-    "int(...) intenta convertir el texto en un número entero. \"three\" no representa un entero, así que Python señala ValueError.",
+    "`int(...)` intenta convertir el texto en un número entero. \"three\" no representa un entero, así que Python señala `ValueError`.",
     "try marca la operación que puede fallar; los cuatro espacios muestran qué líneas pertenecen a ese bloque.",
-    "except ValueError: reconoce específicamente ese tipo de fallo. Si aparece, Python salta al bloque indentado debajo.",
+    "except `ValueError`: reconoce específicamente ese tipo de fallo. Si aparece, Python salta al bloque indentado debajo.",
     "El bloque de respuesta explica el problema en vez de ocultarlo. Con un valor válido, Python no entra en except."
   ],
   "exercises": [
     [
-      "Completa practice/06-parse-quantity.py: retorna entero no negativo o None.",
+      "Completa `practice/06-parse-quantity.py`: retorna entero no negativo o None.",
       "Separa el fallo de conversión del rechazo de un negativo.",
       "'4' da 4; '0' da 0; '-1', 'three' y '' dan None. Recibe str, no cualquier objeto."
     ],
     [
-      "Provoca FileNotFoundError con una lectura de un archivo inexistente en study-work.",
+      "Provoca `FileNotFoundError` con una lectura de un archivo inexistente en `study-work`.",
       "Lee el traceback antes de capturarlo.",
-      "Path('study-work/missing.txt').read_text() falla. Captura FileNotFoundError solo si tu caso tiene una recuperación definida."
+      "`Path('study-work/missing.txt')`.`read_text()` falla. Captura `FileNotFoundError` solo si tu caso tiene una recuperación definida."
     ],
     [
       "Explica por qué except Exception: pass sería dañino al guardar un pedido.",
@@ -47,11 +47,11 @@
     "Devolver cero ante cualquier fallo y confundir error con valor válido."
   ],
   "quiz": {
-    "question": "¿Qué excepción esperas de int('abc')?",
+    "question": "¿Qué excepción esperas de `int('abc')`?",
     "options": [
-      "ValueError.",
-      "FileNotFoundError.",
-      "IndexError."
+      "`ValueError`.",
+      "`FileNotFoundError`.",
+      "`IndexError`."
     ],
     "correct": 0,
     "explanation": "La cadena no representa un entero válido."

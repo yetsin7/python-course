@@ -30,7 +30,7 @@ function homeMarkup() {
   markup += "</div></section>";
   markup += sectionMarkup(translate("badges"), badgesMarkup());
   markup += sectionMarkup(translate("practiceToolsTitle"),
-    "<p>" + escapeHtml(translate("practiceToolsText")) + "</p>",
+    "<p>" + inlineMarkup(translate("practiceToolsText")) + "</p>",
     "goal-panel");
   markup += sectionMarkup(translate("whyPython"), paragraphsMarkup([COURSE.languageChoice]), "goal-panel");
   markup += sectionMarkup(translate("daily"), listMarkup(COURSE.plan.firstSession, true));
@@ -45,7 +45,7 @@ function setupMarkup() {
     let contents = paragraphsMarkup(section.paragraphs || []);
     if (section.definitions) contents += definitionsMarkup(section.definitions);
     if (section.steps) contents += listMarkup(section.steps, true);
-    if (section.note) contents += '<p class="setup-note">' + escapeHtml(section.note) + "</p>";
+    if (section.note) contents += '<p class="setup-note">' + inlineMarkup(section.note) + "</p>";
     markup += sectionMarkup(section.title, contents);
   }
   return markup + sectionMarkup(translate("start"), "<p>" + escapeHtml(setup.next) +
@@ -60,12 +60,12 @@ function ideasMarkup() {
   for (const group of ideas.groups) {
     let cards = '<div class="idea-grid">';
     for (const [title, what, how] of group.ideas) {
-      cards += '<article class="idea-item"><h3>' + escapeHtml(title) + "</h3><p>" + escapeHtml(what) +
-        '</p><p class="muted">' + escapeHtml(how) + "</p></article>";
+      cards += '<article class="idea-item"><h3>' + escapeHtml(title) + "</h3><p>" + inlineMarkup(what) +
+        '</p><p class="muted">' + inlineMarkup(how) + "</p></article>";
     }
     markup += sectionMarkup(group.title, cards + "</div>");
   }
-  return markup + '<p class="plain-panel">' + escapeHtml(ideas.closing) + "</p>";
+  return markup + '<p class="plain-panel">' + inlineMarkup(ideas.closing) + "</p>";
 }
 
 /** Draw the share of completed lessons as a ring inside the home hero. */
@@ -86,7 +86,7 @@ function projectsMarkup() {
   for (const project of COURSE.projects) {
     markup += '<a class="project-card" href="#project-' + project.id + '"><p class="eyebrow">' +
       escapeHtml(translate("projectAfter")) + " " + lessonNumber(project.after) + "</p><h2>" +
-      escapeHtml(project.title) + "</h2><p>" + escapeHtml(project.brief) +
+      escapeHtml(project.title) + "</h2><p>" + inlineMarkup(project.brief) +
       '</p><span class="project-link">' + escapeHtml(translate("openProject")) + " →</span></a>";
   }
   return markup + "</div>";

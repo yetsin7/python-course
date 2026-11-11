@@ -9,13 +9,24 @@ function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, replaceCharacter);
 }
 
+/** Escape text and turn `fragments` between backticks into inline code, so commands stand out from prose. */
+function inlineMarkup(value) {
+  const parts = String(value).split("`");
+  if (parts.length % 2 === 0) return escapeHtml(String(value).replace(/`/g, ""));
+  let markup = "";
+  parts.forEach((part, index) => {
+    markup += index % 2 ? '<code class="inline-code">' + escapeHtml(part) + "</code>" : escapeHtml(part);
+  });
+  return markup;
+}
+
 /** Produce a consistent numbered label for file and lesson navigation. */
 function lessonNumber(identifier) { return String(identifier).padStart(2, "0"); }
 
 /** Render plain localized paragraphs without interpreting embedded markup. */
 function paragraphsMarkup(paragraphs) {
   let markup = "";
-  for (const paragraph of paragraphs) markup += "<p>" + escapeHtml(paragraph) + "</p>";
+  for (const paragraph of paragraphs) markup += "<p>" + inlineMarkup(paragraph) + "</p>";
   return markup;
 }
 
@@ -23,7 +34,7 @@ function paragraphsMarkup(paragraphs) {
 function listMarkup(items, ordered = false) {
   const tag = ordered ? "ol" : "ul";
   let markup = "<" + tag + ">";
-  for (const item of items) markup += "<li>" + escapeHtml(item) + "</li>";
+  for (const item of items) markup += "<li>" + inlineMarkup(item) + "</li>";
   return markup + "</" + tag + ">";
 }
 
@@ -31,7 +42,7 @@ function listMarkup(items, ordered = false) {
 function definitionsMarkup(pairs) {
   let markup = '<dl class="definitions">';
   for (const [term, explanation] of pairs) {
-    markup += "<div><dt>" + escapeHtml(term) + "</dt><dd>" + escapeHtml(explanation) + "</dd></div>";
+    markup += "<div><dt>" + inlineMarkup(term) + "</dt><dd>" + inlineMarkup(explanation) + "</dd></div>";
   }
   return markup + "</dl>";
 }
@@ -57,5 +68,5 @@ function nextLesson() {
 function pageHeading(title, introduction = "") {
   return '<header class="page-heading"><p class="eyebrow">' + escapeHtml(COURSE.subtitle) +
     '</p><h1 tabindex="-1">' + escapeHtml(title) + "</h1>" +
-    (introduction ? "<p>" + escapeHtml(introduction) + "</p>" : "") + "</header>";
+    (introduction ? "<p>" + inlineMarkup(introduction) + "</p>" : "") + "</header>";
 }

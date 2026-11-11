@@ -11,30 +11,30 @@ function canCompleteLesson(lesson) {
 /** Build a quiz whose feedback is revealed only after the learner submits an answer. */
 function quizMarkup(lesson) {
   const selected = learnerProgress.quizzes[lesson.id];
-  let markup = '<form id="lesson-quiz"><fieldset><legend>' + escapeHtml(lesson.quiz.question) + "</legend>";
+  let markup = '<form id="lesson-quiz"><fieldset><legend>' + inlineMarkup(lesson.quiz.question) + "</legend>";
   for (let index = 0; index < lesson.quiz.options.length; index += 1) {
     markup += '<label class="quiz-option"><input type="radio" name="answer" value="' + index + '"' +
-      (selected === index ? " checked" : "") + "><span>" + escapeHtml(lesson.quiz.options[index]) + "</span></label>";
+      (selected === index ? " checked" : "") + "><span>" + inlineMarkup(lesson.quiz.options[index]) + "</span></label>";
   }
   markup += '</fieldset><button class="secondary" type="submit">' + escapeHtml(translate("quizCheck")) + "</button>";
   if (selected !== undefined) {
     markup += '<p class="quiz-feedback" role="status"><strong>' +
       escapeHtml(translate(selected === lesson.quiz.correct ? "quizCorrect" : "quizIncorrect")) +
-      "</strong> " + (selected === lesson.quiz.correct ? escapeHtml(lesson.quiz.explanation) : "") + "</p>";
+      "</strong> " + (selected === lesson.quiz.correct ? inlineMarkup(lesson.quiz.explanation) : "") + "</p>";
   }
   return markup + "</form>";
 }
 
 /** Render practice hints and answers as separate collapsed disclosures. */
 function exercisesMarkup(lesson) {
-  let markup = '<p class="muted">' + escapeHtml(translate("solutionWarning")) + "</p>";
+  let markup = '<p class="muted">' + inlineMarkup(translate("solutionWarning")) + "</p>";
   let index = 0;
   for (const [prompt, hint, answer] of lesson.exercises) {
     index += 1;
     markup += '<article class="exercise"><h3><span class="exercise-number">' + index + "</span>" +
-      escapeHtml(prompt) + '</h3><details><summary>' + escapeHtml(translate("hint")) +
-      "</summary><p>" + escapeHtml(hint) + '</p></details><details class="solution"><summary>' +
-      escapeHtml(translate("solution")) + "</summary><p>" + escapeHtml(answer) + "</p></details></article>";
+      inlineMarkup(prompt) + '</h3><details><summary>' + escapeHtml(translate("hint")) +
+      "</summary><p>" + inlineMarkup(hint) + '</p></details><details class="solution"><summary>' +
+      escapeHtml(translate("solution")) + "</summary><p>" + inlineMarkup(answer) + "</p></details></article>";
   }
   return markup;
 }
@@ -46,7 +46,7 @@ function masteryMarkup(lesson) {
   let markup = completed ? celebrationMarkup(lesson) : "";
   for (let index = 0; index < lesson.mastery.length; index += 1) {
     markup += '<label class="mastery-item"><input type="checkbox" data-check="' + index + '"' +
-      (checked[index] ? " checked" : "") + "><span>" + escapeHtml(lesson.mastery[index]) + "</span></label>";
+      (checked[index] ? " checked" : "") + "><span>" + inlineMarkup(lesson.mastery[index]) + "</span></label>";
   }
   markup += '<p class="muted">' + escapeHtml(translate("completionHelp")) + '</p><button id="complete-lesson" class="primary" data-action="complete"' +
     (!completed && !canCompleteLesson(lesson) ? " disabled" : "") + ">" +
@@ -67,14 +67,14 @@ function referencesMarkup(lesson) {
 
 /** Explain how to run the full example and what the learner should observe. */
 function runMarkup(lesson) {
-  const steps = [escapeHtml(translate("runOpen")), escapeHtml(translate("runFolder")),
-    escapeHtml(translate("runCommand")) + commandMarkup(lesson.run.command)];
+  const steps = [inlineMarkup(translate("runOpen")), inlineMarkup(translate("runFolder")),
+    inlineMarkup(translate("runCommand")) + commandMarkup(lesson.run.command)];
   if (lesson.run.answers.length) {
-    steps.push(escapeHtml(translate("runAnswers")) + commandMarkup(lesson.run.answers.join("\n")));
+    steps.push(inlineMarkup(translate("runAnswers")) + commandMarkup(lesson.run.answers.join("\n")));
   }
-  steps.push(escapeHtml(translate("runOutput")) + commandMarkup(lesson.run.output.trimEnd()));
-  return "<p>" + escapeHtml(translate("runIntro")) + '</p><ol class="run-steps"><li>' + steps.join("</li><li>") +
-    '</li></ol><p class="muted">' + escapeHtml(translate("runDifferent")) + ' <a href="#setup">' +
+  steps.push(inlineMarkup(translate("runOutput")) + commandMarkup(lesson.run.output.trimEnd()));
+  return "<p>" + inlineMarkup(translate("runIntro")) + '</p><ol class="run-steps"><li>' + steps.join("</li><li>") +
+    '</li></ol><p class="muted">' + inlineMarkup(translate("runDifferent")) + ' <a href="#setup">' +
     escapeHtml(translate("setupCallLink")) + "</a></p>";
 }
 
@@ -135,7 +135,7 @@ function lessonMarkup(lesson) {
     sectionMarkup(translate("example"), '<div class="code-toolbar"><span>' + escapeHtml(translate("snippetLabel")) +
       '</span></div><pre class="source-code"><code>' + escapeHtml(lesson.code) + "</code></pre>" +
       '<aside class="external-practice"><strong>' + escapeHtml(translate("snippetPracticeTitle")) +
-      "</strong><p>" + escapeHtml(translate("snippetPracticeText")) + "</p></aside>") +
+      "</strong><p>" + inlineMarkup(translate("snippetPracticeText")) + "</p></aside>") +
     sectionMarkup(translate("walkthrough"), listMarkup(lesson.walkthrough, true)));
   markup += stageMarkup(3, stages[2], sectionMarkup(translate("typing"), typingMarkup(lesson), "typing-panel"));
   markup += stageMarkup(4, stages[3], sectionMarkup(translate("run"), runMarkup(lesson)));

@@ -10,10 +10,10 @@
     "Diseñar un comando observable y repetible."
   ],
   "concepts": [
-    "Una CLI permite ejecutar una acción con argumentos: python cli.py add --title 'Review report'. argparse interpreta subcomandos, opciones y tipos. Evita leer sys.argv por posiciones cuando el formato puede variar. Una entrada inválida debe terminar con código distinto de cero para que otro proceso detecte el fallo.",
+    "Una CLI permite ejecutar una acción con argumentos: `python cli.py add --title 'Review report'`. argparse interpreta subcomandos, opciones y tipos. Evita leer sys.argv por posiciones cuando el formato puede variar. Una entrada inválida debe terminar con código distinto de cero para que otro proceso detecte el fallo.",
     "La interfaz interpreta entradas y presenta resultados; el dominio aplica reglas; el repositorio guarda y recupera. No pongas SQL dentro de cada mensaje de terminal. Separar permite usar el mismo repositorio desde una CLI y desde una API, y probarlo sin simular una persona escribiendo.",
     "No necesitas una clase por cada archivo. Puedes comenzar con funciones de almacenamiento y un modelo sencillo, como en el proyecto 4. La separación importa más que el nombre de un patrón. Un resultado estructurado es útil para automatizar; una etiqueta localizada es útil para leer. Decide qué contrato ofrece cada comando.",
-    "Los mensajes del proyecto se cargan desde locales/es.json. Los identificadores, códigos de error y logs técnicos siguen en inglés. argparse puede producir ayuda técnica incorporada; los textos de ayuda que tú defines también vienen del archivo de traducción. Esto facilita cambiar el idioma sin tocar reglas.",
+    "Los mensajes del proyecto se cargan desde `locales/es.json`. Los identificadores, códigos de error y logs técnicos siguen en inglés. argparse puede producir ayuda técnica incorporada; los textos de ayuda que tú defines también vienen del archivo de traducción. Esto facilita cambiar el idioma sin tocar reglas.",
     "Ejecuta el proyecto 4, después crea tu propia versión: add, list y complete. Prueba una tarea desconocida, un título vacío y una segunda ejecución que recupere lo anterior. Siempre ejecuta desde la carpeta documentada o usa rutas ancladas al script para almacenamiento predeterminado."
   ],
   "output": "4\n500\n",
@@ -40,7 +40,7 @@
     ]
   ],
   "mistakes": [
-    "Acoplar almacenamiento a input().",
+    "Acoplar almacenamiento a `input()`.",
     "Guardar archivos según una carpeta accidental del llamador."
   ],
   "quiz": {

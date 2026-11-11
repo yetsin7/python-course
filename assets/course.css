@@ -23,6 +23,10 @@ ul, ol { padding-left: 24px; }
 pre { white-space: pre; overflow: auto; max-width: 100%; line-height: 1.65; font-size: 14px; }
 code, kbd { font-family: "Cascadia Code", Consolas, monospace; font-size: .92em; }
 pre, code, .typing-lines { -webkit-user-select: none; user-select: none; }
+.inline-code { padding: 2px 7px; border: 1px solid #cfdceb; border-radius: 7px; background: #eaf1f8; color: #0f3a5f; font-size: .88em; font-weight: 600; white-space: nowrap; }
+.plain-panel .inline-code, .setup-note .inline-code { background: #fff; border-color: #e3cf86; color: #6b4a00; }
+.goal-panel .inline-code, .hero .inline-code { background: #fff; }
+dt .inline-code { background: #dfe9f4; }
 .muted { color: var(--muted); font-size: 14px; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 

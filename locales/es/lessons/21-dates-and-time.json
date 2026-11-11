@@ -14,7 +14,7 @@
     "date.fromisoformat interpreta AAAA-MM-DD. ISO evita confundir 07/10 entre julio y octubre. Un timedelta expresa una duración. No restes fragmentos de cadenas para calcular días: hay meses de distintas longitudes y años bisiestos.",
     "«Vence el 8 de octubre» puede ser una fecha de calendario; «vence exactamente dentro de 24 horas» es una duración desde un instante. Guardar uno como si fuera el otro cambia el significado al convertir de zona. Define qué representa cada campo.",
     "Un datetime sin zona es ingenuo; mezclarlo con uno consciente puede fallar o ser ambiguo. Para pruebas usa momentos fijos o pasa un reloj como dependencia. Una prueba que depende del minuto actual puede fallar al cruzar medianoche.",
-    "El ejemplo usa fechas fijas para ser repetible. Distingue recorded_at del día de negocio business_date. Si necesitas America/Guatemala en Windows, zoneinfo puede requerir tzdata: no adivines la zona por el reloj del equipo."
+    "El ejemplo usa fechas fijas para ser repetible. Distingue `recorded_at` del día de negocio `business_date`. Si necesitas America/Guatemala en Windows, zoneinfo puede requerir tzdata: no adivines la zona por el reloj del equipo."
   ],
   "output": "2026-10-14\n7\n2026-10-07T12:00:00+00:00\n",
   "walkthrough": [
@@ -26,12 +26,12 @@
     [
       "Calcula siete días después de 2024-02-26.",
       "Es bisiesto.",
-      "date.fromisoformat('2024-02-26') + timedelta(days=7) da 2024-03-04."
+      "`date.fromisoformat('2024-02-26')` + `timedelta(days=7)` da 2024-03-04."
     ],
     [
       "Distingue fecha de factura y momento de creación.",
       "Solo uno identifica un instante.",
-      "invoice_date es date; created_at es datetime consciente. Documenta su significado."
+      "`invoice_date` es date; `created_at` es datetime consciente. Documenta su significado."
     ],
     [
       "Prueba un vencimiento sin usar el reloj actual.",

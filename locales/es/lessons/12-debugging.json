@@ -12,9 +12,9 @@
   "concepts": [
     "Depurar es encontrar por qué el comportamiento observado no coincide con el esperado. Empieza con un caso reproducible: entradas exactas, comando y resultado. Si el requisito no dice qué esperas, aún no puedes distinguir un defecto de una preferencia. Reduce el ejemplo hasta conservar solo el comportamiento que falla.",
     "En un programa que calcula promedios, el caso [10, 20] debería dar 15, pero dividir por 3 da 10. No hay excepción: el código es válido y la regla está mal. Inspecciona numerator y denominator por separado. Busca la primera divergencia entre tu tabla manual y los valores reales.",
-    "print puede mostrar temporalmente valores; breakpoint() pausa para examinarlos con el depurador pdb. En una copia del ejemplo inserta breakpoint() antes del return y ejecuta. Usa p values para inspeccionar, n para avanzar, c para continuar y q para salir. No pongas un breakpoint en un servidor de uso real ni en una prueba automática desatendida.",
+    "print puede mostrar temporalmente valores; `breakpoint()` pausa para examinarlos con el depurador pdb. En una copia del ejemplo inserta `breakpoint()` antes del return y ejecuta. Usa p values para inspeccionar, n para avanzar, c para continuar y q para salir. No pongas un breakpoint en un servidor de uso real ni en una prueba automática desatendida.",
     "Una hipótesis debe producir una predicción: «si el denominador está fijo, al añadir un tercer dato el resultado cambiará de forma incorrecta». Haz un solo cambio y repite el mismo caso. Corregir cinco cosas a la vez impide saber qué resolvió el problema. Conserva una prueba que reproduzca el fallo antes de arreglarlo.",
-    "Cuando una lista vacía causa división entre cero, todavía falta una decisión del contrato. El ejemplo rechaza el vacío con ValueError. Explicar esa decisión es parte de la solución; esconder la excepción no lo es. En la lección 17 automatizarás estas comprobaciones."
+    "Cuando una lista vacía causa división entre cero, todavía falta una decisión del contrato. El ejemplo rechaza el vacío con `ValueError`. Explicar esa decisión es parte de la solución; esconder la excepción no lo es. En la lección 17 automatizarás estas comprobaciones."
   ],
   "output": "15.0\n20.0\n",
   "walkthrough": [
@@ -29,7 +29,7 @@
       "[10, 20] debe dar 15; el defecto da 10. Registra entrada, esperado, observado y causa."
     ],
     [
-      "Usa breakpoint() en la copia y observa values.",
+      "Usa `breakpoint()` en la copia y observa values.",
       "El ejemplo del curso no contiene pausas para que pueda verificarse automáticamente.",
       "p values muestra la lista; n avanza; c continúa. Retira la pausa al finalizar."
     ],

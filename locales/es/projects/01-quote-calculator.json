@@ -7,13 +7,13 @@
   "brief": "Una herramienta para cotizar una cantidad de artículos con precio y descuento en porcentaje entero. Todas las cantidades monetarias están en centavos de una moneda única de ejemplo.",
   "milestones": [
     "Escribe ejemplos y reglas antes del cálculo.",
-    "Implementa calculate_quote como función pura con validación.",
+    "Implementa `calculate_quote` como función pura con validación.",
     "Añade una CLI con argumentos y mensajes localizados.",
     "Agrega pruebas de cero, límites y negativos.",
     "Documenta comandos y registra tres commits."
   ],
   "deliverables": [
-    "Código propio en study-work/quote-calculator.",
+    "Código propio en `study-work/quote-calculator`.",
     "README en inglés y archivos de traducción.",
     "Pruebas automatizadas y demostración de tres cotizaciones."
   ],

@@ -24,14 +24,14 @@
   ],
   "exercises": [
     [
-      "Diseña expenses con id, category y amount_cents.",
+      "Diseña expenses con id, category y `amount_cents`.",
       "Protege identidad y no negativos.",
-      "id INTEGER PRIMARY KEY; category TEXT NOT NULL; amount_cents INTEGER NOT NULL CHECK(amount_cents >= 0)."
+      "id INTEGER PRIMARY KEY; category TEXT NOT NULL; `amount_cents` INTEGER NOT NULL `CHECK(amount_cents >= 0)`."
     ],
     [
       "Consulta la suma de dos gastos por categoría.",
       "Define el orden.",
-      "SELECT category, SUM(amount_cents) FROM expenses GROUP BY category ORDER BY category."
+      "SELECT category, `SUM(amount_cents)` FROM expenses GROUP BY category ORDER BY category."
     ],
     [
       "Busca un nombre que contiene una comilla.",

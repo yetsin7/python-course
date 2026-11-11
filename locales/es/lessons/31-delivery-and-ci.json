@@ -10,9 +10,9 @@
     "Preparar operación y recuperación."
   ],
   "concepts": [
-    "Una entrega profesional puede recrearse: versión de Python, dependencias, comandos, configuración y datos de prueba documentados. El proyecto incluye requirements-lock.txt, una plantilla de CI y un Dockerfile opcional. No necesitas Docker para completar el curso local. Compara siempre resultados locales, CI y despliegue: son evidencias diferentes.",
-    "Ensaya una instalación limpia: desde projects/05-task-api crea build/release-env, instala el lock, ejecuta pip check y la suite. Levanta sin --reload y prueba health, crear, listar y completar desde otra terminal. Conserva evidencia del comando y resultado; no copies el entorno de tu equipo como entrega portátil.",
-    "Para CI copia únicamente tu implementación del proyecto a un repositorio de práctica propio, con su .github/workflows/quality.yml. El workflow instala Python 3.13, dependencias y corre pruebas. Publícalo solo cuando hayas revisado archivos y secretos y decidido compartirlo. Un archivo YAML local no prueba que GitHub Actions haya pasado; verifica una ejecución real después.",
+    "Una entrega profesional puede recrearse: versión de Python, dependencias, comandos, configuración y datos de prueba documentados. El proyecto incluye `requirements-lock.txt`, una plantilla de CI y un Dockerfile opcional. No necesitas Docker para completar el curso local. Compara siempre resultados locales, CI y despliegue: son evidencias diferentes.",
+    "Ensaya una instalación limpia: desde `projects/05-task-api` crea `build/release-env`, instala el lock, ejecuta `pip check` y la suite. Levanta sin --reload y prueba health, crear, listar y completar desde otra terminal. Conserva evidencia del comando y resultado; no copies el entorno de tu equipo como entrega portátil.",
+    "Para CI copia únicamente tu implementación del proyecto a un repositorio de práctica propio, con su `.github/workflows/quality.yml`. El workflow instala Python 3.13, dependencias y corre pruebas. Publícalo solo cuando hayas revisado archivos y secretos y decidido compartirlo. Un archivo YAML local no prueba que GitHub Actions haya pasado; verifica una ejecución real después.",
     "El laboratorio de despliegue local ya es ejecutable. Para una publicación posterior: completa autenticación y autorización; elige plataforma y verifica documentación actual, precios y condiciones; configura HTTPS, secretos y almacenamiento persistente; aplica migraciones; ejecuta pruebas de humo; observa logs y ensaya volver a la versión anterior. SQLite necesita un volumen persistente y una topología compatible.",
     "Una base no vive en la imagen del contenedor: el Dockerfile opcional usa /app/build para que puedas montar almacenamiento. Antes de cambiar esquema toma una copia y demuestra restauración. Escribe un runbook con arranque, diagnóstico, backup, restauración y rollback. La referencia local sin autenticación necesita ese trabajo de endurecimiento antes de exponerse públicamente."
   ],
@@ -24,9 +24,9 @@
   ],
   "exercises": [
     [
-      "Haz una instalación limpia en build/release-env.",
+      "Haz una instalación limpia en `build/release-env`.",
       "Usa el lock y no los paquetes globales.",
-      "python -m venv build/release-env; instala requirements-lock.txt con su intérprete; pip check y la suite deben pasar."
+      "`python -m venv build/release-env`; instala `requirements-lock.txt` con su intérprete; `pip check` y la suite deben pasar."
     ],
     [
       "Ejecuta una prueba de humo desde PowerShell con Uvicorn sin --reload.",

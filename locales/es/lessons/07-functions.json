@@ -11,10 +11,10 @@
   ],
   "concepts": [
     "Una función agrupa una operación con nombre. def declara la función, pero su cuerpo solo se ejecuta cuando la llamas. Los parámetros son nombres de entrada; los argumentos son los valores enviados. return entrega un resultado a quien llamó y termina la ejecución de esa función. print solo muestra: una función que imprime y no retorna entrega None.",
-    "Diseña un contrato antes del código: qué recibe, qué devuelve y cuándo falla. calculate_total recibe precio en centavos y cantidad; devuelve centavos enteros; rechaza valores negativos. raise significa «avisa y detén esta operación»; ValueError es el tipo de error elegido para explicar que un valor no cumple la regla. Este contrato evita que el llamador tenga que adivinar. Una función pura depende de sus entradas y no altera archivos ni estado externo; es más fácil de probar.",
+    "Diseña un contrato antes del código: qué recibe, qué devuelve y cuándo falla. `calculate_total` recibe precio en centavos y cantidad; devuelve centavos enteros; rechaza valores negativos. raise significa «avisa y detén esta operación»; `ValueError` es el tipo de error elegido para explicar que un valor no cumple la regla. Este contrato evita que el llamador tenga que adivinar. Una función pura depende de sus entradas y no altera archivos ni estado externo; es más fácil de probar.",
     "El texto inicial entre comillas triples es el docstring. Explica la regla y el fallo importante. Las anotaciones int y -> int documentan tipos esperados; por sí solas no bloquean valores incorrectos en tiempo de ejecución. La validación del ejemplo impide negativos, pero no pretende validar cualquier objeto posible: ese límite también es parte del contrato.",
     "Las variables dentro de una función son locales. Evita depender de una variable global que cambia en otra parte: pasa explícitamente lo necesario. Mantén las funciones enfocadas. Una función que lee entrada, calcula, escribe un archivo y manda un correo tiene demasiadas razones para cambiar.",
-    "Abre practice/02-total.py. Escribe tres ejemplos en papel antes de implementar: 125 por 4, cero unidades y una cantidad negativa. Ejecuta python scripts/check-practice.py --exercise 02. Leer el fallo de una prueba forma parte del aprendizaje; no mires la solución hasta registrar tu intento."
+    "Abre `practice/02-total.py`. Escribe tres ejemplos en papel antes de implementar: 125 por 4, cero unidades y una cantidad negativa. Ejecuta `python scripts/check-practice.py --exercise 02`. Leer el fallo de una prueba forma parte del aprendizaje; no mires la solución hasta registrar tu intento."
   ],
   "snippet": "def calculate_total(unit_price_cents, quantity):\n    \"\"\"Calcula un total y rechaza valores negativos.\"\"\"\n    if unit_price_cents < 0 or quantity < 0:\n        raise ValueError(\"El precio y la cantidad deben ser positivos o cero.\")\n    # ¿Qué valor debería devolver esta función?",
   "output": "500\n0\n",
@@ -25,19 +25,19 @@
   ],
   "exercises": [
     [
-      "Completa practice/02-total.py.",
+      "Completa `practice/02-total.py`.",
       "Devuelve el producto después de validar negativos.",
-      "125 y 4 dan 500; cualquier argumento negativo provoca ValueError; cero es válido. Consulta solutions/02-total.py solo después de intentar."
+      "125 y 4 dan 500; cualquier argumento negativo provoca `ValueError`; cero es válido. Consulta `solutions/02-total.py` solo después de intentar."
     ],
     [
       "Crea una función para convertir minutos a segundos.",
       "Un parámetro y un resultado son suficientes.",
-      "def convert_minutes(minutes): con docstring; return minutes * 60. Para 2 devuelve 120."
+      "def `convert_minutes(minutes)`: con docstring; return minutes * 60. Para 2 devuelve 120."
     ],
     [
-      "Explica qué devuelve una función cuyo único contenido es print(5).",
+      "Explica qué devuelve una función cuyo único contenido es `print(5)`.",
       "Mostrar no entrega un valor a una expresión.",
-      "Devuelve None. Si result = esa_función(), result es None aunque veas 5 en la consola."
+      "Devuelve None. Si result = `esa_función()`, result es None aunque veas 5 en la consola."
     ]
   ],
   "mistakes": [

@@ -3,11 +3,11 @@
   "intro": "Esta ruta no exige experiencia ni matemáticas avanzadas. Necesitas manejar archivos, leer con atención y reservar tiempo para practicar. Si una parte no se entiende, vuelve a un ejemplo pequeño.",
   "schedule": "Plan orientativo: 24 a 36 semanas con 6–8 horas por semana, unas 150–220 horas incluyendo repetición y proyectos. Si dispones de 3 horas semanales, reserva aproximadamente el doble de semanas. Los tiempos de cada lección son puntos de partida; manda tu comprensión.",
   "firstSession": [
-    "Abre PowerShell y ejecuta python --version.",
-    "Ejecuta Set-Location con la ubicación donde guardaste este curso; por ejemplo, Set-Location C:\\Dev\\python-course.",
+    "Abre PowerShell y ejecuta `python --version`.",
+    "Ejecuta `Set-Location` con la ubicación donde guardaste este curso; por ejemplo, `Set-Location C:\\Dev\\python-course`.",
     "Lee la lección 01 y predice qué mostrará el ejemplo.",
-    "Ejecuta python examples/01-first-program.py.",
-    "Crea study-work, guarda una copia modificada y ejecútala.",
+    "Ejecuta `python examples/01-first-program.py`.",
+    "Crea `study-work`, guarda una copia modificada y ejecútala.",
     "Escribe tus conclusiones en las notas; exporta tu progreso."
   ],
   "session": [
@@ -42,7 +42,7 @@
   ],
   "help": "Para pedir ayuda: indica lección y ejercicio, pega tu intento pequeño, describe entrada, esperado y observado, y comparte el error completo sin secretos. Puedes escribir: «Estoy en la lección 07, práctica 02. Este es mi intento. Dame una pista y revisa mi razonamiento».",
   "rules": [
-    "Trabaja en study-work; los ejemplos y soluciones son referencias.",
+    "Trabaja en `study-work`; los ejemplos y soluciones son referencias.",
     "Usa nombres de variables en inglés cuando el ejercicio lo pida; añade comentarios o docstrings claros para explicar qué hace cada función. En los fragmentos de aprendizaje, usa explicaciones en español.",
     "No cambies políticas de seguridad ni reinstales herramientas para esconder un error de sintaxis.",
     "No uses datos reales ni credenciales de tus aplicaciones para prácticas.",
@@ -51,22 +51,22 @@
   "troubleshooting": [
     [
       "python no se reconoce",
-      "Prueba py --version. Si tampoco funciona, instala desde python.org y abre de nuevo PowerShell."
+      "Prueba `py --version`. Si tampoco funciona, instala desde python.org y abre de nuevo PowerShell."
     ],
     [
       "can't open file",
-      "Comprueba Get-Location, ruta, nombre y extensión. No es un error de lógica."
+      "Comprueba `Get-Location`, ruta, nombre y extensión. No es un error de lógica."
     ],
     [
-      "IndentationError",
+      "`IndentationError`",
       "Usa cuatro espacios por bloque y evita mezclar tabulaciones."
     ],
     [
-      "ValueError al convertir",
+      "`ValueError` al convertir",
       "Comprueba el texto recibido y el tipo de entrada permitido."
     ],
     [
-      "ModuleNotFoundError",
+      "`ModuleNotFoundError`",
       "Revisa el intérprete y la carpeta; para la API instala su lock en su propio entorno."
     ],
     [

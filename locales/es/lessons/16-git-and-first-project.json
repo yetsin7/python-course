@@ -10,10 +10,10 @@
     "Entregar una calculadora con criterios verificables."
   ],
   "concepts": [
-    "Git guarda versiones del trabajo. Un repositorio es una carpeta cuyo historial controlas; un commit registra cambios seleccionados. GitHub es un servicio remoto, no Git mismo. Empieza localmente: así practicas sin publicar archivos personales. Ejecuta git --version para verificar la herramienta; si falta, usa la descarga oficial enlazada. Ejecuta este ejemplo desde VS Code, PowerShell o CMD para comprobar la instalación real.",
-    "Crea study-work/quote-calculator, entra a esa carpeta y ejecuta git init. Configura nombre y correo solo allí con git config user.name y git config user.email; el correo que elijas quedará en commits, así que usa uno apropiado para compartir. No uses --global si solo estás experimentando.",
-    "Antes de cada commit: git status para ver archivos, git diff para leer cambios y git add seguido de nombres concretos para preparar lo relevante. git diff --cached muestra exactamente lo preparado. git commit -m \"Add validated quote calculation\" registra esa versión. Evita git add . hasta comprender qué incluirías. Nunca incluyas .env, contraseñas, archivos personales ni entornos virtuales.",
-    "Construye el proyecto 1 de la sección Proyectos: una calculadora de cotizaciones. El lector contiene su especificación, etapas y rúbrica; la referencia está en projects/01-quote-calculator. Escribe tu versión en study-work antes de consultar esa referencia. Debe calcular en centavos, validar entradas y separar cálculo de presentación.",
+    "Git guarda versiones del trabajo. Un repositorio es una carpeta cuyo historial controlas; un commit registra cambios seleccionados. GitHub es un servicio remoto, no Git mismo. Empieza localmente: así practicas sin publicar archivos personales. Ejecuta `git --version` para verificar la herramienta; si falta, usa la descarga oficial enlazada. Ejecuta este ejemplo desde VS Code, PowerShell o CMD para comprobar la instalación real.",
+    "Crea `study-work/quote-calculator`, entra a esa carpeta y ejecuta `git init`. Configura nombre y correo solo allí con `git config user.name` y `git config user.email`; el correo que elijas quedará en commits, así que usa uno apropiado para compartir. No uses --global si solo estás experimentando.",
+    "Antes de cada commit: `git status` para ver archivos, `git diff` para leer cambios y `git add` seguido de nombres concretos para preparar lo relevante. `git diff --cached` muestra exactamente lo preparado. `git commit -m \"Add validated quote calculation\"` registra esa versión. Evita `git add .` hasta comprender qué incluirías. Nunca incluyas .env, contraseñas, archivos personales ni entornos virtuales.",
+    "Construye el proyecto 1 de la sección Proyectos: una calculadora de cotizaciones. El lector contiene su especificación, etapas y rúbrica; la referencia está en `projects/01-quote-calculator`. Escribe tu versión en `study-work` antes de consultar esa referencia. Debe calcular en centavos, validar entradas y separar cálculo de presentación.",
     "Haz tres commits con intención: cálculo básico, validación y pruebas, instrucciones de uso. Practica crear una rama con git switch -c improve-validation, editar y revisar. Para integrar vuelve a tu rama inicial, que puedes consultar con git branch --show-current, y ejecuta git merge improve-validation. No practiques comandos destructivos sobre tus aplicaciones existentes."
   ],
   "output": "True\nTrue\n",
@@ -24,14 +24,14 @@
   ],
   "exercises": [
     [
-      "Crea un repositorio nuevo dentro de study-work y realiza un commit.",
-      "Asegúrate con Get-Location de estar en tu proyecto de práctica.",
-      "git init, configuración local, git status, git add con archivos concretos y git commit. git log --oneline debe mostrar una entrada."
+      "Crea un repositorio nuevo dentro de `study-work` y realiza un commit.",
+      "Asegúrate con `Get-Location` de estar en tu proyecto de práctica.",
+      "`git init`, configuración local, `git status`, `git add` con archivos concretos y `git commit`. `git log --oneline` debe mostrar una entrada."
     ],
     [
-      "Modifica una fórmula y observa git diff antes de guardarla.",
+      "Modifica una fórmula y observa `git diff` antes de guardarla.",
       "Distingue cambio de trabajo y cambio preparado.",
-      "git diff muestra el cambio sin preparar; tras git add, git diff --cached muestra lo que entraría en el commit."
+      "`git diff` muestra el cambio sin preparar; tras `git add`, `git diff --cached` muestra lo que entraría en el commit."
     ],
     [
       "Completa el proyecto 1 sin abrir su referencia durante el primer intento.",
@@ -44,7 +44,7 @@
     "Publicar todo el directorio C:\\Dev o incluir secretos."
   ],
   "quiz": {
-    "question": "¿Qué muestra git diff --cached?",
+    "question": "¿Qué muestra `git diff --cached`?",
     "options": [
       "Cambios preparados para el próximo commit.",
       "Todos los repositorios del disco.",

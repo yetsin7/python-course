@@ -26,7 +26,7 @@
     [
       "Añade un evento técnico al crear una tarea sin registrar su título.",
       "Define qué contexto es necesario.",
-      "Registra task_created, task_id y duración; evita el contenido privado y credenciales."
+      "Registra `task_created`, `task_id` y duración; evita el contenido privado y credenciales."
     ],
     [
       "Explica por qué un cálculo pesado no mejora por envolverlo en async def.",

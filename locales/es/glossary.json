@@ -60,7 +60,7 @@
     "Palabra que inicia el bloque de instrucciones que Python intenta ejecutar y que podría producir un error."
   ],
   [
-    "ValueError",
+    "`ValueError`",
     "Tipo de excepción que indica que una operación recibió un valor que no puede usar, como convertir \"tres\" en un entero."
   ],
   [

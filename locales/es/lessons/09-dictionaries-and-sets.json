@@ -10,10 +10,10 @@
     "Representar un registro del mundo real."
   ],
   "concepts": [
-    "Una lista responde «qué elemento ocupa esta posición». Un diccionario responde «qué valor corresponde a esta clave». product = {'name': 'Notebook', 'price_cents': 1200} representa un registro con campos nombrados. product['price_cents'] accede por clave, no por posición. Una clave faltante produce KeyError; get permite un valor alternativo cuando la ausencia es normal.",
+    "Una lista responde «qué elemento ocupa esta posición». Un diccionario responde «qué valor corresponde a esta clave». product = {'name': 'Notebook', '`price_cents`': 1200} representa un registro con campos nombrados. product['`price_cents`'] accede por clave, no por posición. Una clave faltante produce `KeyError`; get permite un valor alternativo cuando la ausencia es normal.",
     "Un conjunto conserva valores únicos y permite preguntar pertenencia: 'paper' in categories. No dependas de su orden de impresión. Una tupla agrupa una secuencia que no puedes reasignar por índice; es útil para pares fijos. Elige la estructura por la pregunta que necesita responder tu programa, no por la que acabas de aprender.",
     "Un inventario puede usar un diccionario de productos por código. Así buscar por código no requiere recorrer toda una lista. Pero el diccionario solo garantiza claves únicas en memoria: no resuelve por sí solo permisos, persistencia ni transacciones. El modelo debe expresar reglas como stock no negativo y código no vacío.",
-    "items() permite recorrer clave y valor juntos. En el ejemplo calculamos el stock total sumando cantidades; después encontramos códigos distintos con set. Si una cantidad es texto, sumar fallará. La estructura y el tipo esperado son parte del contrato de quien consume el registro.",
+    "`items()` permite recorrer clave y valor juntos. En el ejemplo calculamos el stock total sumando cantidades; después encontramos códigos distintos con set. Si una cantidad es texto, sumar fallará. La estructura y el tipo esperado son parte del contrato de quien consume el registro.",
     "Diseña primero dos registros válidos y uno inválido. Explica qué campos son obligatorios y cuáles opcionales. No uses un campo vacío para significar simultáneamente «desconocido» y «cero». Más adelante convertirás estos contratos en clases y esquemas de API."
   ],
   "output": "10\n0\n22\n['office', 'tools']\n",
@@ -24,7 +24,7 @@
   ],
   "exercises": [
     [
-      "Completa practice/04-word-counts.py.",
+      "Completa `practice/04-word-counts.py`.",
       "Para cada palabra incrementa el conteo anterior o comienza en cero.",
       "['pen', 'paper', 'pen'] produce {'pen': 2, 'paper': 1}; [] produce {}."
     ],
@@ -36,7 +36,7 @@
     [
       "Obtén códigos únicos de ['A', 'B', 'A'] y ordénalos.",
       "Separa quitar duplicados de ordenar.",
-      "sorted(set(codes)) produce ['A', 'B']. El conjunto solo elimina duplicados."
+      "sorted(`set(codes)`) produce ['A', 'B']. El conjunto solo elimina duplicados."
     ]
   ],
   "mistakes": [

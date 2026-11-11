@@ -6,7 +6,7 @@
   "path": "projects/02-expense-report",
   "brief": "Transforma un CSV de muestra en totales por categoría. El archivo original se conserva; el informe se escribe solo después de validar todas las filas.",
   "milestones": [
-    "Define encabezados category y amount_cents.",
+    "Define encabezados category y `amount_cents`.",
     "Lee con DictReader y valida fila por fila.",
     "Agrupa por categoría y ordena resultados.",
     "Escribe un JSON nuevo en build dentro del proyecto.",

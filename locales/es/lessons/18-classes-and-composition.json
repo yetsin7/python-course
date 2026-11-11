@@ -24,14 +24,14 @@
   ],
   "exercises": [
     [
-      "Completa practice/08-reserve-stock.py.",
+      "Completa `practice/08-reserve-stock.py`.",
       "Comprueba antes de restar.",
-      "Stock 5 y cantidad 3 devuelven 2; pedir 6 o un negativo produce ValueError; cero conserva 5."
+      "Stock 5 y cantidad 3 devuelven 2; pedir 6 o un negativo produce `ValueError`; cero conserva 5."
     ],
     [
       "Crea dos Wallet y gasta en una sola.",
       "Instancias distintas mantienen estados distintos.",
-      "Wallet(1000) y Wallet(500): tras gastar 250 en la primera, los saldos son 750 y 500."
+      "`Wallet(1000)` y `Wallet(500)`: tras gastar 250 en la primera, los saldos son 750 y 500."
     ],
     [
       "Explica si un informe que usa un repositorio debe heredar de él.",
