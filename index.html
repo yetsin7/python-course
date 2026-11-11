@@ -17,10 +17,8 @@
   <script src="assets/application.js" defer></script>
 </head>
 <body>
-  <button id="menu-toggle" class="menu-toggle" aria-expanded="false" aria-controls="sidebar"></button>
   <aside id="sidebar">
     <a class="brand" href="#home"><span class="brand-symbol" aria-hidden="true">P</span><span id="brand-title"></span></a>
-    <nav id="primary-navigation"></nav>
     <label id="search-label" for="lesson-search"></label>
     <input id="lesson-search" type="search" autocomplete="off">
     <nav id="lesson-navigation"></nav>
@@ -34,6 +32,11 @@
       </div>
     </div>
   </aside>
+  <header id="topbar">
+    <button id="menu-toggle" class="menu-toggle" aria-expanded="false" aria-controls="sidebar"></button>
+    <nav id="primary-navigation"></nav>
+    <div id="player-stats"></div>
+  </header>
   <main id="main-content" tabindex="-1"></main>
   <div id="status-message" class="status-message" role="status" aria-live="polite"></div>
 </body>

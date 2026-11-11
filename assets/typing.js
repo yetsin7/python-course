@@ -107,6 +107,7 @@ function refreshTyping(lesson, fromLearner) {
       !learnerProgress.completed.includes(lesson.id) && !canCompleteLesson(lesson);
     renderNavigation();
   }
+  refreshRail(lesson);
   saveProgress();
 }
 

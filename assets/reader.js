@@ -78,38 +78,82 @@ function runMarkup(lesson) {
     escapeHtml(translate("setupCallLink")) + "</a></p>";
 }
 
-/** Compose the full reader without loading external fonts, libraries or lesson files. */
+/** Wrap one learning stage with its number and title. */
+function stageMarkup(number, title, contents) {
+  return '<div class="stage" id="stage-' + number + '"><div class="stage-head"><span class="stage-number">' + number +
+    '</span><h2 class="stage-title">' + escapeHtml(title) + "</h2></div>" + contents + "</div>";
+}
+
+/** Describe which completion requirements the learner has already met. */
+function lessonChecks(lesson) {
+  const checked = learnerProgress.checks[lesson.id] || [false, false, false];
+  return [
+    ["typed", learnerProgress.typed[lesson.id] === true || typingLines(lesson).length === 0],
+    ["quiz", learnerProgress.quizzes[lesson.id] === lesson.quiz.correct],
+    ["mastery", checked.every(Boolean)],
+  ];
+}
+
+/** Render the sticky side panel: stage shortcuts and the completion checklist. */
+function railMarkup(lesson, stages) {
+  let markup = '<aside class="lesson-rail"><p class="rail-title">' + escapeHtml(translate("railStages")) + '</p><ol class="rail-stages">';
+  stages.forEach((title, index) => {
+    markup += '<li><button type="button" data-action="scroll" data-target="stage-' + (index + 1) + '"><span>' +
+      (index + 1) + "</span>" + escapeHtml(title) + "</button></li>";
+  });
+  markup += '</ol><p class="rail-title">' + escapeHtml(translate("railChecks")) + '</p><ul class="rail-checks">';
+  for (const [key, done] of lessonChecks(lesson)) {
+    markup += '<li id="rail-' + key + '"' + (done ? ' class="is-done"' : "") + ">" + escapeHtml(translate("check-" + key)) + "</li>";
+  }
+  const completed = learnerProgress.completed.includes(lesson.id);
+  return markup + '</ul><p class="rail-reward">' + escapeHtml(translate(completed ? "railDone" : "railReward")) + "</p></aside>";
+}
+
+/** Update the checklist in place after typing, answering or ticking a criterion. */
+function refreshRail(lesson) {
+  for (const [key, done] of lessonChecks(lesson)) {
+    const item = document.getElementById("rail-" + key);
+    if (item) item.classList.toggle("is-done", done);
+  }
+}
+
+/** Compose the full lesson without loading external fonts, libraries or lesson files. */
 function lessonMarkup(lesson) {
-  let markup = '<article class="lesson" data-lesson="' + lesson.id + '"><header class="page-heading">' +
-    '<p class="eyebrow">' + escapeHtml(COURSE.phases[lesson.phase]) + " / " +
-    escapeHtml(translate("lesson")) + " " + lessonNumber(lesson.id) + '</p><h1 tabindex="-1">' +
-    escapeHtml(lesson.title) + '</h1><p class="lesson-meta">' + lesson.minutes + " " +
-    escapeHtml(translate("estimated")) + "</p></header>";
-  markup += sectionMarkup(translate("objectives"), listMarkup(lesson.objectives), "goal-panel");
-  markup += sectionMarkup(translate("plain"), paragraphsMarkup([lesson.plain]), "plain-panel");
-  markup += sectionMarkup(translate("terms"), definitionsMarkup(lesson.terms));
-  markup += sectionMarkup(translate("concepts"), paragraphsMarkup(lesson.concepts));
-  markup += sectionMarkup(translate("example"),
-    '<div class="code-toolbar"><span>' + escapeHtml(translate("snippetLabel")) +
-    '</span></div><pre class="source-code"><code>' + escapeHtml(lesson.code) + "</code></pre>" +
-    '<aside class="external-practice"><strong>' + escapeHtml(translate("snippetPracticeTitle")) +
-    '</strong><p>' + escapeHtml(translate("snippetPracticeText")) + "</p></aside>");
-  markup += sectionMarkup(translate("walkthrough"), listMarkup(lesson.walkthrough, true));
-  markup += sectionMarkup(translate("typing"), typingMarkup(lesson), "typing-panel");
-  markup += sectionMarkup(translate("run"), runMarkup(lesson));
-  markup += sectionMarkup(translate("practice"), exercisesMarkup(lesson));
-  markup += sectionMarkup(translate("mistakes"), listMarkup(lesson.mistakes), "mistake-panel");
-  markup += sectionMarkup(translate("quiz"), quizMarkup(lesson));
-  markup += sectionMarkup(translate("mastery"), masteryMarkup(lesson), "goal-panel");
-  markup += sectionMarkup(translate("notes"),
-    '<label class="sr-only" for="lesson-notes">' + escapeHtml(translate("notes")) +
-    '</label><textarea id="lesson-notes" maxlength="10000" rows="6" placeholder="' +
-    escapeHtml(translate("notesPlaceholder")) + '">' + escapeHtml(learnerProgress.notes[lesson.id] || "") + "</textarea>");
-  markup += sectionMarkup(translate("references"), referencesMarkup(lesson));
+  const stages = ["stageIdea", "stageRead", "stageType", "stageRun", "stagePractice", "stageProve"].map(translate);
+  let markup = '<article class="lesson" data-lesson="' + lesson.id + '"><header class="lesson-hero">' +
+    '<p class="eyebrow">' + escapeHtml(COURSE.phases[lesson.phase]) + " · " + escapeHtml(translate("lesson")) + " " +
+    lessonNumber(lesson.id) + " / " + COURSE.lessons.length + '</p><h1 tabindex="-1">' + escapeHtml(lesson.title) +
+    '</h1><div class="hero-chips"><span>⏱ ' + lesson.minutes + " " + escapeHtml(translate("estimated")) +
+    "</span><span>⭐ +" + EXPERIENCE.lesson + " XP</span><span>🧩 " + lesson.exercises.length + " " +
+    escapeHtml(translate("statsExercises")) + "</span></div></header><div class=\"lesson-body\">";
+  markup += stageMarkup(1, stages[0],
+    sectionMarkup(translate("objectives"), listMarkup(lesson.objectives), "goal-panel") +
+    sectionMarkup(translate("plain"), paragraphsMarkup([lesson.plain]), "plain-panel") +
+    sectionMarkup(translate("terms"), definitionsMarkup(lesson.terms)) +
+    sectionMarkup(translate("concepts"), paragraphsMarkup(lesson.concepts)));
+  markup += stageMarkup(2, stages[1],
+    sectionMarkup(translate("example"), '<div class="code-toolbar"><span>' + escapeHtml(translate("snippetLabel")) +
+      '</span></div><pre class="source-code"><code>' + escapeHtml(lesson.code) + "</code></pre>" +
+      '<aside class="external-practice"><strong>' + escapeHtml(translate("snippetPracticeTitle")) +
+      "</strong><p>" + escapeHtml(translate("snippetPracticeText")) + "</p></aside>") +
+    sectionMarkup(translate("walkthrough"), listMarkup(lesson.walkthrough, true)));
+  markup += stageMarkup(3, stages[2], sectionMarkup(translate("typing"), typingMarkup(lesson), "typing-panel"));
+  markup += stageMarkup(4, stages[3], sectionMarkup(translate("run"), runMarkup(lesson)));
+  markup += stageMarkup(5, stages[4],
+    sectionMarkup(translate("practice"), exercisesMarkup(lesson)) +
+    sectionMarkup(translate("mistakes"), listMarkup(lesson.mistakes), "mistake-panel"));
+  markup += stageMarkup(6, stages[5],
+    sectionMarkup(translate("quiz"), quizMarkup(lesson)) +
+    sectionMarkup(translate("mastery"), masteryMarkup(lesson), "goal-panel") +
+    sectionMarkup(translate("notes"), '<label class="sr-only" for="lesson-notes">' + escapeHtml(translate("notes")) +
+      '</label><textarea id="lesson-notes" maxlength="10000" rows="6" placeholder="' +
+      escapeHtml(translate("notesPlaceholder")) + '">' + escapeHtml(learnerProgress.notes[lesson.id] || "") + "</textarea>") +
+    sectionMarkup(translate("references"), referencesMarkup(lesson)));
   markup += '<nav class="lesson-pager">';
-  if (lesson.id > 1) markup += '<a class="secondary" href="#lesson-' + lessonNumber(lesson.id - 1) + '">' +
+  if (lesson.id > 1) markup += '<a class="secondary" href="#lesson-' + lessonNumber(lesson.id - 1) + '">← ' +
     escapeHtml(translate("previous")) + "</a>";
+  else markup += "<span></span>";
   if (lesson.id < COURSE.lessons.length) markup += '<a class="primary" href="#lesson-' +
     lessonNumber(lesson.id + 1) + '">' + escapeHtml(translate("next")) + " →</a>";
-  return markup + "</nav></article>";
+  return markup + "</nav></div>" + railMarkup(lesson, stages) + "</article>";
 }

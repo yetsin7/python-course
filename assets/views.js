@@ -8,7 +8,7 @@ function homeMarkup() {
     '</p><h1 tabindex="-1">' + escapeHtml(COURSE.title) + '</h1><p class="hero-description">' +
     escapeHtml(COURSE.description) + '</p><a class="primary" href="#lesson-' + lessonNumber(upcoming.id) +
     '">' + escapeHtml(translate(learnerProgress.lastLesson || learnerProgress.completed.length ? "resume" : "start")) +
-    ' <span aria-hidden="true">→</span></a>' + dashboardMarkup(upcoming) + '<div class="course-stats">';
+    ' <span aria-hidden="true">→</span></a>' + progressRingMarkup() + dashboardMarkup(upcoming) + '<div class="course-stats">';
   for (const [count, key] of [[32, "statsLessons"], [96, "statsExercises"], [5, "statsProjects"]]) {
     markup += "<div><strong>" + count + "</strong><span>" + escapeHtml(translate(key)) + "</span></div>";
   }
@@ -22,9 +22,10 @@ function homeMarkup() {
     const lastId = firstId + 3;
     let completed = 0;
     for (let id = firstId; id <= lastId; id += 1) if (learnerProgress.completed.includes(id)) completed += 1;
-    markup += '<a class="phase-card" href="#lesson-' + lessonNumber(firstId) + '"><span class="phase-range">' +
-      lessonNumber(firstId) + "–" + lessonNumber(lastId) + '</span><h3>' + escapeHtml(COURSE.phases[phase]) +
-      '</h3><span class="phase-count">' + completed + " / 4 · " + escapeHtml(translate("completedCount")) + "</span></a>";
+    markup += '<a class="phase-card' + (completed === 4 ? " is-complete" : "") + '" href="#lesson-' + lessonNumber(firstId) +
+      '"><span class="phase-range">' + lessonNumber(firstId) + "–" + lessonNumber(lastId) + '</span><h3>' +
+      escapeHtml(COURSE.phases[phase]) + '</h3><span class="phase-bar"><span style="width:' + completed * 25 +
+      '%"></span></span><span class="phase-count">' + completed + " / 4 · " + escapeHtml(translate("completedCount")) + "</span></a>";
   }
   markup += "</div></section>";
   markup += sectionMarkup(translate("badges"), badgesMarkup());
@@ -65,6 +66,18 @@ function ideasMarkup() {
     markup += sectionMarkup(group.title, cards + "</div>");
   }
   return markup + '<p class="plain-panel">' + escapeHtml(ideas.closing) + "</p>";
+}
+
+/** Draw the share of completed lessons as a ring inside the home hero. */
+function progressRingMarkup() {
+  const total = COURSE.lessons.length;
+  const done = learnerProgress.completed.length;
+  const circumference = 2 * Math.PI * 80;
+  return '<div class="hero-ring" aria-hidden="true"><svg viewBox="0 0 190 190"><circle cx="95" cy="95" r="80"></circle>' +
+    '<circle class="ring-value" cx="95" cy="95" r="80" stroke-dasharray="' + circumference.toFixed(1) +
+    '" stroke-dashoffset="' + (circumference * (1 - done / total)).toFixed(1) + '"></circle></svg><div><strong>' +
+    Math.round(done / total * 100) + "%</strong><span>" + done + " / " + total + " " + escapeHtml(translate("lessonsDone")) +
+    "</span></div></div>";
 }
 
 /** Render all projects in their recommended completion order. */

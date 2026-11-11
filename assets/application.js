@@ -36,7 +36,8 @@ function renderNavigation() {
       matchCount += 1;
       const selected = route.kind === "lesson" && route.lesson.id === lesson.id;
       const completed = learnerProgress.completed.includes(lesson.id);
-      links += '<a href="#lesson-' + lessonNumber(lesson.id) + '"' + (selected ? ' aria-current="page"' : "") +
+      links += '<a href="#lesson-' + lessonNumber(lesson.id) + '"' + (completed ? ' class="is-done"' : "") +
+        (selected ? ' aria-current="page"' : "") +
         '><span class="nav-number">' + lessonNumber(lesson.id) + '</span><span>' +
         escapeHtml(lesson.title) + "</span>" + (completed ? '<span class="done-marker" aria-label="' +
         escapeHtml(translate("completed")) + '">✓</span>' : "") + "</a>";
@@ -49,8 +50,11 @@ function renderNavigation() {
   document.getElementById("course-progress").value = count;
   document.getElementById("course-progress").setAttribute("aria-label", translate("progress"));
   const level = levelInfo();
-  document.getElementById("progress-caption").textContent = count + " / 32 · " + translate("progressDetail") +
-    " · " + translate("level") + " " + level.number + " · 🔥 " + streakInfo().current;
+  const streak = streakInfo().current;
+  document.getElementById("progress-caption").textContent = count + " / " + COURSE.lessons.length + " · " + translate("progressDetail");
+  document.getElementById("player-stats").innerHTML = '<span class="stat-chip is-level" title="' + escapeHtml(level.name) + '">🏅 ' + escapeHtml(translate("level")) +
+    " " + level.number + '</span><span class="stat-chip">⭐ ' + level.points +
+    ' XP</span><span class="stat-chip">🔥 ' + streak + " " + escapeHtml(translate(streak === 1 ? "day" : "days")) + "</span>";
   for (const link of document.querySelectorAll("#primary-navigation a")) {
     const page = link.hash.slice(1);
     if (page === route.kind || (page === "projects" && route.kind === "project")) link.setAttribute("aria-current", "page");
@@ -121,6 +125,7 @@ function handleMainChange(event) {
   checks[Number(event.target.dataset.check)] = event.target.checked;
   learnerProgress.checks[route.lesson.id] = checks;
   saveProgress();
+  refreshRail(route.lesson);
   document.getElementById("complete-lesson").disabled =
     !learnerProgress.completed.includes(route.lesson.id) && !canCompleteLesson(route.lesson);
 }
@@ -154,6 +159,8 @@ function handleQuizSubmit(event) {
   event.target.insertAdjacentHTML("beforeend", '<p class="quiz-feedback" role="status"><strong>' +
     escapeHtml(translate(Number(selected) === route.lesson.quiz.correct ? "quizCorrect" : "quizIncorrect")) +
     "</strong> " + (Number(selected) === route.lesson.quiz.correct ? escapeHtml(route.lesson.quiz.explanation) : "") + "</p>");
+  refreshRail(route.lesson);
+  renderNavigation();
   const completionButton = document.getElementById("complete-lesson");
   completionButton.disabled = !learnerProgress.completed.includes(route.lesson.id) && !canCompleteLesson(route.lesson);
 }
@@ -164,6 +171,11 @@ function handleMainClick(event) {
   if (!button) return;
   const route = currentRoute();
   if (button.dataset.action === "print") { window.print(); return; }
+  if (button.dataset.action === "scroll") {
+    const target = document.getElementById(button.dataset.target);
+    if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+    return;
+  }
   if (route.kind !== "lesson") return;
   if (button.dataset.action === "complete") {
     const identifier = route.lesson.id;
