@@ -249,3 +249,32 @@ textarea::placeholder { color: var(--muted); }
 #topbar { gap: 10px; padding: 0 20px; }
 #primary-navigation a { padding: 7px 11px; font-size: 13.5px; }
 .stat-chip { padding: 5px 10px; font-size: 12.5px; }
+
+/* Narrow windows: the sidebar becomes a drawer and columns stack */
+@media (max-width: 1100px) {
+  #topbar { left: 0; z-index: 25; }
+  #main-content { margin-left: 0; padding: calc(var(--topbar) + 28px) 28px 56px; }
+  #sidebar { z-index: 22; padding-top: calc(var(--topbar) + 8px); visibility: hidden; transform: translateX(-100%); }
+  .menu-open #sidebar { visibility: visible; transform: translateX(0); box-shadow: 40px 0 0 100vw #0f223399; }
+  .lesson { display: flex; flex-direction: column; }
+  .lesson-hero { order: 0; }
+  .lesson-rail { order: 1; position: static; margin: 20px 0 0; padding: 18px 22px; }
+  .rail-stages, .rail-checks { display: flex; flex-wrap: wrap; gap: 4px 10px; margin-bottom: 14px; }
+  .rail-stages button { width: auto; padding: 5px 12px 5px 6px; border-radius: 999px; background: var(--paper); }
+  .lesson-body { order: 2; }
+  .hero { grid-template-columns: 1fr; padding: 34px 32px; }
+  .hero h1 { font-size: 44px; }
+  .hero-ring { display: none; }
+  .dashboard { grid-template-columns: 1fr; }
+  .phase-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .definitions > div, .symbol-list > div { grid-template-columns: 1fr; gap: 6px; }
+  .reader-section { padding: 24px 22px; }
+  .lesson-hero { padding: 26px 26px; }
+  h1 { font-size: 36px; }
+}
+@media (max-width: 760px) {
+  #player-stats .stat-chip:not(.is-level) { display: none; }
+  .phase-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 36px; }
+  .course-stats { gap: 24px; flex-wrap: wrap; }
+}

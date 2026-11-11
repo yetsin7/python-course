@@ -100,7 +100,7 @@ function toggleMenu() {
 
 /** Close the navigation drawer after a destination is selected. */
 function closeMenu() {
-  if (window.matchMedia("(min-width: 641px)").matches) return;
+  if (window.matchMedia("(min-width: 1101px)").matches) return;
   document.body.classList.remove("menu-open");
   document.body.classList.add("sidebar-collapsed");
   document.getElementById("menu-toggle").setAttribute("aria-expanded", "false");
@@ -238,7 +238,7 @@ function initializeApplication() {
   courseSession.prepare();
   const route = currentRoute();
   if (route.kind === "lesson") { learnerProgress.lastLesson = route.lesson.id; saveProgress(); }
-  if (window.matchMedia("(min-width: 641px)").matches) {
+  if (window.matchMedia("(min-width: 1101px)").matches) {
     document.getElementById("menu-toggle").setAttribute("aria-expanded", "true");
     document.getElementById("menu-toggle").textContent = translate("closeMenu");
     document.body.classList.add("menu-open");
