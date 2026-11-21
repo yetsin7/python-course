@@ -16,12 +16,12 @@
     "Las variables dentro de una función son locales. Evita depender de una variable global que cambia en otra parte: pasa explícitamente lo necesario. Mantén las funciones enfocadas. Una función que lee entrada, calcula, escribe un archivo y manda un correo tiene demasiadas razones para cambiar.",
     "Abre `practice/02-total.py`. Escribe tres ejemplos en papel antes de implementar: 125 por 4, cero unidades y una cantidad negativa. Ejecuta `python scripts/check-practice.py --exercise 02`. Leer el fallo de una prueba forma parte del aprendizaje; no mires la solución hasta registrar tu intento."
   ],
-  "snippet": "def calculate_total(unit_price_cents, quantity):\n    \"\"\"Calcula un total y rechaza valores negativos.\"\"\"\n    if unit_price_cents < 0 or quantity < 0:\n        raise ValueError(\"El precio y la cantidad deben ser positivos o cero.\")\n    # ¿Qué valor debería devolver esta función?",
+  "snippet": "def calculate_total(unit_price_cents: int, quantity: int) -> int:\n    \"\"\"Return a line total; reject negative price or quantity with ValueError.\"\"\"\n    if unit_price_cents < 0 or quantity < 0:\n        raise ValueError(\"Price and quantity must be nonnegative.\")\n    return unit_price_cents * quantity",
   "output": "500\n0\n",
   "walkthrough": [
     "def registra la operación; las llamadas del final la ejecutan.",
     "La condición protege el contrato antes de calcular.",
-    "El resultado puede imprimirse, guardarse o usarse en otra operación."
+    "Si la validación pasa, `return unit_price_cents * quantity` devuelve el total al código que llamó a la función. El programa completo llama a la función dos veces y usa `print(...)` para mostrar esos resultados: 500 y 0."
   ],
   "exercises": [
     [

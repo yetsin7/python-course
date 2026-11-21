@@ -155,7 +155,7 @@
     {
       "title": "7. Cómo leer un error sin asustarte",
       "paragraphs": [
-        "Todas las personas que programan ven errores todos los días. Un error no dice que seas malo en esto: es Python explicando en qué línea dejó de entender. Lee siempre de abajo hacia arriba: la última línea dice qué pasó y las anteriores dicen dónde."
+        "Empieza por el tipo de error y su mensaje. Si hay un traceback, busca la línea de tu archivo indicada justo antes del mensaje. Si el aviso es «can't open file», revisa la ruta que escribiste en el comando. En la lección 2 puedes practicar ambas comprobaciones."
       ],
       "definitions": [
         [
@@ -179,8 +179,12 @@
           "El tipo de dato es correcto pero el contenido no sirve, como pedir convertir la palabra hola en número."
         ],
         [
-          "No such file or directory",
-          "La terminal no encuentra el archivo. Revisa que estés en la carpeta correcta con `Set-Location` y que el nombre esté escrito igual, incluida la terminación `.py`."
+          "«can't open file»",
+          "Python no pudo abrir el programa indicado en el comando. Usa `Get-Location` para ver dónde estás y `Get-ChildItem` para comprobar el nombre, incluida la terminación `.py`."
+        ],
+        [
+          "`FileNotFoundError`",
+          "El programa arrancó, pero una instrucción intentó abrir otro archivo que falta. Lee la ruta del mensaje y revisa si ese archivo existe en la carpeta que usa el programa."
         ]
       ]
     },

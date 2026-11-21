@@ -29,9 +29,9 @@
       "Usa json.dumps para escribir y json.loads para leer; verifica igualdad después de una segunda ejecución."
     ],
     [
-      "Daña una copia del JSON quitando una llave final y observa el error.",
-      "Conserva el original como referencia.",
-      "json.loads provoca `JSONDecodeError`. No interpretes corrupción como «no hay tareas»."
+      "Ejecuta el ejemplo para generar `build/labs/sample-order.json`. Guarda una copia como `build/labs/broken-order.json` y borra la llave final solo en esa copia. Desde la carpeta del curso, ejecuta `python -m json.tool build/labs/broken-order.json`.",
+      "Repite el mismo comando con `build/labs/missing-order.json`, un nombre que no exista. Compara los mensajes. El comando comprueba los archivos sin modificarlos.",
+      "La copia dañada da un error de lectura del formato JSON, el equivalente a `JSONDecodeError` al usar json.loads. Para el nombre inexistente, el mensaje indica que el archivo no se pudo abrir. El archivo original permanece disponible como referencia."
     ],
     [
       "Añade version: 1 a un documento y explica una futura migración.",

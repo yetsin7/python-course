@@ -15,15 +15,15 @@
     "None significa «no hay un valor aquí»; no significa cero. Si la conversión falla, quantity = None deja claro que no se obtuvo un número. Un traceback es el informe que muestra dónde ocurrió el problema: lee primero su última línea para conocer el tipo y luego encuentra la línea de tu programa que lo provocó.",
     "Una función de dominio puede lanzar `ValueError` con un mensaje técnico en inglés cuando una regla se viola. La capa de interfaz convierte esa condición en un mensaje localizado. No muestres al usuario un traceback con rutas internas; tampoco lo borres del diagnóstico del desarrollador. Error técnico y comunicación al usuario sirven a públicos distintos.",
     "La pregunta es qué recuperación tiene sentido. Para una entrada mal escrita puedes solicitar otra; para un archivo opcional ausente puedes usar un estado inicial; para un archivo de cuentas corrupto conviene detenerse y preservar una copia, no reemplazarlo por una lista vacía. El valor alternativo depende de la importancia de lo que se pierde.",
-    "El fragmento muestra el camino que falla. Si la conversión tuviera éxito, `int(\"3\")` produciría el número 3 y no se ejecutaría el bloque except. Decide qué debe hacer tu programa después de un fallo y prueba tanto el caso válido como el inválido; devolver None es una decisión, no una regla universal."
+    "El código de ejemplo muestra el camino que falla. Si la conversión tuviera éxito, `int(\"3\")` produciría el número 3 y no se ejecutaría el bloque except. Decide qué debe hacer tu programa después de un fallo y prueba tanto el caso válido como el inválido; devolver None es una decisión, no una regla universal."
   ],
-  "snippet": "try:\n    quantity = int(\"three\")\nexcept ValueError:\n    print(\"Escribe un número, por ejemplo 3\")\n# ... (fragmento; observa cómo se responde al error)",
+  "snippet": "raw_quantity = \"three\"\ntry:\n    quantity = int(raw_quantity)\nexcept ValueError:\n    quantity = None\nprint(quantity)",
   "output": "None\n3\n",
   "walkthrough": [
     "`int(...)` intenta convertir el texto en un número entero. \"three\" no representa un entero, así que Python señala `ValueError`.",
     "try marca la operación que puede fallar; los cuatro espacios muestran qué líneas pertenecen a ese bloque.",
     "except `ValueError`: reconoce específicamente ese tipo de fallo. Si aparece, Python salta al bloque indentado debajo.",
-    "El bloque de respuesta explica el problema en vez de ocultarlo. Con un valor válido, Python no entra en except."
+    "El bloque de respuesta asigna `None` para indicar que no hay resultado, y `print(quantity)` lo muestra. El programa completo repite la conversión con `int(\"3\")`. En ese caso se salta el bloque except y muestra 3."
   ],
   "exercises": [
     [
@@ -32,9 +32,9 @@
       "'4' da 4; '0' da 0; '-1', 'three' y '' dan None. Recibe str, no cualquier objeto."
     ],
     [
-      "Provoca `FileNotFoundError` con una lectura de un archivo inexistente en `study-work`.",
-      "Lee el traceback antes de capturarlo.",
-      "`Path('study-work/missing.txt')`.`read_text()` falla. Captura `FileNotFoundError` solo si tu caso tiene una recuperación definida."
+      "Guarda un archivo de práctica con `from pathlib import Path` en la primera línea y `print(Path(\"study-work/missing.txt\").read_text(encoding=\"utf-8\"))` en la segunda. Desde la carpeta del curso, ejecútalo sin tener aún ese archivo de texto.",
+      "El archivo .py ejecuta su segunda línea. Lee el final del traceback para ver qué archivo de texto intentó leer.",
+      "Aparece `FileNotFoundError`. Crea `study-work/missing.txt` con un texto breve, guarda y repite el mismo comando. Ahora aparece ese texto. Usa `except FileNotFoundError` cuando puedas definir una recuperación para tu caso."
     ],
     [
       "Explica por qué except Exception: pass sería dañino al guardar un pedido.",

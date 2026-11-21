@@ -31,8 +31,8 @@ function exercisesMarkup(lesson) {
   let index = 0;
   for (const [prompt, hint, answer] of lesson.exercises) {
     index += 1;
-    markup += '<article class="exercise"><h3><span class="exercise-number">' + index + "</span>" +
-      inlineMarkup(prompt) + '</h3><details><summary>' + escapeHtml(translate("hint")) +
+    markup += '<article class="exercise"><h3><span class="exercise-number">' + index + "</span><span>" +
+      inlineMarkup(prompt) + '</span></h3><details><summary>' + escapeHtml(translate("hint")) +
       "</summary><p>" + inlineMarkup(hint) + '</p></details><details class="solution"><summary>' +
       escapeHtml(translate("solution")) + "</summary><p>" + inlineMarkup(answer) + "</p></details></article>";
   }
@@ -117,6 +117,19 @@ function refreshRail(lesson) {
   }
 }
 
+/** Identify the typing excerpt and make the exact runnable file available inline. */
+function exampleMarkup(lesson) {
+  const codeBlock = '<div class="code-toolbar"><span>' +
+    escapeHtml(translate(lesson.fullCode ? "snippetLabel" : "fullExample")) +
+    '</span></div><pre class="source-code" tabindex="0"><code>' + escapeHtml(lesson.code) + "</code></pre>";
+  const fullExample = lesson.fullCode ? '<details class="full-example"><summary>' +
+    escapeHtml(translate("fullExample")) + '</summary><pre class="command" tabindex="0"><code>' +
+    escapeHtml(lesson.fullCode) + "</code></pre></details>" : "";
+  return codeBlock + fullExample + '<aside class="external-practice"><strong>' +
+    escapeHtml(translate("snippetPracticeTitle")) + "</strong><p>" +
+    inlineMarkup(translate("snippetPracticeText")) + "</p></aside>";
+}
+
 /** Compose the full lesson without loading external fonts, libraries or lesson files. */
 function lessonMarkup(lesson) {
   const stages = ["stageIdea", "stageRead", "stageType", "stageRun", "stagePractice", "stageProve"].map(translate);
@@ -132,13 +145,11 @@ function lessonMarkup(lesson) {
     sectionMarkup(translate("terms"), definitionsMarkup(lesson.terms)) +
     sectionMarkup(translate("concepts"), paragraphsMarkup(lesson.concepts)));
   markup += stageMarkup(2, stages[1],
-    sectionMarkup(translate("example"), '<div class="code-toolbar"><span>' + escapeHtml(translate("snippetLabel")) +
-      '</span></div><pre class="source-code"><code>' + escapeHtml(lesson.code) + "</code></pre>" +
-      '<aside class="external-practice"><strong>' + escapeHtml(translate("snippetPracticeTitle")) +
-      "</strong><p>" + inlineMarkup(translate("snippetPracticeText")) + "</p></aside>") +
+    sectionMarkup(translate("example"), exampleMarkup(lesson)) +
     sectionMarkup(translate("walkthrough"), listMarkup(lesson.walkthrough, true)));
   markup += stageMarkup(3, stages[2], sectionMarkup(translate("typing"), typingMarkup(lesson), "typing-panel"));
-  markup += stageMarkup(4, stages[3], sectionMarkup(translate("run"), runMarkup(lesson)));
+  markup += stageMarkup(4, stages[3], sectionMarkup(translate("run"), runMarkup(lesson)) +
+    (lesson.troubleshooting ? sectionMarkup(translate("troubleshooting"), definitionsMarkup(lesson.troubleshooting), "mistake-panel") : ""));
   markup += stageMarkup(5, stages[4],
     sectionMarkup(translate("practice"), exercisesMarkup(lesson)) +
     sectionMarkup(translate("mistakes"), listMarkup(lesson.mistakes), "mistake-panel"));

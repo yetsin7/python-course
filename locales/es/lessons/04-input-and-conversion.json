@@ -25,19 +25,19 @@
   ],
   "exercises": [
     [
-      "Adapta una copia para convertir horas escritas a minutos.",
-      "Usa int(`input()`) y multiplica por 60.",
-      "La entrada 2 debe producir 120; 0 debe producir 0. Mantén hours y `duration_minutes` separados."
+      "Escribe un programa que le pida al usuario una cantidad de horas con `input()`, la convierta a número entero y calcule los minutos equivalentes (horas multiplicadas por 60).",
+      "Idea ejemplar: al igual que en el ejemplo leímos un número con `quantity = int(input(\"Cantidad: \"))`, aquí pide las horas con `hours = int(input(\"Horas: \"))` y calcula `minutes = hours * 60`.",
+      "La entrada 2 produce 120 minutos; la entrada 0 produce 0. Mantén la variable de entrada (`hours`) y la calculada (`duration_minutes`) separadas para mayor claridad."
     ],
     [
-      "Prueba la entrada 2.5 con int y luego con float.",
-      "La conversión requerida depende del dominio.",
-      "`int('2.5')` falla; `float('2.5')` da 2.5. Aceptar decimales es una decisión del problema, no una reparación automática."
+      "Prueba qué ocurre si ingresas el texto con decimales `'2.5'` intentando convertirlo primero con `int()` y luego con `float()`. Observa la diferencia.",
+      "Idea ejemplar: `int('2.5')` falla porque los enteros solo aceptan números sin coma ni punto; en cambio `float('2.5')` sí entiende números con punto decimal.",
+      "`int('2.5')` lanza `ValueError`; `float('2.5')` da 2.5. Elegir si convertir a entero o decimal depende de lo que requiera tu programa."
     ],
     [
-      "Convierte una cantidad a entero y predice qué pasa con una línea vacía.",
-      "Una cadena vacía no expresa un entero.",
-      "`int('')` produce `ValueError`. Registra este caso para repetirlo al estudiar validación."
+      "Pide un número con `int(input())` y presiona Enter sin escribir nada. ¿Qué error se produce y por qué?",
+      "Idea ejemplar: presionar Enter en blanco envía una cadena vacía `\"\"`. Como no contiene ningún dígito numérico, `int()` no sabe cómo convertirla en número y lanza un error.",
+      "`int('')` produce `ValueError` porque una cadena vacía no representa un número entero. Es uno de los errores típicos que se aprenden a validar más adelante."
     ]
   ],
   "mistakes": [

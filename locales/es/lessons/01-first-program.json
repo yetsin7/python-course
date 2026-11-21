@@ -24,19 +24,19 @@
   ],
   "exercises": [
     [
-      "Predice el resultado de `print(8 * 5)`, ejecútalo y compara.",
-      "Multiplica primero en papel.",
-      "40. Cambiar una entrada cambia el resultado sin cambiar la regla."
+      "Escribe en tu editor una nueva multiplicación usando la misma idea del ejemplo: por ejemplo `print(8 * 5)`. Antes de ejecutarlo en la terminal, predice qué número verás en pantalla y luego compruébalo.",
+      "Idea ejemplar: si en el ejemplo `print(6 * 7)` calculó y mostró 42, aquí la lógica es idéntica: Python primero resuelve la operación matemática dentro del paréntesis (8 por 5) y luego la función `print` muestra el resultado.",
+      "Muestra `40`. Al cambiar los números de entrada (8 y 5) cambia el resultado final, pero la función `print` y la regla de multiplicación funcionan exactamente igual."
     ],
     [
-      "Describe los pasos para calcular el costo de tres cuadernos de 12 unidades monetarias.",
-      "Identifica cantidad, precio y operación.",
-      "Entradas: 3 y 12; proceso: multiplicar; salida: 36. Escribe `print(3 * 12)` en una copia del ejemplo."
+      "Escribe un programa de una línea con `print(...)` que calcule y muestre el costo total de comprar 3 cuadernos a 12 unidades cada uno.",
+      "Idea ejemplar: toma como molde el ejemplo `print(6 * 7)`. Reemplaza el primer número por la cantidad de cuadernos (3) y el segundo por el precio de cada uno (12), unidos por el operador de multiplicación: `print(3 * 12)`.",
+      "Escribe `print(3 * 12)`. Las entradas son 3 y 12; el proceso es la multiplicación; la salida mostrada es 36. Sigue el patrón del ejemplo: `print(cantidad * precio)`."
     ],
     [
-      "Cierra la terminal y vuelve a ejecutar el ejemplo sin copiar el comando.",
-      "Recuerda la carpeta antes del archivo.",
-      "Abre PowerShell, cambia a la carpeta donde guardaste el curso y ejecuta `python examples/01-first-program.py`. Explica cada parte del comando."
+      "Abre una nueva terminal y vuelve a ejecutar el archivo `examples/01-first-program.py` escribiendo tú mismo la orden completa con el teclado, sin copiarla ni pegarla.",
+      "Idea ejemplar: todo comando de ejecución en Python tiene dos partes: primero el programa que interpreta (`python`) y luego un espacio con la ruta del archivo a ejecutar (`examples/01-first-program.py`).",
+      "Abre PowerShell o CMD, asegúrate de estar en la carpeta del curso y ejecuta `python examples/01-first-program.py`. Verás 42 en pantalla. El comando le indica al sistema: 'Python, ejecuta las instrucciones de ese archivo'."
     ]
   ],
   "mistakes": [

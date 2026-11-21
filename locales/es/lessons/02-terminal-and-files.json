@@ -7,13 +7,14 @@
   "objectives": [
     "Comprender rutas absolutas y relativas.",
     "Guardar un archivo real con extensión `.py`.",
-    "Separar comandos del sistema e instrucciones Python."
+    "Separar comandos del sistema e instrucciones Python.",
+    "Diagnosticar una ruta incorrecta y un error de sintaxis."
   ],
   "concepts": [
-    "La carpeta actual de la terminal es el punto desde el que se interpretan rutas relativas. `C:\\Dev\\python-course` es una ruta absoluta: empieza en una unidad. `examples/02-terminal-and-files.py` es relativa: depende de estar dentro del curso. Si una ruta tiene espacios, en PowerShell ponla entre comillas. `Get-Location` muestra dónde estás; `Get-ChildItem` muestra qué archivos hay.",
+    "La carpeta actual de la terminal es el punto de partida de las rutas relativas. En Windows, `C:\\Users\\Alex\\Documents\\python-course` es un ejemplo de ruta absoluta. Cámbiala por la ruta donde guardaste el curso. `examples/02-terminal-and-files.py` es relativa: funciona si estás dentro de la carpeta del curso. Pon las rutas con espacios entre comillas. `Get-Location` muestra dónde estás y `Get-ChildItem` enumera los archivos.",
     "Un archivo llamado `exercise.py.txt` sigue siendo texto con extensión `.txt`. En el Explorador activa Ver > Mostrar > Extensiones de nombre de archivo y comprueba el nombre completo. Crea `study-work` para tus intentos; conserva los ejemplos originales como referencia. Guarda cada práctica con un nombre inglés que describa su propósito, por ejemplo `notebook-cost.py`.",
     "Abre IDLE, elige `File > New File` y escribe dos instrucciones print. Guarda el archivo, no solo la ventana interactiva. Ejecutar un archivo repite todas sus instrucciones desde arriba. La consola interactiva, marcada con `>>>`, evalúa una instrucción por vez; no copies `>>>` al archivo. Para salir de esa consola escribe `exit()`.",
-    "En PowerShell ejecuta `python study-work/notebook-cost.py`. Si aparece «can't open file», comprueba carpeta, nombre y extensión con `Get-ChildItem`. Si aparece `SyntaxError`, Python sí encontró el archivo y el problema está dentro del código. Esta distinción evita reinstalar Python para resolver un error de escritura.",
+    "Al ejecutar `python examples/02-terminal-and-files.py`, la terminal localiza Python y Python intenta abrir el archivo que le indicaste. Si aparece «can't open file», revisa primero la ruta. Si aparece `SyntaxError`, el archivo se abrió y Python señala una instrucción que no pudo interpretar. Después del ejemplo verás cómo reproducir y corregir ambos casos.",
     "Haz una bitácora de trabajo en inglés con tres campos: expected, actual y next-step. Registrar el comando exacto y la salida es más útil que escribir «no funciona». Si pides ayuda, comparte el archivo pequeño, el comando y el error completo; no compartas contraseñas ni información personal."
   ],
   "output": "3\n7\n",
@@ -22,21 +23,40 @@
     "La segunda se ejecuta después y produce 7.",
     "Cambiar el orden cambia el orden de la salida, no las operaciones."
   ],
+  "troubleshooting": [
+    [
+      "La terminal muestra «can't open file»",
+      "Desde la carpeta del curso ejecuta `python examples/02-terminal-and-file.py` (sin la s final). Verás «can't open file» y normalmente `[Errno 2] No such file or directory`. Python no llegó a leer las instrucciones. Ejecuta `Get-Location` y `Get-ChildItem examples -Name`. Compara el nombre y la extensión con el comando. Si no aparece la carpeta examples, usa `Set-Location` para entrar en la carpeta del curso. Reintenta con `python examples/02-terminal-and-files.py`: debe mostrar 3 y 7 en líneas separadas."
+    ],
+    [
+      "Python muestra `SyntaxError`",
+      "En una copia del archivo, escribe `print(2 + )`, guarda y ejecuta esa copia. El mensaje señala el archivo y la línea donde detectó el problema. Al signo + le falta el segundo número. Cambia la instrucción por `print(2 + 3)`, guarda y vuelve a ejecutar. La salida debe ser 5."
+    ],
+    [
+      "Un programa muestra `FileNotFoundError`",
+      "Aquí el archivo .py sí se abrió y empezó a ejecutarse. El fallo ocurre cuando una instrucción del programa, como `open('notes.txt')`, intenta abrir otro archivo que no existe en la ruta indicada. En la lección 11 practicarás cómo leer ese mensaje. El aviso «can't open file» del primer caso se refiere al propio archivo .py."
+    ]
+  ],
   "exercises": [
     [
-      "Crea `study-work/notebook-cost.py` y ejecuta `print(4 * 15)`.",
-      "Usa `New-Item -ItemType Directory study-work` si no existe.",
-      "Debes obtener 60 al ejecutar `python study-work/notebook-cost.py` desde la raíz del curso."
+      "Crea el archivo `study-work/notebook-cost.py`, escribe dentro la instrucción `print(4 * 15)` y ejecútalo desde tu terminal.",
+      "Idea ejemplar: si no tienes la carpeta `study-work`, créala en tu editor o con `New-Item -ItemType Directory study-work`. Dentro, crea el archivo con extensión `.py` y adentro pon la instrucción tal como aprendiste en la lección 1.",
+      "Debes obtener 60 al ejecutar `python study-work/notebook-cost.py` desde la carpeta raíz del curso."
     ],
     [
-      "Ejecuta el archivo desde C:\\Dev usando una ruta absoluta.",
-      "Una ruta absoluta incluye la unidad.",
-      "`python C:\\Dev\\python-course\\examples\\02-terminal-and-files.py` produce las mismas dos líneas."
+      "Ejecuta el archivo `02-terminal-and-files.py` desde tu terminal usando una ruta absoluta completa en lugar de una relativa.",
+      "En PowerShell, desde la carpeta del curso, ejecuta `Resolve-Path examples/02-terminal-and-files.py`. Toma la ruta que aparece y escríbela entre comillas después de `python`.",
+      "Al usar la ruta absoluta completa hacia el archivo, Python lo encuentra y produce exactamente las mismas dos líneas de salida."
     ],
     [
-      "Provoca un error escribiendo `print(2 + )` en una copia y después corrígelo.",
-      "Falta un operando, no la instalación.",
-      "El error es `SyntaxError`. Completa la expresión con un número; `print(2 + 3)` produce 5."
+      "Escribe intencionalmente una operación incompleta como `print(2 + )` en un archivo de prueba. Ejecútalo para observar el mensaje de error y luego corrígelo agregando el número que falta.",
+      "Idea ejemplar: al operador `+` le falta su segundo sumando. Python te avisará con `SyntaxError: invalid syntax`. Para solucionarlo, completa el operando (por ejemplo `print(2 + 3)`) y guarda antes de volver a correr.",
+      "El error es `SyntaxError`. No indica que Python esté roto, sino que la instrucción quedó a medio escribir. Al completar la suma con `print(2 + 3)`, el programa muestra 5."
+    ],
+    [
+      "Escribe mal el nombre del archivo en el comando, sin cambiar el código. Identifica qué falló y corrige el comando.",
+      "Busca «can't open file». Usa `Get-ChildItem examples -Name` para comparar el nombre real con el que escribiste.",
+      "Ejecuta `python examples/02-terminal-and-files.py` desde la carpeta del curso. Si aparecen 3 y 7 en líneas separadas, corregiste la ruta."
     ]
   ],
   "mistakes": [

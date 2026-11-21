@@ -24,19 +24,19 @@
   ],
   "exercises": [
     [
-      "Calcula siete unidades de 8 con un impuesto del 5 %.",
-      "Primero subtotal, luego impuesto.",
-      "subtotal = 7 * 8 da 56; total = subtotal + subtotal * 0.05 da 58.8."
+      "Crea variables para calcular el costo de 7 unidades a un precio de 8 cada una, agregando un impuesto del 5 % (0.05). Muestra el subtotal y el total con `print`.",
+      "Idea ejemplar: si en el ejemplo de la lección viste `subtotal = quantity * unit_price`, aquí haz `subtotal = 7 * 8`. Luego calcula el total sumando el subtotal más su porcentaje de impuesto: `total = subtotal + (subtotal * 0.05)`.",
+      "`subtotal = 7 * 8` da 56; `total = subtotal + subtotal * 0.05` da 58.8. Usar variables te permite reutilizar el subtotal sin tener que volver a calcularlo."
     ],
     [
-      "Predice y compara 17 // 5 y 17 % 5.",
-      "Tres grupos completos usan 15 unidades.",
-      "Los resultados son 3 y 2; el resto son las unidades que no completan otro grupo."
+      "Predice y compara el resultado de la división entera y el residuo: `17 // 5` y `17 % 5`. Luego ejecútalos en Python para comprobar tu predicción.",
+      "Idea ejemplar: imagina que repartes 17 objetos entre 5 personas en partes iguales. `//` te dice cuántos objetos enteros recibe cada una (3, porque 3 * 5 = 15) y `%` te dice cuántos sobraron sin repartir (2).",
+      "Los resultados son 3 y 2; la división entera `//` descarta decimales y el módulo `%` entrega el sobrante o residuo."
     ],
     [
-      "Reasigna quantity después de calcular subtotal. ¿Cambia subtotal?",
-      "Las asignaciones se ejecutan en un momento concreto.",
-      "No. El valor calculado se conserva hasta otra asignación. Repite subtotal = quantity * `unit_price` para actualizarlo."
+      "Si calculas `subtotal = quantity * unit_price` y después en la siguiente línea cambias el valor de `quantity`, ¿cambia automáticamente el valor guardado en `subtotal`? Pruébalo en un archivo.",
+      "Idea ejemplar: en programación las variables no son fórmulas vivas que se recalculan solas. Guardan el resultado de la operación en el instante en que se ejecuta. Para reflejar el cambio tendrías que volver a asignar la variable `subtotal`.",
+      "No cambia. El valor guardado en `subtotal` se mantiene fijo hasta que vuelvas a ejecutar explícitamente `subtotal = quantity * unit_price`."
     ]
   ],
   "mistakes": [

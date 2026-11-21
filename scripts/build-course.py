@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def teaching_snippet(source: str) -> str:
-    """Keep only a few meaningful source lines for the learner-facing example."""
+    """Select the first four instructional lines for the typing drill."""
     lines = source.splitlines()
     tree = ast.parse(source)
     docstring_lines = set()
@@ -19,12 +19,11 @@ def teaching_snippet(source: str) -> str:
                 if isinstance(first_statement.value.value, str):
                     docstring_lines.update(range(first_statement.lineno, first_statement.end_lineno + 1))
     lines = [line for number, line in enumerate(lines, start=1) if number not in docstring_lines]
-    excerpt = [line for line in lines if line.strip()][:4]
-    return "\n".join(excerpt + ["# ... (fragmento; no es el programa completo)"])
+    return "\n".join([line for line in lines if line.strip()][:4])
 
 
 def build_course() -> None:
-    """Embed localized lessons and short code excerpts for offline reading."""
+    """Embed localized lessons and their runnable sources for offline reading."""
     catalog = json.loads((ROOT / "locales/es/catalog.json").read_text(encoding="utf-8"))
     for section, filename in [
         ("plan", "study-plan.json"), ("glossary", "glossary.json"), ("graduation", "graduation.json"),
@@ -41,8 +40,9 @@ def build_course() -> None:
     for lesson_path in sorted((ROOT / "locales/es/lessons").glob("*.json")):
         lesson = json.loads(lesson_path.read_text(encoding="utf-8"))
         source = (ROOT / lesson["example"]).read_text(encoding="utf-8")
-        lesson["code"] = lesson.get("snippet", teaching_snippet(source))
-        lesson.pop("snippet", None)
+        lesson["code"] = lesson.pop("snippet", None) or teaching_snippet(source)
+        if lesson["code"].split() != source.split():
+            lesson["fullCode"] = source.rstrip()
         lesson["run"] = {
             "command": lesson.pop("command"), "output": lesson.pop("output"),
             "answers": lesson.pop("stdin", "").splitlines(),

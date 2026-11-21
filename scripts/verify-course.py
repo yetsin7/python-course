@@ -49,13 +49,19 @@ def verify_lessons() -> int:
         raise AssertionError("Expected 32 lessons.")
     catalog = json.loads((ROOT / "locales/es/catalog.json").read_text(encoding="utf-8"))
     required_fields = {"id", "slug", "phase", "title", "objectives", "concepts", "example",
-                       "output", "walkthrough", "exercises", "quiz", "mastery", "references"}
+                       "command", "output", "walkthrough", "exercises", "quiz", "mastery", "references"}
     for identifier, lesson_path in enumerate(lessons, start=1):
         lesson = json.loads(lesson_path.read_text(encoding="utf-8"))
         if not required_fields.issubset(lesson) or lesson["id"] != identifier:
             raise AssertionError(f"Incomplete lesson: {lesson_path.name}")
-        if len(lesson["exercises"]) != 3 or len(lesson["mastery"]) != 3 or len(lesson["concepts"]) < 5:
+        if len(lesson["exercises"]) < 3 or len(lesson["mastery"]) != 3 or len(lesson["concepts"]) < 5:
             raise AssertionError(f"Insufficient learning material: {lesson_path.name}")
+        if lesson["command"] != f"python {lesson['example']}":
+            raise AssertionError(f"Run command does not match the example: {lesson_path.name}")
+        for field in ("exercises", "troubleshooting"):
+            entry_size = 3 if field == "exercises" else 2
+            if any(len(entry) != entry_size or not all(entry) for entry in lesson.get(field, [])):
+                raise AssertionError(f"Incomplete {field} entry: {lesson_path.name}")
         for key in lesson["references"]:
             if key not in catalog["references"]:
                 raise AssertionError(f"Unknown reference: {key}")
