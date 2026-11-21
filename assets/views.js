@@ -6,7 +6,7 @@ function homeMarkup() {
   const upcoming = COURSE.lessons.find((lesson) => lesson.id === learnerProgress.lastLesson) || nextLesson();
   let markup = '<section class="hero"><p class="eyebrow">' + escapeHtml(COURSE.subtitle) +
     '</p><h1 tabindex="-1">' + escapeHtml(COURSE.title) + '</h1><p class="hero-description">' +
-    escapeHtml(COURSE.description) + '</p><a class="primary" href="#lesson-' + lessonNumber(upcoming.id) +
+    escapeHtml(window.PROJECT_PATH.intro) + '</p><a class="primary" href="#lesson-' + lessonNumber(upcoming.id) +
     '">' + escapeHtml(translate(learnerProgress.lastLesson || learnerProgress.completed.length ? "resume" : "start")) +
     ' <span aria-hidden="true">→</span></a>' + progressRingMarkup() + dashboardMarkup(upcoming) + '<div class="course-stats">';
   for (const [count, key] of [[32, "statsLessons"], [96, "statsExercises"], [5, "statsProjects"]]) {

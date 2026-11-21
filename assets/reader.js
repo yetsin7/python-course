@@ -139,6 +139,7 @@ function lessonMarkup(lesson) {
     '</h1><div class="hero-chips"><span>⏱ ' + lesson.minutes + " " + escapeHtml(translate("estimated")) +
     "</span><span>⭐ +" + EXPERIENCE.lesson + " XP</span><span>🧩 " + lesson.exercises.length + " " +
     escapeHtml(translate("statsExercises")) + "</span></div></header><div class=\"lesson-body\">";
+  markup += projectStageMarkup(lesson.id);
   markup += stageMarkup(1, stages[0],
     sectionMarkup(translate("objectives"), listMarkup(lesson.objectives), "goal-panel") +
     sectionMarkup(translate("plain"), paragraphsMarkup([lesson.plain]), "plain-panel") +
